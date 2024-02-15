@@ -2,11 +2,8 @@ function Header() {
   return (
     <>
 <div>
-  {/* end loader */}
   <div id="content">
-    {/* header */}
     <header>
-      {/* header inner */}
       <div className="head_top">
         <div className="header">
           <div className="container-fluid">

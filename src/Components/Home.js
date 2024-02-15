@@ -2,7 +2,6 @@ function Home() {
     return (
       <>
 <div id="content"> 
-  {/* licens */}
   <div className="licens">
     <div className="container">
       <div className="row">
@@ -130,9 +129,7 @@ function Home() {
       </div>
     </div>
   </div>
-  {/* end lLicens */}
   
-  {/* reqeste */}
   <div id="contact" className="reqeste">
     <div className="container">
       <div className="row">
