@@ -4,13 +4,13 @@
 
 ```mermaid
 graph TD;
-    A[Driver <br/><sub>Driver will be used to start the game <br>Will create the Player Controller and the Mines Grid<br>Uses: C++<br></sub>];
-    B[Player Controller <br/><sub>Will update the mines grid<br>Creates the mines grid GUI  <br> Uses: C++  <sub>];
-    C[Mines Grid <br/><sub>Grid will keep track of safe sqaures / mines<br>Will keep track of guesses player has already made<br>Notifies all object registed to the grid upon a change<br>Uses: C++<sub>];
-    D[Grid GUI <br/><sub>Will display the mines grid, player balace, other key vars<br>Will register with the mines grid model and update on a change<br>Will create the safe and unsafe grid spots<br> Uses: React.js?<sub>];
-    E[Mines Visuals <br/><sub>Each grid slot will be a mine, safe or unsafe<br>Boolean Objects <br>Uses: C++<sub>];
-    F[Controller Interface <br/><sub>The controller will be respponsable for all of the player actions<br>Uses: C++<sub>]
-    G[Player Model <br/> <sub> Will keep track of players balance <br> Uses: C++ <sub> ]
+    A[Driver <br/>Driver will be used to start the game <br>Will create the Player Controller and the Mines Grid<br>Uses: C++<br>];
+    B[Player Controller <br/>Will update the mines grid<br>Creates the mines grid GUI  <br> Uses: C++];
+    C[Mines Grid <br/>Grid will keep track of safe sqaures / mines<br>Will keep track of guesses player has already made<br>Notifies all object registed to the grid upon a change<br>Uses: C++];
+    D[Grid GUI <br/>Will display the mines grid, player balace, other key vars<br>Will register with the mines grid model and update on a change<br>Will create the safe and unsafe grid spots<br> Uses: React.js?];
+    E[Mines Visuals <br/>Each grid slot will be a mine, safe or unsafe<br>Boolean Objects <br>Uses: C++];
+    F[Controller Interface <br/>The controller will be respponsable for all of the player actions<br>Uses: C++]
+    G[Player Model <br/> Will keep track of players balance <br> Uses: C++]
 
     A --> |Creates| B;
     A --> |Creates| C;
@@ -27,16 +27,16 @@ graph TD;
 
 ```mermaid
 graph TD;
-    A[Driver <br/> <sub> Driver will be used to start the game <br> Will create the Player Controller and the Roulette Table <br> Uses: C++ <br> </sub>];
-    B[Player Controller <br/> <sub> Will place player bets <br> Creates the Roulette Table GUI <br> Uses: C++<br> <sub>];
-    C[Roulette Table <br/> <sub> Creates and has a Roulette Wheel, and betting grid <br> Will update any objects that are registed to it upon a change <br> Uses: C++ <sub>];
-    D[Table GUI <br/><sub> Will display the Roulette Wheel, player balace, other key vars <br> Will register with the Roulette Table model and update on a change <br> Uses: React.js?<sub>];
-    F[Controller Interface <br/><sub>The controller will be respponsable for all of the player actions<br>Uses: C++<sub>]
-    G[Roulette Wheel <br/> <sub> Will randomly select a number 38 <br> numbers will range from 1-36 and have 0 and 00 <br> Uses: C++ <sub>]
-    H[Betting Grid <br/> <sub> 3x17 matrix that will represent everything that can be bet <br> Players will select grid and wager amount and will be payed out according to the wheel <br> Uses: C++ <sub>]
-    I[Roulette Wheel GUI <br/> <sub> Traditional Roulette wheel will be modeled <br> Uses: React.js <sub>]
-    J[Betting Grid GUI <br/> <sub> Roulette tabel will be modeled <br> Uses: React.js <sub>]
-    K[Player Model <br/> <sub> Will keep track of player balance <br> Uses: C++ <sub>]
+    A[Driver <br/> Driver will be used to start the game <br> Will create the Player Controller and the Roulette Table <br> Uses: C++ <br>];
+    B[Player Controller <br/>Will place player bets <br> Creates the Roulette Table GUI <br> Uses: C++<br>];
+    C[Roulette Table <br/>Creates and has a Roulette Wheel, and betting grid <br> Will update any objects that are registed to it upon a change <br> Uses: C++];
+    D[Table GUI <br/> Will display the Roulette Wheel, player balace, other key vars <br> Will register with the Roulette Table model and update on a change <br> Uses: React.js?];
+    F[Controller Interface <br/>The controller will be respponsable for all of the player actions<br>Uses: C++]
+    G[Roulette Wheel <br/> Will randomly select a number 38 <br> numbers will range from 1-36 and have 0 and 00 <br> Uses: C++]
+    H[Betting Grid <br/> 3x17 matrix that will represent everything that can be bet <br> Players will select grid and wager amount and will be payed out according to the wheel <br> Uses: C++]
+    I[Roulette Wheel GUI <br/> Traditional Roulette wheel will be modeled <br> Uses: React.js]
+    J[Betting Grid GUI <br/> Roulette tabel will be modeled <br> Uses: React.js]
+    K[Player Model <br/> Will keep track of player balance <br> Uses: C++]
 
     A --> |Creates| B;
     A --> |Creates| C;
