@@ -115,7 +115,7 @@ function Home() {
               <div className="col-md-8">
                 <div className="many_box">
                   <p>
-                  The Money Team (TMT) is a dynamic online platform founded by a team of forward-thinking individuals including Adem Durakovic, Amar Hadzic, Jack Mcphillips, and Nhi Tran. 
+                  The Money Team (TMT) is a dynamic online platform founded by a team of forward-thinking individuals including Adem Durakovic, Amar Hadzic, Jack McPhillips, and Nhi Tran. 
                   With a passion for innovation and a commitment to providing thrilling entertainment, TMT offers a diverse range of gambling games, including Mines, Roulette, and Coin Flip. 
                   Our developers have meticulously crafted these games to ensure seamless functionality and an immersive user experience. 
                   At TMT, we strive to create an environment where players can enjoy the excitement of gaming while also fostering a sense of community. 
