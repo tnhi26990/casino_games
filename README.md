@@ -14,6 +14,8 @@ A web browser and Internet access: A modern web browser such as Google Chrome, M
 
 Node.js and npm installed: Make sure you have both installed on your system (https://nodejs.org/en/download/).
 
+## How to run the application:
+
 To run the code, please follow the below instructions:
 
 1. Open terminal and clone the repository
