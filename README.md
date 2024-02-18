@@ -2,9 +2,24 @@
 
 This application is a work in progress and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Compatible OSes:
 
-In the project directory, you can run:
+Windows 10 or 11, macOS 10.10, or Ubuntu 16 are recommended for the best compatibility and performance.
+
+## System Requirements:
+
+Hardware: At least 4GB of RAM and 10GB of storage space are required to run React and its associate tools smoothly.
+
+A web browser and Internet access: A modern web browser such as Google Chrome, Mozilla Firefox, or Safari and Internet access are necessary for viewing and testing the application.
+
+Node.js and npm installed: Make sure you have both installed on your system (https://nodejs.org/en/download/).
+
+To run the code, please follow the below instructions:
+
+1. Open terminal and clone the repository
+  git clone https://github.com/AmarHadzic/CSCI3300_Group6.git
+2. Navigate to the cloned repository
+3. Run the following commands:
 
 ### `npm install`
 
