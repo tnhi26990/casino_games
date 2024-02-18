@@ -19,8 +19,7 @@ Node.js and npm installed: Make sure you have both installed on your system (htt
 To run the code, please follow the below instructions:
 
 1. Open terminal and clone the repository
-   ```bash
-  git clone https://github.com/AmarHadzic/CSCI3300_Group6.git
+  <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git<\code>
 3. Navigate to the cloned repository
 4. Run the following commands:
 
