@@ -20,7 +20,7 @@ To run the code, please follow the below instructions:
 
 1. Open terminal and clone the repository
 
- <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
+     <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
 
 2. Navigate to the cloned repository
 3. Run the following commands:
