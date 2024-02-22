@@ -1,0 +1,3 @@
+/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/CMakeFiles/CSCI3300_Group6.dir
+/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/CMakeFiles/rebuild_cache.dir
