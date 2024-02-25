@@ -5,4 +5,5 @@ function CoinFlip() {
         </div>
     );
 }
+
 export default CoinFlip;
