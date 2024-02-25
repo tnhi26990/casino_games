@@ -4,13 +4,11 @@ import Footer from "../Components/Footer";
 
 export default function() {
     return (
-     
       <>
         <Header />
         <Home />
         <Footer />
       </>
-    
     );
   }
   
