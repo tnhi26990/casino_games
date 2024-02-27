@@ -7,7 +7,7 @@
 
 class CasinoGameInterface {
 public:
-    virtual bool executeRound(bool prediction) = 0; // Pure virtual function
+    virtual double executeRound(bool prediction) = 0; // Pure virtual function
     // Add more virtual functions or member variables if needed
 };
 

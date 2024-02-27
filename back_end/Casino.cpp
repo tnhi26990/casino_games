@@ -11,17 +11,14 @@ void Casino::switchGame(CasinoGameInterface* game) {
 }
 
 
-bool Casino::playRound(bool prediction, int bet) {
-    bool outcome = currentGame->executeRound(prediction);
-    if (outcome) {
-        payout(bet);
-    }
-    return outcome;
+void Casino::playRound(bool prediction, int bet) {
+    double outcomeMultiplier = currentGame->executeRound(prediction);  //will return payout or nothing
+    payout(bet, outcomeMultiplier);
 }
 
-void Casino::payout(int bet) {
+void Casino::payout(int bet, double multiplier) {
     if (player) { // Check if player is not nullptr
-        player->updateCredits(bet * 2);
+        player->updateCredits(bet * multiplier);
     }
 }
 

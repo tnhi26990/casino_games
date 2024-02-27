@@ -30,8 +30,21 @@ class CoinGame : public CasinoGameInterface{
         }
         return prediction == outcome;
     }
-    bool executeRound(bool prediction){
+    double executeRound(bool prediction){
+        bool predict = getPrediction();
         bool outcome = tossCoin();
-        return checkWinner(prediction, outcome);
+        if (checkWinner(predict, outcome)){
+            return 2;
+        }
+        return 0;
+    }
+    bool getPrediction(){
+        char prediction;
+        cout<<"Select Heads or Tails: (ENTER 'H' OR 'T')"<<endl;
+        cin>>prediction;
+        if (prediction == 'H') {
+            return true;
+        }
+        return false;
     }
 };

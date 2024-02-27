@@ -16,8 +16,8 @@ public:
     Casino();
     ~Casino();
     void switchGame(CasinoGameInterface* game);
-    bool playRound(bool prediction, int bet);
-    void payout(int bet);
+    void playRound(bool prediction, int bet);
+    void payout(int bet, double multiplier);
     void update(int bet, bool prediction);
     void registerPlayer(Player* newPlayer);
 };
