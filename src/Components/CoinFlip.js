@@ -1,8 +1,8 @@
 function CoinFlip() {
     return (
-        <div>
-            <h1>Coin Flip</h1>
-        </div>
+    
+    <h1>Coin Flip</h1>
+    
     );
 }
 export default CoinFlip;

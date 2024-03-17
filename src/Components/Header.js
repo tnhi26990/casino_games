@@ -3,13 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
-    function coinFlipClick() {
+    function homeRoomClick() {
         navigate("/gameroom");
     }
   return (
     <>
-      <div className="Button-ctnr">
-        <button onClick={coinFlipClick} className = "gameroom-btn">Enter Game Room</button>
+      <div className="Home-ctnr">
+        <div className="Button-ctnr">
+          <button onClick={homeRoomClick} className = "gameroom-btn">Enter Game Room</button>
+        </div>
       </div>
       
     </>
