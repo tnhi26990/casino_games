@@ -16,10 +16,8 @@ function GameRoom() {
                     <button id = "roulette-btn" className="game-btn" >Roulette</button>
                 </div>
             </div>
-
         </>
-    )
-
+    );
 }
 
 export default GameRoom
