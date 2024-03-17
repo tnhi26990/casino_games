@@ -1,0 +1,27 @@
+body {
+    background-image: url(./images/chillin.gif);
+    background-size: cover;
+    background-position: center;
+}
+
+.Button-ctnr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.gameroom-btn {
+    background-image: linear-gradient(to right, #bc883d, #f5e47b, #bc883d );
+    border: none;
+    border-radius: 90px;
+    padding: 3% 5%; 
+    font-size: 3vw; 
+    margin: 2% 3%; 
+    cursor: pointer;
+    width: 50%;
+    height: 350px;
+}
+.gameroom-btn:hover {
+    animation: bounce .75s infinite;
+}
