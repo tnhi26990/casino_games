@@ -101,26 +101,13 @@ function Home() {
                 <p className="lorem"></p>
               </div>
               <div id="about" className="col-md-12">
-          <ul className="spinit">
-            <li><a href="Javascript:void(0)">About TMT</a></li>
-          </ul>
+          
           <div className="two_box">
             <div className="row d_flex">
               <div className="col-md-4">
-                <div className="many_box_img">
-                  <figure><img src="images/game3.jpg" alt="#" /></figure>
-                </div>
+                
               </div>
               <div className="col-md-8">
-                <div className="many_box">
-                  <p>
-                  The Money Team (TMT) is a dynamic online platform founded by a team of forward-thinking individuals including Adem Durakovic, Amar Hadzic, Jack McPhillips, and Nhi Tran. 
-                  With a passion for innovation and a commitment to providing thrilling entertainment, TMT offers a diverse range of gambling games, including Mines, Roulette, and Coin Flip. 
-                  Our developers have meticulously crafted these games to ensure seamless functionality and an immersive user experience. 
-                  At TMT, we strive to create an environment where players can enjoy the excitement of gaming while also fostering a sense of community. 
-                  Join us today and experience the thrill of winning with TMT!
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -129,41 +116,6 @@ function Home() {
     </div>
   </div>
   
-  <div id="contact" className="reqeste">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="titlepage">
-            <h2>Send Us A Message</h2>
-            <span />
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <form id="cochang" className="form_main">
-            <div className="row">
-              <div className="col-md-12">
-                <input className="form_control" placeholder="Name" type="text" name="Name" />
-              </div>
-              <div className="col-md-12">
-                <input className="form_control" placeholder="Phone number" type="text" name="Phone number" />
-              </div>
-              <div className="col-md-12">
-                <input className="form_control" placeholder="Email" type="text" name="Email" />
-              </div>
-              <div className="col-md-12">
-                <input className="form_control" placeholder="Message" type="text" name="Message" />
-              </div>
-              <div className="col-md-12">
-                <button className="send_btn">Send</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
       </>
     );
