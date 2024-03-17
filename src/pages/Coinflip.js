@@ -1,6 +1,7 @@
 import CoinFlip from "../Components/CoinFlip";
 
-export default function() {
+
+export default function coinFlip() {
     return (
         <>
             <CoinFlip/>
