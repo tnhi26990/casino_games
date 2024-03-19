@@ -1,17 +1,57 @@
-
 #include <iostream>
-#include "Casino.cpp"
-using namespace std;
+#include "Casino.h"
+#include "Player.h"
+#include "CoinGame.cpp" // Assuming CoinGame is defined in CoinGame.h
+#include "Mines.cpp"
 
-int main(){
+int main() {
+    Casino* casino = new Casino();
+    CoinGame* coinGame =  new CoinGame();
+    Mines* mineGame = new Mines(3);
+    casino->switchGame(mineGame);
 
-    Casino* casino = new Casino(); //Makes casino
-    CoinGame* coinGame = new CoinGame();
-    casino->switchGame(coinGame);
-    bool outcome = casino->playRound(false); //need number under .5
+    Player* player = new Player();
+    casino->registerPlayer(player);
+    player->registerCasino(casino);
 
-    delete casino;
-    casino = NULL;
+
+    bool flag = true;
+
+    cout << "Welcome to the casino!" << std::endl;
+    cout<< "Please select a game: "<< endl;
+
+    while (flag) {
+        char game;
+        cout<< "C: Coin Flip |||| M: Mines: "<<endl;
+        cin >> game;
+        if(game == 'M'){
+            casino->switchGame(mineGame);
+        }
+        else if (game == 'C'){
+            casino->switchGame(coinGame);
+        }
+        else{cout<<"Select C or M" <<endl; continue;}
+
+        int bet;
+        std::cout << "Enter Bet: ";
+        std::cin >> bet;
+        if (bet == 0) {
+            flag = false;
+        }
+        else {
+            player->increaseBet(bet);
+            player->playRound(true);
+            player->printCredits();
+        }
+    }
+
+    delete casino; // Delete dynamically allocated Casino object
+    delete player; // Delete dynamically allocated Player object
     delete coinGame;
-    coinGame = NULL;
+    delete mineGame;
+
+
+
+
+    return 0;
 }
