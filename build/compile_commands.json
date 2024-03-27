@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o -c /Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Model/RouletteWheel.cpp",
+  "file": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Model/RouletteWheel.cpp",
+  "output": "CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o"
+},
+{
+  "directory": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o -c /Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Model/BettingTable.cpp",
+  "file": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Model/BettingTable.cpp",
+  "output": "CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o"
+},
+{
+  "directory": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o -c /Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/View/RouletteView.cpp",
+  "file": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/View/RouletteView.cpp",
+  "output": "CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o"
+},
+{
+  "directory": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o -c /Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Controller/RouletteController.cpp",
+  "file": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Controller/RouletteController.cpp",
+  "output": "CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o"
+},
+{
+  "directory": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/untitled.dir/Roulette/Driver.cpp.o -c /Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Driver.cpp",
+  "file": "/Users/jackmcphillips/Desktop/CSCI3300_Group6/Roulette/Driver.cpp",
+  "output": "CMakeFiles/untitled.dir/Roulette/Driver.cpp.o"
+}
+]

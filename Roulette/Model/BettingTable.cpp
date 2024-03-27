@@ -119,6 +119,7 @@ int BettingTable::checkCol(int num) {
 
 int BettingTable::checkResults() {
     int spinResult = wheel.generateNumber();
+    std::cout << "Spin was: " << spinResult << std::endl;
     std::list<std::pair<int, int> > spinAttributes = getValues(spinResult);
     int payoutValue = 0;
 

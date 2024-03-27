@@ -14,14 +14,17 @@
 
 class BettingTable {
 private:
-    std::vector<std::pair<std::pair<int, int>, int> > playerBets;
     std::unordered_map<int, std::list<std::pair<int, int> > > lookupTable;
     RouletteWheel wheel;
-    int payoutGrid[3][17];
+    int payoutGrid[3][17] = {
+            {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35, 2 ,2, 1, 1, 35},
+            {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35, 2, 2, 1, 1, 35},
+            {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35,2, 2, 1, 1, 0},
+    };
 
 public:
     BettingTable(RouletteWheel wheel)
-            : wheel(wheel) {}
+            : wheel(wheel) {assignMapValues();}
 
     void addPlayerBet(int rowNum, int colNum, int betAmount);
     int handleInput(const std::string& input);
@@ -36,6 +39,8 @@ public:
     int payout(std::pair<int, int> betSpot, int betAmount);
     std::list<std::pair<int, int> > getValues(int key);
     void assignMapValues();
+
+    std::vector<std::pair<std::pair<int, int>, int> > playerBets;
 };
 
 #endif

@@ -57,9 +57,12 @@ bool RouletteController::placeBets() {
         validRow = false;
     }
 
-    for (auto& bet : playerBets) {
-        std::cout << "Bet: " << bet.first.first << ", " << bet.first.second << ", Amount: " << bet.second << std::endl;
+    std::cout << "Player Bets:" << std::endl;
+    for (auto& bet : bettingTable.playerBets) {
+        std::cout << "Grid Spot: " << bet.first.first << ", " << bet.first.second << ", Amount: " << bet.second << std::endl;
     }
+
+    bettingTable.checkResults();
 
     std::string playAgain;
     std::cout << "Would you like to play another round? (y/n)" << std::endl;

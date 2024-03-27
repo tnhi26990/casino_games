@@ -11,7 +11,10 @@ int main() {
     RouletteController *player = new RouletteController(*tableView, *playerTable);
     bool userActive = true;
 
-    player->placeBets();
+    while(userActive) {
+        userActive = player->placeBets();
+    }
+
     std::cout << "Thank you for playing!! Please come again!" << std::endl;
 
     delete playerTable;
