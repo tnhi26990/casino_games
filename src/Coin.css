@@ -1,61 +1,102 @@
 .bg-container {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(#f9d423, #e2a139);
+    background-color: #09143C;
     min-height: 100vh;
 }
 
-.heading {
-    background-image: linear-gradient(#f9d423, #e2a139);
-    display: block;
-    text-align: center;
-    padding: 20px;
-    min-width: 10%;
-    min-height: 100px;
-}
 .heading h1 {
-    color: #EE4B2B;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    padding: 60px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    letter-spacing: 5px;
+    font-size: 50px;
     font-weight: bold;
+    background-image: linear-gradient(
+     to right,
+     #462523 0,
+            #cb9b51 22%, 
+     #f6e27a 45%,
+     #f6f2c0 50%,
+     #f6e27a 55%,
+     #cb9b51 78%,
+     #462523 100%
+     );
+    color:transparent;
+    -webkit-background-clip:text;
+}
+ 
+.credit {
+    color: #ffffff;
     font-size: 30px;
 }
+
+.credit-amount {
+    height: 40px;
+    width: 80px;
+}
+.credit-content {
+    padding-top: 40px;
+    padding-bottom: -10px;
+}
+
 .app-container {
-    background-color: #ffffff;
+    background-color: #09143C;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    padding: 50px;
     align-items: center;
-    padding: 30px;
-    min-width: 55%;
-    min-height: 550px;
+    min-width: 80%;
+    min-height: 800px;
+}
+
+p {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.img {
+    background-color: #09143C;
 }
 
 .image {
-    width: 300px;
-    height: 300px;
+    width: 180px;
+    height: 180px;
 }
 
 .image.flipping {
     animation: flip 2s ease-in-out forwards;
 }
 
-.coin-button {
-    background-color: #ffffff;
+.bet-button {
+    padding: 40px;
+}
+.amount-button {
+    padding: 30px;
+}
+.play-button {
+    padding: 40px;
 }
 
-.reset-button {
-    color: #a35200;
-    background-color: #f9d423;
-    min-width: 90px;
-    min-height: 35px;
-    border-radius: 8px;
-    cursor: pointer;
+label {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 50;
 }
 
-.count-container {
-    display: flex;
-    justify-content: space-around;
-    min-width: 50%;
+input {
+    text-align: right;
+    background-color: #f6e27a;
+    border-color: #cb9b51;
+}
+
+.choice {
+    text-align: center;
 }
 
 @keyframes flip {
