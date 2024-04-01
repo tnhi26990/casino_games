@@ -6,12 +6,16 @@ function GameRoom() {
     function coinFlipClick() {
         navigate("/coinflip");
     }
+    function minesClick() {
+        navigate("/mines");
+    }
+
     return (
         <>
             <div className="page-room">
                 <h1 className="user-credits">Credits: </h1>
                 <div className = "game-btn-container">
-                    <button id = "mines-btn" className="game-btn" >Mines</button>
+                    <button onClick={minesClick} id = "mines-btn" className="game-btn" >Mines</button>
                     <button onClick={coinFlipClick} id = "coin-btn" className="game-btn" >Coin Flip</button>
                     <button id = "roulette-btn" className="game-btn" >Roulette</button>
                 </div>
