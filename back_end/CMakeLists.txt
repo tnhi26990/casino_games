@@ -9,4 +9,4 @@ add_executable(back_end
         Driver.cpp
         Player.cpp
         CasinoInterface.cpp
-        )
+        MinesView.cpp MinesController.cpp)

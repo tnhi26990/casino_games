@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="back_end"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="back_end">
+				<Option output="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/back_end" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 back_end"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="back_end/fast">
+				<Option output="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/back_end" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 back_end/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/adem/csci_3300/CSCI3300_Group6/back_end/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/Casino.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/Casino.h">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/CasinoInterface.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/CoinGame.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/Driver.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/MinesController.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/MinesView.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/MinesView.h">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/Player.cpp">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/Player.h">
+			<Option target="back_end"/>
+		</Unit>
+		<Unit filename="/Users/adem/csci_3300/CSCI3300_Group6/back_end/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
