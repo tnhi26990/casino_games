@@ -9,10 +9,7 @@ add_executable(untitled
         Roulette/View/RouletteView.cpp
         Roulette/Controller/RouletteController.cpp
         Roulette/RouletteDriver.cpp
-        Mines/Controller/MinesController.cpp
         Mines/Model/MinesModel.cpp
-        Mines/Model/MinesModel.h
+        Mines/Controller/MinesController.cpp
         Mines/View/MinesView.cpp
-        Mines/View/MinesView.h
-        Mines/Controller/MinesController.h
 )

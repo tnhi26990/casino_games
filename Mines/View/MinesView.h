@@ -1,8 +1,16 @@
-//
-// Created by Jack McPhillips on 4/2/24.
-//
+#ifndef UNTITLED1_MINESVIEW_H
+#define UNTITLED1_MINESVIEW_H
 
-#ifndef MINES_MINESVIEW_H
-#define MINES_MINESVIEW_H
+#include "../../CasinoGameInterface.h"
+#include <random>
+#include <chrono>
+#include <utility>
 
-#endif //UNTITLED_MINESVIEW_H
+class MinesView {
+
+public:
+    void showGrid(int gird[5][5]);
+    std::pair<int, int> getPrediction();
+};
+
+#endif //UNTITLED1_MINESVIEW_H

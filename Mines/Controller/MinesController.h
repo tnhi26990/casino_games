@@ -1,8 +1,16 @@
-//
-// Created by Jack McPhillips on 4/2/24.
-//
+#ifndef UNTITLED1_MINESCONTROLLER_H
+#define UNTITLED1_MINESCONTROLLER_H
 
-#ifndef MINES_MINESCONTROLLER_H
-#define MINES_MINESCONTROLLER_H
+#include "../Model/MinesModel.h"
+#include "../Model/MinesModel.h"
 
-#endif //UNTITLED_MINESCONTROLLER_H
+class MinesController {
+private:
+    MinesModel mines;
+    MinesView view;
+public:
+    void play(); // Corrected parameter name
+    MinesController(); // Controller makes the model and view.
+};
+
+#endif

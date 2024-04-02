@@ -39,7 +39,6 @@ public:
     int payout(std::pair<int, int> betSpot, int betAmount);
     std::list<std::pair<int, int> > getValues(int key);
     void assignMapValues();
-
     std::vector<std::pair<std::pair<int, int>, int> > playerBets;
 };
 

@@ -18,12 +18,11 @@ class RouletteController {
 private:
     BettingTable bettingTable;
     RouletteView tableView;
+    RouletteWheel wheel;
     std::vector<std::pair<std::pair<int, int>, int> > playerBets;
 
 public:
-    RouletteController(RouletteView tableView, BettingTable bettingTable)
-            : bettingTable(bettingTable), tableView(tableView) {}
-
+    RouletteController();
     bool placeBets();
     static bool playAnotherRound(std::string input);
 };

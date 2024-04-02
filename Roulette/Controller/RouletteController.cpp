@@ -1,5 +1,5 @@
 #include "RouletteController.h"
-
+RouletteController::RouletteController():wheel(),bettingTable(wheel), tableView(){}
 bool RouletteController::placeBets() {
     bool activeRound = true;
     bool validRow = false;
@@ -11,7 +11,7 @@ bool RouletteController::placeBets() {
     int rowNum;
     int colNum;
 
-    while (activeRound) {
+    while(activeRound) {
         tableView.displayBettingTable();
         std::cout << "Please select the row then column you want to bet on." << std::endl;
         std::cout << "If you are done placing bets type 'spin'" << std::endl;
