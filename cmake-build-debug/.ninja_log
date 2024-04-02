@@ -1,7 +1,12 @@
 # ninja log v5
-0	1464	1711560516920738927	CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o	ee037dd16200bd85
-2	1488	1711560516948581885	CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o	bee604404bd163b4
-3	1666	1711560517126672235	CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o	2d11b94e0b40920c
-3	1791	1711560517251348352	CMakeFiles/untitled.dir/Roulette/Driver.cpp.o	94fe78fc1b7117dc
-2	1877	1711560517337832399	CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o	cececd95196f9594
-1878	1982	1711560517446908231	untitled	74d063ae20ad411
+7	2164	1712082411060682627	CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o	f1b26d85c7a35dd5
+7	2168	1712082411065248052	CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o	4cbfc8c676cbf9ec
+6	1147	1712083936754050257	CMakeFiles/untitled.dir/Player.cpp.o	6a758b0d5346f4c5
+8	2328	1712082411223915747	CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o	6214c92d9be44c13
+7	1730	1712083937337501550	CMakeFiles/untitled.dir/Roulette/Driver.cpp.o	e4fdc55fabc8cb23
+7	2552	1712082411444347126	CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o	78eb9b243c94701f
+1731	1814	1712083937423777456	untitled	58a7bcc20ed530ef
+7	82	1712083112359977822	CMakeFiles/untitled.dir/CasinoInterface.cpp.o	4a6a518435207197
+5	1122	1712083936729019930	CMakeFiles/untitled.dir/Casino.cpp.o	f2a667070348480f
+5	1636	1712089023163115997	CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o	249c62fd71967464
+1636	1887	1712089023415389228	untitled	701df5afc3c409c0

@@ -8,4 +8,5 @@ add_executable(untitled
         Roulette/Model/BettingTable.cpp
         Roulette/View/RouletteView.cpp
         Roulette/Controller/RouletteController.cpp
-        Roulette/Driver.cpp)
+        Roulette/RouletteDriver.cpp
+)
