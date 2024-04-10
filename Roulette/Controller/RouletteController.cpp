@@ -1,6 +1,6 @@
 #include "RouletteController.h"
 
-RouletteController::RouletteController():wheel(),bettingTable(wheel), tableView(){}
+RouletteController::RouletteController(Player* player):wheel(),bettingTable(wheel), tableView(), player(player){}
 
 bool RouletteController::placeBets() {
     bool activeRound = true;
@@ -15,6 +15,7 @@ bool RouletteController::placeBets() {
 
     while(activeRound) {
         tableView.displayBettingTable();
+        player -> printCredits();
         std::cout << "Please select the row then column you want to bet on." << std::endl;
         std::cout << "If you are done placing bets type 'spin'" << std::endl;
 
@@ -46,10 +47,14 @@ bool RouletteController::placeBets() {
             }
         }
 
-        while (!validBet) {
-            std::cout << "Please enter how much you want to bet." << std::endl;
+        while(!validBet) {
+            std::cout << "Enter how much you want to bet: " << std::endl;
             std::cin >> betAmount;
-            validBet = true;
+
+            if(0 <= betAmount <= player -> getCredits()){
+                validBet = true;
+                player ->updateCredits(-betAmount);
+            }
         }
 
         bettingTable.addPlayerBet(rowNum, colNum, betAmount);
@@ -75,4 +80,8 @@ bool RouletteController::placeBets() {
 
 bool RouletteController::playAnotherRound(std::string input) {
     return ((input)[0] == 'y');
+}
+
+void RouletteController::testPlayerCon() {
+    std::cout << player -> getCredits() << std::endl;
 }

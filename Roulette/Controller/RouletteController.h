@@ -13,18 +13,22 @@
 #include "../Model/RouletteWheel.h"
 #include "../Model/BettingTable.h"
 #include "../View/RouletteView.h"
+#include "../../Player.h"
 
 class RouletteController {
 private:
     BettingTable bettingTable;
     RouletteView tableView;
     RouletteWheel wheel;
+    Player* player;
     std::vector<std::pair<std::pair<int, int>, int> > playerBets;
 
 public:
-    RouletteController();
+    RouletteController(Player* player);
     bool placeBets();
     static bool playAnotherRound(std::string input);
+    void testPlayerCon();
+
 };
 
 #endif
