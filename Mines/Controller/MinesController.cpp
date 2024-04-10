@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-MinesController::MinesController():view(), mines(5, view), player(){}
+MinesController::MinesController(Player* player) : view(), mines(5, view), player(player) {}
 
 bool MinesController::play() {
     bool activeRound = true;
@@ -19,7 +19,7 @@ bool MinesController::play() {
         std::cout << "Enter how much you want to bet: " << std::endl;
         std::cin >> betAmount;
 
-        if(0 <= betAmount <= player.getCredits()){
+        if(0 <= betAmount <= player -> getCredits()){
             validBet = true;
         }
     }
@@ -56,7 +56,7 @@ bool MinesController::play() {
         if(validCol && validRow) {
             if (mines.checkForBomb(rowNum, colNum)){
                 std::cout<< "Bomb hit." << std::endl;
-                player.updateCredits(-betAmount);
+                player -> updateCredits(-betAmount);
                 activeRound = false;
                 mines.reset();
             }
@@ -69,7 +69,7 @@ bool MinesController::play() {
         bool endTurn = cashout();
 
         if(endTurn) {
-            player.updateCredits(betAmount * mines.returnMultiplier());
+            player -> updateCredits(betAmount * mines.returnMultiplier());
             activeRound = false;
         }
 
@@ -94,7 +94,7 @@ void MinesController::showBombsLocation() {
 }
 
 void MinesController::testPlayerCon() {
-    std::cout << player.getCredits() << std::endl;
+    std::cout << player -> getCredits() << std::endl;
 }
 
 bool MinesController::cashout() {

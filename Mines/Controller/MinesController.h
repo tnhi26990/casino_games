@@ -9,10 +9,10 @@ class MinesController {
 private:
     MinesModel mines;
     MinesView view;
-    Player player;
+    Player* player;
 
 public:
-    MinesController();
+    MinesController(Player* player);
     bool play();
     bool playAnotherRound(std::string input);
     void showBombsLocation(); // for dev purposes only

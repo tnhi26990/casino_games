@@ -4,7 +4,7 @@
 
 int main() {
     Player* testPlayer = new Player();
-    MinesController* minesController = new MinesController();
+    MinesController* minesController = new MinesController(testPlayer);
     bool userActive = true;
 
     std::cout << "Bomb Location" << std::endl;
