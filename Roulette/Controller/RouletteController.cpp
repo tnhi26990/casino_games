@@ -1,5 +1,7 @@
 #include "RouletteController.h"
+
 RouletteController::RouletteController():wheel(),bettingTable(wheel), tableView(){}
+
 bool RouletteController::placeBets() {
     bool activeRound = true;
     bool validRow = false;

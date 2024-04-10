@@ -97,6 +97,12 @@ build CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o: CXX_COMPILER__untitled
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines/View
 
+build CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /Users/jackmcphillips/Desktop/CSCI3300_Group6/Mines/MinesDriver.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled
@@ -105,7 +111,7 @@ build CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o: CXX_COMPILER__untitled
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o CMakeFiles/untitled.dir/Mines/Model/MinesModel.cpp.o CMakeFiles/untitled.dir/Mines/Controller/MinesController.cpp.o CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o CMakeFiles/untitled.dir/Mines/Model/MinesModel.cpp.o CMakeFiles/untitled.dir/Mines/Controller/MinesController.cpp.o CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

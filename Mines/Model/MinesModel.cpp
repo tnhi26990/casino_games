@@ -3,25 +3,23 @@
 #include <cstdlib> // for rand()
 
 MinesModel::MinesModel(int mines, MinesView obs) : totalMines(mines), observer(obs) {
-    // Calculate the multiplier based on the total number of mines
     multiplier = 1;
     totalSquares = 25 - totalMines;
-    generateMineLocations();
+
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             grid[i][j] = 0;
             bombGrid[i][j] = 0;
         }
     }
+
+    generateMineLocations();
+
 }
-
-
-MinesModel::~MinesModel() {}
 
 int (*MinesModel::returnGrid())[5] {
     return grid;
 }
-
 
 void MinesModel::generateMineLocations() {
     int bombsPlaced = 0;
@@ -45,7 +43,6 @@ bool MinesModel::checkForBomb(int x, int y) {
 void MinesModel::flipSquare(int x, int y) {
     grid[x][y] = 1;
 }
-
 
 void MinesModel::reset() {
     for (int i = 0; i < 5; i++) {
@@ -71,8 +68,9 @@ void MinesModel::executeRound(std::pair<int, int> guess) {
         multiplier += .25;
         observer.showGrid(grid);
     }
-
 }
+
+MinesModel::~MinesModel() {}
 
 
 

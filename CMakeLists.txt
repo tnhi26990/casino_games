@@ -12,4 +12,5 @@ add_executable(untitled
         Mines/Model/MinesModel.cpp
         Mines/Controller/MinesController.cpp
         Mines/View/MinesView.cpp
+        Mines/MinesDriver.cpp
 )

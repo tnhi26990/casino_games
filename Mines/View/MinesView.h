@@ -1,7 +1,7 @@
 #ifndef UNTITLED1_MINESVIEW_H
 #define UNTITLED1_MINESVIEW_H
 
-#include "../../CasinoGameInterface.h"
+//#include "../../CasinoGameInterface.h"
 #include <random>
 #include <chrono>
 #include <utility>
