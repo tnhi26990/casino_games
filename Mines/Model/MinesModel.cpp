@@ -3,7 +3,7 @@
 #include <cstdlib> // for rand()
 
 MinesModel::MinesModel(int mines, MinesView obs) : totalMines(mines), observer(obs) {
-    multiplier = 1;
+    multiplier = 1.0;
     totalSquares = 25 - totalMines;
 
     for (int i = 0; i < 5; ++i) {
@@ -41,6 +41,7 @@ bool MinesModel::checkForBomb(int x, int y) {
 }
 
 void MinesModel::flipSquare(int x, int y) {
+    multiplier += .25;
     grid[x][y] = 1;
 }
 
@@ -55,20 +56,24 @@ void MinesModel::reset() {
     generateMineLocations();
 }
 
-void MinesModel::executeRound(std::pair<int, int> guess) {
-    int x = guess.first;
-    int y = guess.second;
-
-    if (checkForBomb(x, y)){
-        std::cout<< "Bomb hit.";
-        reset();
-    }
-    else{
-        flipSquare(x, y);
-        multiplier += .25;
-        observer.showGrid(grid);
-    }
+double MinesModel::returnMultiplier() {
+    return multiplier;
 }
+
+//void MinesModel::executeRound(std::pair<int, int> guess) {
+//    int x = guess.first;
+//    int y = guess.second;
+//
+//    if (checkForBomb(x, y)){
+//        std::cout<< "Bomb hit.";
+//        reset();
+//    }
+//    else{
+//        flipSquare(x, y);
+//        multiplier += .25;
+//        observer.showGrid(grid);
+//    }
+//}
 
 MinesModel::~MinesModel() {}
 

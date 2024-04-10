@@ -12,12 +12,13 @@ private:
 
 public:
     Player();
-    ~Player(); // Destructor to release memory
+    int getCredits();
     void registerCasino(Casino* casinoObs);
     void playRound(bool prediction);
     void increaseBet(int bet);
     void updateCredits(int money);
     void printCredits();
+    ~Player();
 };
 
 #endif // PLAYER_H

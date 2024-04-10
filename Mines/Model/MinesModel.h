@@ -20,9 +20,9 @@ public:
     ~MinesModel();
 
     void generateMineLocations();
-    void executeRound(std::pair<int, int>);
     bool checkForBomb(int x, int y);
     void flipSquare(int x, int y);
+    double returnMultiplier();
     void reset();
     int (*returnGrid())[5]; // Corrected declaration of returnGrid function
 

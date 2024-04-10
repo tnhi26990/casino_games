@@ -2,16 +2,27 @@
 #include <iostream>
 #include <string>
 
-MinesController::MinesController():view(), mines(5, view){}
+MinesController::MinesController():view(), mines(5, view), player(){}
 
 bool MinesController::play() {
     bool activeRound = true;
     bool validRow = false;
     bool validCol = false;
+    bool validBet = false;
     std::string row;
     std::string col;
     int rowNum;
     int colNum;
+    int betAmount;
+
+    while(!validBet) {
+        std::cout << "Enter how much you want to bet: " << std::endl;
+        std::cin >> betAmount;
+
+        if(0 <= betAmount <= player.getCredits()){
+            validBet = true;
+        }
+    }
 
     while(activeRound) {
         view.showGrid(mines.grid);
@@ -45,13 +56,23 @@ bool MinesController::play() {
         if(validCol && validRow) {
             if (mines.checkForBomb(rowNum, colNum)){
                 std::cout<< "Bomb hit." << std::endl;
+                player.updateCredits(-betAmount);
                 activeRound = false;
                 mines.reset();
             }
             else{
+                std::cout<< "Safe space!" << std::endl;
                 mines.flipSquare(rowNum, colNum);
             }
         }
+
+        bool endTurn = cashout();
+
+        if(endTurn) {
+            player.updateCredits(betAmount * mines.returnMultiplier());
+            activeRound = false;
+        }
+
 
         validCol = false;
         validRow = false;
@@ -72,22 +93,14 @@ void MinesController::showBombsLocation() {
     view.showGrid(mines.bombGrid);
 }
 
+void MinesController::testPlayerCon() {
+    std::cout << player.getCredits() << std::endl;
+}
 
-//        if (!activeRound) {
-//            break;
-//        }
+bool MinesController::cashout() {
+    std::string input;
+    std::cout << "Would you like to cashout? (y/n)" << std::endl;
+    std::cin >> input;
+    return ((input)[0] == 'y');
 
-//        while (!validBet) {
-//            std::cout << "Please enter how much you want to bet." << std::endl;
-//            std::cin >> betAmount;
-//            validBet = true;
-//        }
-
-//        bettingTable.addPlayerBet(rowNum, colNum, betAmount);
-
-//        validBet = false;
-
-//    std::cout << "Player Bets:" << std::endl;
-//    for (auto& bet : bettingTable.playerBets) {
-//        std::cout << "Grid Spot: " << bet.first.first << ", " << bet.first.second << ", Amount: " << bet.second << std::endl;
-//    }
+}
