@@ -14,8 +14,9 @@
 #include "../Model/BettingTable.h"
 #include "../View/RouletteView.h"
 #include "../../Player.h"
+#include "../../ControllerInterface.h"
 
-class RouletteController {
+class RouletteController : public ControllerInterface {
 private:
     BettingTable bettingTable;
     RouletteView tableView;
