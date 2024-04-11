@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "CSCI3300_Group6",
+					"name" : "back_end",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "CSCI3300_Group6::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CSCI3300_Group6-Debug-823e6dc4ffc1cee681d1.json",
-					"name" : "CSCI3300_Group6",
+					"id" : "back_end::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-back_end-Debug-a61328d14007c354511c.json",
+					"name" : "back_end",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug",
-		"source" : "/Users/adem/csci_3300/CSCI3300_Group6"
+		"build" : "/Users/adem/testingAPI/CSCI3300_Group6/back_end/cmake-build-debug",
+		"source" : "/Users/adem/testingAPI/CSCI3300_Group6/back_end"
 	},
 	"version" : 
 	{

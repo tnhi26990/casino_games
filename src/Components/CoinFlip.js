@@ -17,8 +17,31 @@ const theme = createTheme({
 });
 
 class CoinFlip extends Component {
-    state = {flip: 'heads', choice: '', amount: '', animation: false}
-    
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            flip: "heads",
+            choice: "",
+            amount: "",
+            animation: false
+        };
+        // Initialize socket in the constructor
+        this.socket = new WebSocket("ws://localhost:9001");
+        this.socket.onopen = this.handleSocketOpen;
+    }
+
+    handleSocketOpen = () => {
+       // console.log("Connected to the WebSocket backend");
+        this.socket.send("hey from client");
+    };
+
+    componentWillUnmount() {
+        // Close the WebSocket connection when the component is unmounted
+        this.socket.close();
+    }
+
+
     onClickFlip = () => {
         const audio = new Audio('/coin-drop.mp3');
         audio.play();
@@ -32,7 +55,9 @@ class CoinFlip extends Component {
                 this.setState({flip: 'tails'})
             }
             this.setState({ animation: false });
+
         }, 2000);
+
     }
 
     onClickChoice = (value) => {
@@ -51,7 +76,7 @@ class CoinFlip extends Component {
         const {flip, choice, amount} = this.state;
         const headsImage = 'https://assets.ccbp.in/frontend/react-js/heads-img.png';
         const tailsImage = 'https://assets.ccbp.in/frontend/react-js/tails-img.png';
-        
+
         return (
             <div className="bg-container">
                 <div className="app-container">
@@ -74,7 +99,7 @@ class CoinFlip extends Component {
                     <Stack direction="row" spacing={4} className="bet-button">
                     <ThemeProvider theme={theme}>
                         <p>You bet: </p>
-                        <Button variant="contained" startIcon={<LooksOneIcon />} color="primary" size="large" 
+                        <Button variant="contained" startIcon={<LooksOneIcon />} color="primary" size="large"
                             onClick={() => this.onClickChoice('H')}>
                             Head
                         </Button>
@@ -105,7 +130,7 @@ class CoinFlip extends Component {
                     <Stack direction="row" spacing={4} className="play-button">
                         <label>Bet Amount:</label>
                         <input type="text" className="amount" value={amount} placeholder="0.00" onChange={this.handleInputChange}/>
-                        <Button variant="contained" startIcon={<FlipCameraAndroidIcon />} color="success" size="large" 
+                        <Button variant="contained" startIcon={<FlipCameraAndroidIcon />} color="success" size="large"
                             onClick={this.onClickFlip}>
                         Bet
                         </Button>
