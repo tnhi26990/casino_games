@@ -72,7 +72,7 @@ bool RouletteController::placeBets() {
     bettingTable.checkResults();
 
     std::string playAgain;
-    std::cout << "Would you like to play another round? (y/n)" << std::endl;
+    std::cout << "Would you like to spin the wheel again? (y/n)" << std::endl;
     std::cin >> playAgain;
 
     return playAnotherRound(playAgain);
