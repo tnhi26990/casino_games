@@ -1,7 +1,6 @@
-#ifndef UNTITLED1_MINESVIEW_H
-#define UNTITLED1_MINESVIEW_H
+#ifndef MINES_VIEW_H
+#define MINES_VIEW_H
 
-//#include "../../CasinoGameInterface.h"
 #include <random>
 #include <chrono>
 #include <utility>
@@ -13,4 +12,4 @@ public:
     std::pair<int, int> getPrediction();
 };
 
-#endif //UNTITLED1_MINESVIEW_H
+#endif

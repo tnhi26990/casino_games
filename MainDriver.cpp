@@ -1,51 +1,22 @@
 #include <iostream>
 #include "Player.h"
+#include "Mines/Controller/MinesController.h"
 #include "ControllerInterface.h"
 
 int main() {
     Player* player = new Player();
-    ControllerInterface* playerController = new ControllerInterface(player);
-    MinesController* minesController = new MinesController(player);
-    RouletteController* rouletteController = new RouletteController(player);
+    ControllerInterface* minesController = new MinesController(player);
+    ControllerInterface* playerController = nullptr;
 
     std::cout << "Welcome to the casino!" << std::endl;
     std::cout<< "Please select a game: "<< std::endl;
 
     bool playingFlag = false;
 
-    while (playingFlag) {
-        char game;
-        std::cout<< "C: Coin Flip |||| M: Mines |||| R: Roulette: "<<std::endl;
-        std::cin >> game;
-        if(game == 'M'){
-            std::cout << "Game not ready yet, please try again later....." << std::endl;
-//            casino->switchGame(mineGame);
+    playerController = minesController;
+    playerController->testFunction();
 
-        }
-        else if (game == 'C'){
-            std::cout << "Game not ready yet, please try again later....." << std::endl;
-//            casino->switchGame(coinGame);
-        }
-        else if (game == 'R') {
-            std::cout << "Game not ready yet, please try again later....." << std::endl;
-            //switch game to roulette
-        }
-        else{std::cout<<"Select C, R or M" <<std::endl; continue;}
-
-        int bet;
-        std::cout << "Enter Bet: ";
-        std::cin >> bet;
-        if (bet == 0) {
-            playingFlag = false;
-        }
-        else {
-            player->increaseBet(bet);
-            player->playRound(true);
-            player->printCredits();
-        }
-    }
-
-    delete casino;
+    delete minesController;
     delete player;
 
     return 0;

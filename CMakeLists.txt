@@ -4,16 +4,16 @@ project(untitled)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(untitled
+        ControllerInterface.cpp
         Player.cpp
-        Roulette/Model/RouletteWheel.cpp
-        Roulette/Model/BettingTable.cpp
-        Roulette/View/RouletteView.cpp
-        Roulette/Controller/RouletteController.cpp
-        Roulette/RouletteDriver.cpp
+#        Roulette/Model/RouletteWheel.cpp
+#        Roulette/Model/BettingTable.cpp
+#        Roulette/View/RouletteView.cpp
+#        Roulette/Controller/RouletteController.cpp
+#        Roulette/RouletteDriver.cpp
         Mines/Model/MinesModel.cpp
         Mines/Controller/MinesController.cpp
         Mines/View/MinesView.cpp
         Mines/MinesDriver.cpp
-        ControllerInterface.cpp
-        ControllerInterface.h
+        MainDriver.cpp
 )

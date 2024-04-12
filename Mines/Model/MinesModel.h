@@ -1,9 +1,5 @@
-//
-// Created by Adem Durakovic on 3/24/24.
-//
-
-#ifndef UNTITLED1_MINES_H
-#define UNTITLED1_MINES_H
+#ifndef MINES_MODEL_H
+#define MINES_MODEL_H
 
 #include <utility>
 #include "../View/MinesView.h"
@@ -30,5 +26,5 @@ public:
     int grid[5][5];
 };
 
-#endif //UNTITLED1_MINES_H
+#endif
 

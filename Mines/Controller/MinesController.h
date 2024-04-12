@@ -1,5 +1,5 @@
-#ifndef UNTITLED1_MINESCONTROLLER_H
-#define UNTITLED1_MINESCONTROLLER_H
+#ifndef MINES_CONTROLLER_H
+#define MINES_CONTROLLER_H
 
 #include "../Model/MinesModel.h"
 #include "../View/MinesView.h"

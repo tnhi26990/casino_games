@@ -1,5 +1,5 @@
-#ifndef ROULETTEWHEEL_H
-#define ROULETTEWHEEL_H
+#ifndef ROULETTE_WHEEL_H
+#define ROULETTE_WHEEL_H
 
 #include <iostream>
 #include <random>

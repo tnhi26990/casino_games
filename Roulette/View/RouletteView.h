@@ -1,5 +1,5 @@
-#ifndef ROULETTEVIEW_H
-#define ROULETTEVIEW_H
+#ifndef ROULETTE_VIEW_H
+#define ROULETTE_VIEW_H
 
 #include <iostream>
 #include <string>
