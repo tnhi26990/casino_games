@@ -4,9 +4,8 @@
 #include "../Model/MinesModel.h"
 #include "../View/MinesView.h"
 #include "../../Player.h"
-#include "../../ControllerInterface.h"
 
-class MinesController : public ControllerInterface {
+class MinesController {
 private:
     MinesModel mines;
     MinesView view;

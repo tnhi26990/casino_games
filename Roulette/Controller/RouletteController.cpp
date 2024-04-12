@@ -1,6 +1,6 @@
 #include "RouletteController.h"
 
-RouletteController::RouletteController(Player* player) : ControllerInterface(player), wheel(),bettingTable(wheel), tableView(), player(player){}
+RouletteController::RouletteController(Player* player) : wheel(),bettingTable(wheel), tableView(), player(player){}
 
 bool RouletteController::placeBets() {
     bool activeRound = true;

@@ -1,22 +1,27 @@
 #include <iostream>
 #include "Player.h"
-#include "Mines/Controller/MinesController.h"
-#include "ControllerInterface.h"
+#include "Casino.h"
 
 int main() {
     Player* player = new Player();
-    ControllerInterface* minesController = new MinesController(player);
-    ControllerInterface* playerController = nullptr;
+    Casino* playerCasino = new Casino(player);
 
+    std::string game;
     std::cout << "Welcome to the casino!" << std::endl;
     std::cout<< "Please select a game: "<< std::endl;
+    std::cin >> game;
 
-    bool playingFlag = false;
+    if(game[0] == 'm') {
+        playerCasino -> playMines();
+    }
+    else if(game[0] == 'r') {
+        playerCasino -> playRoulette();
+    }
+    else {
+        std::cout << "TRY AGAIN" << std::endl;
+    }
 
-    playerController = minesController;
-    playerController->testFunction();
-
-    delete minesController;
+    delete playerCasino;
     delete player;
 
     return 0;

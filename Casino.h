@@ -3,20 +3,22 @@
 
 #include "Player.h"
 #include "Mines/Controller/MinesController.h"
-//#include "Roulette/Controller/RouletteController.h"
+#include "Roulette/Controller/RouletteController.h"
 
 class MinesController;
-//class RouletteController;
+class RouletteController;
 
-class ControllerInterface {
+class Casino {
 private:
     MinesController* minesController;
-//    RouletteController* rouletteController;
+    RouletteController* rouletteController;
     Player* player;
 
 public:
-    ControllerInterface(Player* player);
+    Casino(Player* player);
     void testFunction();
+    void playMines();
+    void playRoulette();
 };
 
 #endif

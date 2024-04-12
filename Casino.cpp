@@ -1,21 +1,25 @@
 //
 // Created by Jack McPhillips on 4/10/24.
 //
-#include "ControllerInterface.h"
+#include "Casino.h"
 
-ControllerInterface::ControllerInterface(Player* player) : player(player) {
+Casino::Casino(Player* player) : player(player) {
     // Initialize pointers to controllers
     minesController = new MinesController(player);
-//    rouletteController = new RouletteController(player);
+    rouletteController = new RouletteController(player);
 }
 
-void ControllerInterface::testFunction() {
+void Casino::testFunction() {
     std::cout << "Called" << std::endl;
 }
 
+void Casino::playMines() {
+    minesController -> play();
+}
 
-
-
+void Casino::playRoulette() {
+    rouletteController -> placeBets();
+}
 
 //void switchToMinesGame() {
 //        // Implement any necessary logic to switch to the Mines game
@@ -41,10 +45,5 @@ void ControllerInterface::testFunction() {
 //    rouletteController.placeBets();
 //        // In case of roulette, you might need to handle multiple rounds of betting and spinning the wheel
 //}
-//
-//void testIfWorked() {
-//    std::cout << "It worked" << std::endl;
-//}
-//
-//    // Other methods for interacting with the games, such as placing bets, cashing out, etc.
+
 

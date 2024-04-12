@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-MinesController::MinesController(Player* player) : ControllerInterface(player), view(), mines(5, view), player(player) {}
+MinesController::MinesController(Player* player) : view(), mines(5, view), player(player) {}
 
 bool MinesController::play() {
     bool activeRound = true;
