@@ -1,25 +1,34 @@
+#include "Casino.h"
+#include "Player.h" // Include Player header to access its members
 
-#include "CoinGame.cpp"
-#include <iostream>
-#include "Player.cpp"
-using namespace std;
-class Casino{
-private:
-    CasinoGameInterface* currentGame = NULL;
-    Player* player = NULL;
-public:
-    void switchGame(CasinoGameInterface* game) {
-        // Delete the current game object
-        delete currentGame;
-        // Assign the new game object
-        currentGame = game;
-    }
+Casino::Casino() : currentGame(nullptr), player(nullptr) {}
 
-    bool playRound(bool prediction){
-        currentGame->executeRound(prediction); //simulate a round where they think true.
-    }
+Casino::~Casino() {
+}
 
-    void registerPlayer(Player* newPlayer){
-        player = newPlayer;
+void Casino::switchGame(CasinoGameInterface* game) {
+    currentGame = game;
+}
+
+
+void Casino::playRound(bool prediction, int bet) {
+    double outcomeMultiplier = currentGame->executeRound(prediction);  //will return payout or nothing
+    payout(bet, outcomeMultiplier);
+}
+
+void Casino::payout(int bet, double multiplier) {
+    if (player) { // Check if player is not nullptr
+        player->updateCredits(bet * multiplier);
     }
-};
+}
+
+void Casino::update(int bet, bool prediction) {
+    playRound(prediction, bet);
+}
+
+void Casino::registerPlayer(Player* newPlayer) {
+    player = newPlayer;
+    if (player) { // Check if player is not nullptr
+        player->registerCasino(this);
+    }
+}
