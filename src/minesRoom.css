@@ -3,7 +3,7 @@
     background-color: rgb(0,51,102);
     display: grid;
     grid-template-columns: 0.4fr 1fr; 
-    min-height: 750px;
+    min-height: 100vh;
 }
 
 .left-side {
