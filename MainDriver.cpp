@@ -1,42 +1,59 @@
 #include <iostream>
 #include "Player.h"
 #include "Casino.h"
+#include <string>
+#include "App.h"
+
+using namespace std;
 
 int main() {
     Player* player = new Player();
-    Casino* playerCasino = new Casino(player);
-    bool playingFlag = true;
+    string playerBalance = "coinFlip";
+    string game = "coin";
+    float amount = 0.0f; // Declare amount as float
+    string amountToFront = "";
 
-    std::string game;
-    std::cout << "Welcome to the casino!" << std::endl;
-    std::cout << "You have: " << player->getCredits() << " credits" << std::endl;
+    struct PerSocketData {
+        /* Fill with user data */
+    };
 
-    while(playingFlag) {
-        std::cout << "Please select a game: " << std::endl;
-        std::cin >> game;
+    uWS::App().ws<PerSocketData>("/*", {
+            .open = [](auto *ws) {
+                std::cout << "Client connected" << std::endl;
+            },
+            .message = [&playerBalance, &game, &amount, &player, &amountToFront](auto *ws, std::string_view message, uWS::OpCode opCode) { // Capture amount by reference
+                std::cout << "Received message from client: " << message << std::endl;
 
-        if (game[0] == 'm') {
-            playerCasino->playMines();
-        } else if (game[0] == 'r') {
-            playerCasino->playRoulette();
-        } else {
-            std::cout << "TRY AGAIN" << std::endl;
+                if (game == "coin") {
+                    try {
+                        amount = std::stof(std::string(message)); // Convert string to float
+                        cout<< player->getCredits()<<endl;
+                        player->updateCredits(amount);
+                        amount = player->getCredits();
+                        amountToFront = to_string(amount);
+
+                        ws->send(amountToFront, uWS::OpCode::TEXT);
+                    } catch (const std::invalid_argument& e) {
+                        std::cerr << "Invalid argument: " << e.what() << std::endl;
+                        // Handle invalid argument error
+                    } catch (const std::out_of_range& e) {
+                        std::cerr << "Out of range: " << e.what() << std::endl;
+                        // Handle out of range error
+                    }
+                }
+
+            },
+            .close = [](auto *ws, int code, std::string_view message) {
+                std::cout << "Client disconnected" << std::endl;
+            }
+    }).listen(9001, [](auto *listen_socket) {
+        if (listen_socket) {
+            std::cout << "WebSocket server listening on port " << 9001 << std::endl;
         }
+    }).run();
 
-        std::cout << "You have: " << player->getCredits() << " credits" << std::endl;
-        std::string ans;
-        std::cout << "Would you like to keep playing games? (y/n)" << std::endl;
-        std::cin >> ans;
-
-        if(ans[0] == 'n') {
-            playingFlag = false;
-        }
-    }
-
-    std::cout << "Thanks for coming!" << std::endl;
-
-    delete playerCasino;
     delete player;
 
     return 0;
 }
+
