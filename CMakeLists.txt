@@ -37,6 +37,12 @@ target_link_libraries(untitled ZLIB::ZLIB)
 #include_directories(/Users/adem/uWebSockets/uSockets/src)
 #include_directories(/Users/adem/uWebSockets/src)
 
+# Add GoogleTest submodule
+add_subdirectory(external/googletest)
+
+# Enable testing with CMake
+enable_testing()
+
 
 # Link against the uSockets library
 #target_link_libraries(untitled /Users/adem/uWebSockets/uSockets/uSockets.a)
