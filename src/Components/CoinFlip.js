@@ -16,6 +16,19 @@ const theme = createTheme({
     },
 });
 
+const socket = new WebSocket('ws://localhost:9001');
+
+socket.onopen = () => {
+    console.log('Connected to the WebSocket backend: Coin Flip Game.');
+    // Send a message to the backend when the button is clicked
+    socket.send('Hello from coin flip.!');
+};
+
+socket.onmessage = (event) => {
+    console.log('Received message from server:', event.data);
+    alert(event.data); // Display the received message in an alert
+};
+
 class CoinFlip extends Component {
 
     constructor(props) {
@@ -26,41 +39,30 @@ class CoinFlip extends Component {
             amount: "",
             animation: false
         };
-        // Initialize socket in the constructor
-        this.socket = new WebSocket("ws://localhost:9001");
-        this.socket.onopen = this.handleSocketOpen;
     }
-
-    handleSocketOpen = () => {
-       // console.log("Connected to the WebSocket backend");
-        this.socket.send("hey from client");
-    };
-
-    componentWillUnmount() {
-        // Close the WebSocket connection when the component is unmounted
-        this.socket.close();
-    }
-
-
     onClickFlip = () => {
+        const { choice, amount } = this.state; // Destructure choice and amount from state
         const audio = new Audio('/coin-drop.mp3');
         audio.play();
         if (this.state.animation) return;
-        const tossResult = Math.floor(Math.random() * 2)
+        const tossResult = Math.floor(Math.random() * 2);
         this.setState({ animation: true });
         setTimeout(() => {
-            if (tossResult === 0) {
-                this.setState({flip: 'heads'})
+            if (tossResult === 0 && choice === 'H' || tossResult === 1 && choice === 'T') { // Using this.state.choice instead of choice
+                socket.send(amount); // Using this.state.amount instead of amount
+                console.log(choice + " and the result is " + tossResult);
+                this.setState({ flip: 'heads' });
             } else {
-                this.setState({flip: 'tails'})
+                socket.send("-" + amount); // Using this.state.amount instead of amount
+                this.setState({ flip: 'tails' });
             }
             this.setState({ animation: false });
 
         }, 2000);
-
     }
 
     onClickChoice = (value) => {
+        console.log(value);
         this.setState({ choice: value });
     };
 
