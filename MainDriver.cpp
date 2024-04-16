@@ -21,28 +21,27 @@ int main() {
             .open = [](auto *ws) {
                 std::cout << "Client connected" << std::endl;
             },
-            .message = [&playerBalance, &game, &amount, &player, &amountToFront](auto *ws, std::string_view message, uWS::OpCode opCode) { // Capture amount by reference
+            .message = [&playerBalance, &game, &amount, &player, &amountToFront](auto *ws, std::string_view message, uWS::OpCode opCode) {
                 std::cout << "Received message from client: " << message << std::endl;
 
-                if (game == "coin") {
+              {
                     try {
                         amount = std::stof(std::string(message)); // Convert string to float
-                        cout<< player->getCredits()<<endl;
                         player->updateCredits(amount);
-                        amount = player->getCredits();
-                        amountToFront = to_string(amount);
-
-                        ws->send(amountToFront, uWS::OpCode::TEXT);
-                    } catch (const std::invalid_argument& e) {
+                    } catch (const std::invalid_argument &e) {
                         std::cerr << "Invalid argument: " << e.what() << std::endl;
                         // Handle invalid argument error
-                    } catch (const std::out_of_range& e) {
+                    } catch (const std::out_of_range &e) {
                         std::cerr << "Out of range: " << e.what() << std::endl;
                         // Handle out of range error
                     }
                 }
-
+                amount = player->getCredits();
+                amountToFront = to_string(amount);
+                ws->send(amountToFront, uWS::OpCode::TEXT);
+                cout << player->getCredits() << endl; // Corrected syntax
             },
+
             .close = [](auto *ws, int code, std::string_view message) {
                 std::cout << "Client disconnected" << std::endl;
             }
