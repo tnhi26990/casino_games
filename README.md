@@ -18,6 +18,9 @@ Node.js and npm installed: Make sure you have both installed on your system (htt
 
 To run the code, please follow the below instructions:
 
+a. run this in the base directory <code>git submodule update --init --recursive </code>
+
+
 1. Open terminal and clone the repository
 
      <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
