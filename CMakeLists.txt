@@ -36,10 +36,10 @@ target_link_libraries(mines_testing gtest gtest_main)
 target_link_libraries(roulette_testing gtest gtest_main)
 
 # Add the directory containing uSockets headers
-include_directories(/Users/amarh/uWebSockets/uSockets/src)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/uSockets/src)
 
 # Add the directory containing uWebSockets headers
-include_directories(/Users/amarh/uWebSockets/src)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/src)
 
 # Add your source files
 set(SOURCE_FILES
@@ -61,7 +61,7 @@ set(SOURCE_FILES
 add_executable(backend_server ${SOURCE_FILES})
 
 # Link against the uSockets library
-target_link_libraries(backend_server /Users/amarh/uWebSockets/uSockets/uSockets.a)
+target_link_libraries(backend_server ${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/uSockets/uSockets.a)
 
 # Link against zlib
 find_package(ZLIB REQUIRED)
