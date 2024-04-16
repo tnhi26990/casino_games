@@ -8,7 +8,7 @@
 class MinesView {
 
 public:
-    void showGrid(int gird[5][5]);
+    virtual void showGrid(int gird[5][5]);
     std::pair<int, int> getPrediction();
 };
 

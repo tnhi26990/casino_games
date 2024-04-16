@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
 #include <string>
-#include "Roulette/Model/BettingTable.h"
+#include "../Roulette/Model/BettingTable.h"
+#include "../Roulette/Model/RouletteWheel.h"
 
-BettingTable* testTable = new BettingTable();
+RouletteWheel *testWheel = new RouletteWheel();
+BettingTable* testTable = new BettingTable(*testWheel);
 
 TEST(evenTest, correctMod) {
     int expectedRes;
