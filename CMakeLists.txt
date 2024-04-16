@@ -1,11 +1,45 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.23)
 project(untitled)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Add the directory containing uSockets headers from your project
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/src)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/uSockets/src)
+# Enable testing with CTest
+enable_testing()
+
+# Add Google Test submodule
+add_subdirectory(external/googletest)
+
+# Include Google Test in your include paths
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+# Define your test executable
+add_executable(mines_testing 
+    Tests/MinesTests.cpp
+    Mines/Controller/MinesController.cpp 
+    Mines/Model/MinesModel.cpp 
+    Mines/View/MinesView.cpp 
+    Player.cpp # Include Player.cpp as it's referenced in MinesController
+)
+
+add_executable(roulette_testing
+    Tests/RouletteTests.cpp
+    Roulette/Controller/RouletteController.cpp
+    Roulette/Model/BettingTable.cpp
+    Roulette/Model/RouletteWheel.cpp
+    Roulette/View/RouletteView.cpp
+    Player.cpp
+)
+
+
+# Link Google Test libraries
+target_link_libraries(mines_testing gtest gtest_main)
+target_link_libraries(roulette_testing gtest gtest_main)
+
+# Add the directory containing uSockets headers
+include_directories(/Users/amarh/uWebSockets/uSockets/src)
+
+# Add the directory containing uWebSockets headers
+include_directories(/Users/amarh/uWebSockets/src)
 
 # Add your source files
 set(SOURCE_FILES
@@ -24,29 +58,11 @@ set(SOURCE_FILES
         )
 
 # Add the executable
-add_executable(untitled ${SOURCE_FILES} MainDriver.cpp)
+add_executable(untitled ${SOURCE_FILES})
 
-# Link against the uSockets library from your project
-target_link_libraries(untitled ${CMAKE_CURRENT_SOURCE_DIR}/uWebSockets/uSockets/uSockets.a)
+# Link against the uSockets library
+target_link_libraries(untitled /Users/amarh/uWebSockets/uSockets/uSockets.a)
 
 # Link against zlib
 find_package(ZLIB REQUIRED)
 target_link_libraries(untitled ZLIB::ZLIB)
-
-# Add the directory containing uSockets headers
-#include_directories(/Users/adem/uWebSockets/uSockets/src)
-#include_directories(/Users/adem/uWebSockets/src)
-
-# Add GoogleTest submodule
-add_subdirectory(external/googletest)
-
-# Enable testing with CMake
-enable_testing()
-
-
-# Link against the uSockets library
-#target_link_libraries(untitled /Users/adem/uWebSockets/uSockets/uSockets.a)
-
-# Link against zlib
-#find_package(ZLIB REQUIRED)
-#target_link_libraries(untitled ZLIB::ZLIB)
