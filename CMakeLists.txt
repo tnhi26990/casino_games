@@ -58,11 +58,11 @@ set(SOURCE_FILES
         )
 
 # Add the executable
-add_executable(untitled ${SOURCE_FILES})
+add_executable(backend_server ${SOURCE_FILES})
 
 # Link against the uSockets library
-target_link_libraries(untitled /Users/amarh/uWebSockets/uSockets/uSockets.a)
+target_link_libraries(backend_server /Users/amarh/uWebSockets/uSockets/uSockets.a)
 
 # Link against zlib
 find_package(ZLIB REQUIRED)
-target_link_libraries(untitled ZLIB::ZLIB)
+target_link_libraries(backend_server ZLIB::ZLIB)
