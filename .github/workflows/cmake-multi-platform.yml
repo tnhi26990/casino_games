@@ -22,11 +22,11 @@ jobs:
     - name: Create build directory
       run: mkdir -p ${{github.workspace}}/build
 
+  - name: Configure CMake
+      run: cd .. && cmake -DCMAKE_BUILD_TYPE=Release .
+      
     - name: Move into build directory
       run: cd ${{github.workspace}}/build
-
-    - name: Configure CMake
-      run: cmake .. -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build CMake product
       run: make
