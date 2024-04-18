@@ -83,7 +83,7 @@ set(SOURCE_FILES
         Mines/View/MinesView.cpp
         Mines/MinesDriver.cpp
         MainDriver.cpp
-        )
+        CoinGame.cpp)
 
 # Add the executable
 add_executable(backend ${SOURCE_FILES} MainDriver.cpp)
