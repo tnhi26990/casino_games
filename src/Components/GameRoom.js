@@ -11,6 +11,7 @@ function GameRoom() {
     }
 
     function rouletteClick () {
+        navigate("/roulette");
         // Connect to the WebSocket backend
         const socket = new WebSocket('ws://localhost:9001');
 
