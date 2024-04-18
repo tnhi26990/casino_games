@@ -17,22 +17,22 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Create build directory
-      run: mkdir -p ${{github.workspace}}/build
+      - name: Create build directory
+        run: mkdir -p ${{github.workspace}}/build
 
-  - name: Configure CMake
-      run: cd .. && cmake -DCMAKE_BUILD_TYPE=Release .
-      
-    - name: Move into build directory
-      run: cd ${{github.workspace}}/build
+      - name: Configure CMake
+        run: cd ${{github.workspace}} && cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} .
 
-    - name: Build CMake product
-      run: make
+      - name: Move into build directory
+        run: cd ${{github.workspace}}/build
 
-    - name: Run Mines Tests
-      run: ./mines_tests
+      - name: Build CMake product
+        run: make
 
-    - name: Run Roulette Tests
-      run: ./roulette_tests
+      - name: Run Mines Tests
+        run: ./mines_tests
+
+      - name: Run Roulette Tests
+        run: ./roulette_tests
