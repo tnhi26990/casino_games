@@ -4,6 +4,7 @@ import Chip from '../chips/Chips';
 import { Overlay, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 
 
+
 class RouletteTable extends React.Component {
     state = {
         firstRow: this.props.firstRow,
@@ -48,13 +49,11 @@ class RouletteTable extends React.Component {
                                 className={num.className}
                                 value={num.n}
                                 onClick={() => this.numsSelectionHandler(num.n, "columnLeft")}
-                            >
-                            
-                            <span className="d-inline-block">
+                            > 
                             <Chip
                                 id={num.n}
                                 active={num.visible} />
-                            </span>
+                            
                             </li>)
                         }
                         </ul>
@@ -64,7 +63,7 @@ class RouletteTable extends React.Component {
                     <ul className="d-flex list-unstyled">
                     { 
                         this.state.firstRow.map((num, index, arr) =>
-                            <button
+                        <li
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
@@ -72,22 +71,20 @@ class RouletteTable extends React.Component {
                              <Chip
                                 id={num.n}
                                 active={num.visible} />
-                            </button>)
+                        </li>
+                        )
                     }
                     </ul>
-                    {/* Between first and second rows borders */}
+                    {/* Between first and second rows borders*/}
                     <ul className="d-flex list-unstyled">
                     {
                         this.state.firstBorder.map((num, index, arr) =>
-                        <button
+                        <li
                             key={num.n + index + arr}
                             className={num.className}
                             value={num.n}
-                            onClick={() => this.numsSelectionHandler(num.n, "firstBorder")}>
-                            <Chip
-                                id={num.n}
-                                active={num.visible} />
-                            </button>)
+                        >
+                        </li>)
                     } 
                     </ul>
                     {/* Second row */}
@@ -109,15 +106,12 @@ class RouletteTable extends React.Component {
                     <ul className="d-flex list-unstyled">
                         {
                             this.state.secondBorder.map((num, index, arr) =>
-                                <button
+                                <li
                                     key={num.n + index + arr}
                                     className={num.className}
                                     value={num.n}
-                                    onClick={() => this.numsSelectionHandler(num.n, "secondBorder")}>
-                                        <Chip
-                                        id={num.n}
-                                        active={num.visible} />
-                                    </button>)
+                                >
+                                    </li>)
                         }
                     </ul>
                     {/* Third row */}
@@ -139,15 +133,12 @@ class RouletteTable extends React.Component {
                     <ul className="d-flex list-unstyled">
                     {
                         this.state.thirdBorder.map((num, index, arr) =>
-                            <button
+                            <li
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "thirdBorder")}> 
-                                <Chip
-                                id={num.n}
-                                active={num.visible} />
-                            </button>)
+                                > 
+                            </li>)
                     }
                     </ul>
                     {/* Fourth row */}

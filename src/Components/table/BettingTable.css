@@ -129,7 +129,6 @@
     width: 35px!important;
     font-size:1px;
     color: green;
-    cursor: pointer;
   }
   
   .bordo-h .chip {
@@ -142,14 +141,10 @@
     position: relative;
   }
   
-  .bordo-h:hover {
-    background-color: yellow;
-    color: yellow;
-  }
   
   .space {
     width: 6px;
-    height: 6px;
+    height: 0px;
     background-color: #F2F098;
   }
   
@@ -157,13 +152,9 @@
     width: 6px;
     height: 6px;
     background-color: orange;
-    cursor: pointer;
     font-size: 0;
   }
   
-  .bet-space:hover {
-    background-color: yellow;
-  }
   
   .bet-space .chip {
     margin-top: -6px;

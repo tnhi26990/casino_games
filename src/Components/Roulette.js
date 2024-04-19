@@ -190,6 +190,40 @@ class Roulette extends React.Component {
       updateRow = (row, val) => {
         this.setState({ [row]: val })
       }
+
+      resetGame = () => {
+        this.setState({
+          arr: [],
+          firstRow: firstRow.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          secondRow: secondRow.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          thirdRow: thirdRow.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          fourthRow: fourthRow.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          fifthRow: fifthRow.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          columnLeft: columnLeft.map(num => {
+            num.visible = false;
+            return num;
+          }),
+          columnRight: columnRight.map(num => {
+            num.visible = false;
+            return num;
+          })
+        });
+      }
  
     render() {
         const { start, stopInCenter } = this.state;
@@ -242,7 +276,13 @@ class Roulette extends React.Component {
                         />
                         <div className="gray-block">
                         <div className="button-wrapper">
-                        <button onClick={this.handleStart} className="spin-button" type="button">
+                        <button 
+                        onClick={() => {
+                            this.handleStart();
+                            this.resetGame();
+                        }} 
+                        className="spin-button" 
+                        type="button">
                             Spin
                         </button>
                         </div>
