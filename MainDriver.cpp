@@ -67,11 +67,15 @@ int main() {
                 }
                 catch(const std::exception& e){
                     cout<<"Just user asking for credits at start"<<endl;
+                    ws->send(amountToFront + " starting", uWS::OpCode::TEXT);
                 }
 
                 amount = player->getCredits();
                 amountToFront = to_string(amount);
-                ws->send(amountToFront, uWS::OpCode::TEXT);
+                if (message == "starting creds"){ ws->send(amountToFront + " starting", uWS::OpCode::TEXT);}
+                else{  ws->send(amountToFront, uWS::OpCode::TEXT); }
+
+
                 cout << player->getCredits() << endl; // Corrected syntax
             },
 
