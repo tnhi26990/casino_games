@@ -172,6 +172,7 @@ class Roulette extends React.Component {
           stopInCenter: {
             value: true,
           },
+          arr: [],
         };
       }
       handleStart = () => {
@@ -181,6 +182,14 @@ class Roulette extends React.Component {
       handlePrizeDefined = () => {
         console.log('Prize defined!');
       };
+
+      updateArr = (arr) => {
+        this.setState({ arr })
+      }
+
+      updateRow = (row, val) => {
+        this.setState({ [row]: val })
+      }
  
     render() {
         const { start, stopInCenter } = this.state;
@@ -190,6 +199,9 @@ class Roulette extends React.Component {
                 <Row className="justify-items-center pt-2">
                     <Container fluid className="table">
                         <Row>
+                            <Col className="betting-choice">
+                            Your bets: {this.state.arr.join(", ")}
+                            </Col>
                             <Col className="betting-table">
                                 <RouletteTable
                                     //ROWS//
@@ -203,6 +215,9 @@ class Roulette extends React.Component {
                                     fifthRow={this.state.fifthRow}
                                     columnLeft={this.state.columnLeft}
                                     columnRight={this.state.columnRight}
+                                    arr={this.state.arr}
+                                    updateRow={this.updateRow}
+                                    updateArr={this.updateArr}
                                 />
                             </Col>
                             <Col>

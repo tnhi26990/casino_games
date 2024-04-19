@@ -15,7 +15,7 @@
     height: 90vh;
   }
   .betting-table {
-    padding-left: 280px;
+    padding-left: 80px;
     margin-top: -40px;
   }
   .gray-block {
@@ -79,6 +79,10 @@
 
   .credit-amount {
     margin-left: 10px;
+  }
+
+  .betting-choice {
+    color: #ffc12f;
   }
   
   
