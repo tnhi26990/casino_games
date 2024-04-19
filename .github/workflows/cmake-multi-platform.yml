@@ -35,7 +35,7 @@ jobs:
         run: make
 
       - name: Run Mines Tests
-        run: ./mines_tests
+        run: ./mines_testing
 
       - name: Run Roulette Tests
-        run: ./roulette_tests
+        run: ./roulette_testing
