@@ -34,6 +34,7 @@ class CoinFlip extends Component {
         this.socket.onopen = () => {
             console.log('Connected to the WebSocket backend: Coin Flip Game.');
             // Send a message to the backend when the component is mounted
+            this.socket.send("starting creds");
         };
 
         this.socket.onmessage = (event) => {
@@ -43,10 +44,16 @@ class CoinFlip extends Component {
             if (event.data === "1" || event.data === "0"){
                 this.setState({ result: parseInt(event.data) });
             }
+            if (event.data.endsWith("starting")) {
+                const regex = /^\d+/; // Match the first sequence of digits
+                const match = event.data.match(regex);
+                if (match) {
+                    const credits = parseInt(match[0]); // Extract the matched digits and parse as integer
+                    this.setState({ credits });
+                }
+            }
             else{
                 this.setState({ tempCreds: event.data });
-
-
             }
 
         };
