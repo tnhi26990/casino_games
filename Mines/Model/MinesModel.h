@@ -9,10 +9,9 @@ private:
     int totalMines;
     int totalSquares;
     double multiplier;
-    MinesView observer;
 
 public:
-    MinesModel(int mines, MinesView obs);
+    MinesModel(int mines);
     ~MinesModel();
 
     void generateMineLocations();

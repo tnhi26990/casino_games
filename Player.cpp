@@ -2,11 +2,19 @@
 #include <iostream>
 
 // Constructor definition
-Player::Player() : credits(5000), casino(nullptr){}
+Player::Player() : credits(5000), casino(nullptr), betAmount(0){}
 
 // Other member function definitions remain unchanged
 void Player::registerCasino(Casino* casinoObs) {
     casino = casinoObs;
+}
+
+int Player::getBet() {
+    return betAmount;
+}
+
+int Player::setBet(int bet) {
+    this->betAmount = bet;
 }
 
 void Player::updateCredits(int money) {

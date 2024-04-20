@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import "../minesRoom.css"
 
@@ -6,31 +6,77 @@ function Mines() {
     const [betAmount, setBetAmount] = useState("");
 
     const [credits, setCredits] = useState(5000);
+    const [payout, setPayout] = useState(0);
+    const [playing,setPlaying] = useState(false);
+    const ws = useRef(null);
+
+    useEffect(() => {
+        // Initialize WebSocket connection
+        ws.current = new WebSocket('ws://localhost:9001');
+        ws.current.onopen = () => {
+            console.log("connected to ws server");
+            // Optionally request initial credit balance from server
+            ws.current.send("starting creds");
+        };
+        ws.current.onmessage = (e) => {
+            const message = e.data;
+            console.log("Message from server ", message);
+            if (message.includes("starting")) {
+              setCredits(parseInt(message.split(" ")[0])); // Assuming message is "5000 starting"
+            } else if (message.includes("Player Lost")){
+              setPlaying(false); // message is "Player lost xxxx"
+            }else if (!isNaN(message)) {
+              setCredits(parseInt(message));  // Update credits directly with message if it's a number
+            }
+        };
+        ws.current.onerror = (error) => {
+            console.log("WebSocket error: ", error);
+        };
+        ws.current.onclose = () => {
+            console.log("WebSocket is closed now.");
+        };
+
+        return () => {
+            ws.current.close();
+        };
+    }, []);
+
 
     const handleBetAmountChange = (event) => {
       setBetAmount(event.target.value);
     };
 
     const isValidBet = () => {
-      if(!(isNaN(betAmount)) && betAmount<= credits && betAmount){
-        return true;
+      if(isNaN(betAmount)){
+        alert("Only numbers");
+        return false;
+      }else if(betAmount > credits){
+        alert("not enough credits");
+        return false;
+      } else if(!betAmount){
+        return false;
       }
-      return false;
+      return true;
     }
 
     const cashOut = () => {
       console.log("User cashed out");
+      setPlaying(false);
+
     }
 
     const cellClick = (row, col) => {
       console.log("Clicked row: " + row + " Col: " + col);
+      ws.current.send("Clicked "+row + ","+ col);
     }
     
     const placeBet = () => {
       if(isValidBet()){
         //logic to send bet amount to backend
-        setCredits(credits - betAmount);
         console.log("User bet" + betAmount);
+        ws.current.send("Bet " + betAmount);
+        setPayout(betAmount);
+        setPlaying(true);
       }
       setBetAmount("");
     }
@@ -76,7 +122,7 @@ function Mines() {
                               </input>
                         </div>
                         <div className="payout-amt">
-                            <h1>Payout:</h1>
+                            <h1>Payout: {payout}</h1>
                         </div>
                         <div className="cash-bet">
                           <button class="place-bet-btn" onClick={placeBet} >Place Bet</button>

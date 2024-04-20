@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib> // for rand()
 
-MinesModel::MinesModel(int mines, MinesView obs) : totalMines(mines), observer(obs) {
+MinesModel::MinesModel(int mines) : totalMines(mines) {
     multiplier = 1.0;
     totalSquares = 25 - totalMines;
 
