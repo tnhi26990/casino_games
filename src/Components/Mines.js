@@ -7,7 +7,6 @@ function Mines() {
 
     const [credits, setCredits] = useState(5000);
     const [payout, setPayout] = useState(0);
-    const [playing,setPlaying] = useState(false);
     const ws = useRef(null);
 
     useEffect(() => {
@@ -24,7 +23,11 @@ function Mines() {
             if (message.includes("starting")) {
               setCredits(parseInt(message.split(" ")[0])); // Assuming message is "5000 starting"
             } else if (message.includes("Player Lost")){
-              setPlaying(false); // message is "Player lost xxxx"
+              setPayout(0)
+
+            }else if (message.startsWith("Player Wins")) {
+              //message from backend is "Player Wins xxxx"
+              setPayout(parseInt(message.split(" ")[2]));
             }else if (!isNaN(message)) {
               setCredits(parseInt(message));  // Update credits directly with message if it's a number
             }
@@ -61,13 +64,16 @@ function Mines() {
 
     const cashOut = () => {
       console.log("User cashed out");
-      setPlaying(false);
-
+      ws.current.send("cashed ");
+      setPayout(0);
     }
 
     const cellClick = (row, col) => {
+    
       console.log("Clicked row: " + row + " Col: " + col);
       ws.current.send("Clicked "+row + ","+ col);
+    
+
     }
     
     const placeBet = () => {
@@ -76,7 +82,6 @@ function Mines() {
         console.log("User bet" + betAmount);
         ws.current.send("Bet " + betAmount);
         setPayout(betAmount);
-        setPlaying(true);
       }
       setBetAmount("");
     }

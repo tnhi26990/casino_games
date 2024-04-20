@@ -17,6 +17,7 @@ int main() {
     Player* player = new Player();
     string playerBalance = "coinFlip";
     string game = "mines";
+    int currentPayout = 0;
     int amount = 0; // Declare amount as int
     string amountToFront = "";
     CoinGame* coinGame = new CoinGame();
@@ -31,7 +32,7 @@ int main() {
             .open = [](auto *ws) {
                 std::cout << "Client connected" << std::endl;
             },
-            .message = [&minesGame, &coinGame, &player, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
+            .message = [&minesGame, &coinGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
     std::cout << "Received message from client: " << message << std::endl;
 
     try {
@@ -68,21 +69,38 @@ int main() {
             } else if (game == "mines"){
                 std::string messageStr = std::string(message);
 
-                if (startsWith(message, "Clicked ")){
+                if (player->isPlaying() && startsWith(message, "Clicked ")){ // cell was clicked
+
                     int row = std::stoi(std::string(message.substr(8))); 
                     int col = std::stoi(std::string(message.substr(10))); 
 
                     if (minesGame->checkForBomb(row,col)) {
+                        std::string message = "Player Lost";
                         cout<<"bomb hit"<<std::endl;
-                        player->updateCredits(-(player->getBet()));
-                        minesGame->reset();
+                        currentPayout = 0;
+                        ws->send(message, uWS::OpCode::TEXT);
                         player->setBet(0);
-                    }else{
+                        player->setPlaying(false);
+                        minesGame->executeLoss();
+                    }else{ // did not hit a bomb
+                        minesGame->executeWin(row, col);
+                        currentPayout = currentPayout * minesGame->returnMultiplier();
                         cout<<"no bomb hit"<<std::endl;
+                        std::string message = "Player Wins " + std::to_string(currentPayout);  // Correct concatenation
+                        ws->send(message.c_str(), uWS::OpCode::TEXT);
                     }
-                } else if ( startsWith(message, "Bet ") ) {
+                } else if( player->isPlaying() && startsWith(message, "cashed") ) {
+                    player->updateCredits( currentPayout );
+                    std::string message =std::to_string(currentPayout) + " starting";
+                    ws->send(message, uWS::OpCode::TEXT);
+                    minesGame->reset();
+                    player->setPlaying(false);
+                }else if ( !(player->isPlaying()) && startsWith(message, "Bet ") ) {
                     int bet = std::stoi(std::string(message.substr(4))); 
+                    //minesGame->initPayout(bet);
                     player->setBet(bet);
+                    currentPayout = bet;
+                    player->setPlaying(true);
                 }
 
 

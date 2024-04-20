@@ -9,6 +9,7 @@ class Player {
 private:
     int betAmount;
     int credits;
+    bool playing;
     Casino* casino;
 
 public:
@@ -21,6 +22,8 @@ public:
     void increaseBet(int bet);
     void updateCredits(int money);
     void printCredits();
+    bool isPlaying();
+    bool setPlaying(bool);
     ~Player();
 };
 
