@@ -181,6 +181,10 @@ class Roulette extends React.Component {
     
       handlePrizeDefined = () => {
         console.log('Prize defined!');
+        setTimeout(() => {
+          this.setState({start: false});
+        }, 2000);
+        
       };
 
       updateArr = (arr) => {
@@ -277,9 +281,9 @@ class Roulette extends React.Component {
                         <div className="gray-block">
                         <div className="button-wrapper">
                         <button 
-                        onClick={() => {
-                            this.handleStart();
+                        onClick={(event) => {
                             this.resetGame();
+                            this.handleStart(event);
                         }} 
                         className="spin-button" 
                         type="button">
