@@ -11,7 +11,8 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    self-hosted: runner2
     strategy:
       matrix:
         node-version: [20.x]
