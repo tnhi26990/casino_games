@@ -12,12 +12,6 @@ env:
 jobs:
   build:
     runs-on: self-hosted
-    container:
-      image: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
-      runner: runner2
 
     steps:
       - uses: actions/checkout@v3
