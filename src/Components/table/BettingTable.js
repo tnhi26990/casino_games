@@ -26,7 +26,7 @@ class RouletteTable extends React.Component {
         columnRight: this.props.columnRight,
       }
 
-      numsSelectionHandler = (num, whichRow, chipVal) => {
+      numsSelectionHandler = (num, whichRow, chipVal, index) => {
         let nums = this.props.arr.length === 0 ? [] : [...this.props.arr];
         let row = [...this.state[whichRow]];
         if (nums.indexOf(num) === -1) {
@@ -39,6 +39,7 @@ class RouletteTable extends React.Component {
               });
               this.setState({ [whichRow]: updatedRow });
             socket.send("Button was clicked " + num);
+            socket.send("Grid spot is " + index + ", " + whichRow);
         }
         this.props.updateArr(nums)
       };
@@ -56,7 +57,7 @@ class RouletteTable extends React.Component {
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "columnLeft", this.chipVal)}
+                                onClick={() => this.numsSelectionHandler(num.n, "columnLeft", this.chipVal, index)}
                             > 
                             <Chip
                                 id={num.n}
@@ -75,7 +76,7 @@ class RouletteTable extends React.Component {
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "firstRow", this.chipVal)}>
+                                onClick={() => this.numsSelectionHandler(num.n, "firstRow", this.chipVal, index)}>
                              <Chip
                                 id={num.n}
                                 active={num.visible} />
@@ -103,7 +104,7 @@ class RouletteTable extends React.Component {
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "secondRow", this.chipVal)}>
+                                onClick={() => this.numsSelectionHandler(num.n, "secondRow", this.chipVal, index)}>
                                     <Chip
                                 id={num.n}
                                 active={num.visible} />
@@ -130,7 +131,7 @@ class RouletteTable extends React.Component {
                             key={num.n + index + arr}
                             className={num.className}
                             value={num.n}
-                            onClick={() => this.numsSelectionHandler(num.n, "thirdRow", this.chipVal)}>
+                            onClick={() => this.numsSelectionHandler(num.n, "thirdRow", this.chipVal, index)}>
                                 <Chip
                                 id={num.n}
                                 active={num.visible} />
@@ -157,7 +158,7 @@ class RouletteTable extends React.Component {
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "fourthRow", this.chipVal)}> 
+                                onClick={() => this.numsSelectionHandler(num.n, "fourthRow", this.chipVal, index)}> 
                                 <Chip
                                 id={num.n}
                                 active={num.visible} />
@@ -173,7 +174,7 @@ class RouletteTable extends React.Component {
                                 key={num.n + index + arr}
                                 className={num.className}
                                 value={num.n}
-                                onClick={() => this.numsSelectionHandler(num.n, "fifthRow", this.chipVal)}> 
+                                onClick={() => this.numsSelectionHandler(num.n, "fifthRow", this.chipVal, index)}> 
                                 <Chip
                                 id={num.n}
                                 active={num.visible} />
@@ -191,7 +192,7 @@ class RouletteTable extends React.Component {
                                     <button
                                         className="blues"
                                         value={num.n}
-                                        onClick={() => this.numsSelectionHandler(num.n, "columnRight", this.chipVal)}> 
+                                        onClick={() => this.numsSelectionHandler(num.n, "columnRight", this.chipVal, index)}> 
                                         <Chip
                                         id={num.n}
                                         active={num.visible} />

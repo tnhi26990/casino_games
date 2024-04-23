@@ -180,8 +180,10 @@ class Roulette extends React.Component {
           arr: [],
         };
       }
+
       handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
+        socket.send("Spin was hit");
         socket.send(this.state.arr);
       };
     
