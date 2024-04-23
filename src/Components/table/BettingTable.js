@@ -52,8 +52,7 @@ class RouletteTable extends React.Component {
                             > 
                             <Chip
                                 id={num.n}
-                                active={num.visible} />
-                            
+                                active={num.visible} />   
                             </li>)
                         }
                         </ul>
