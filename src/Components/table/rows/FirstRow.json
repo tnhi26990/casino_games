@@ -1,5 +1,5 @@
 [
-    { "n": "3", "className": "red cella chip-container-cella", "visible": false },
+    { "n": "3", "className": "red cella chip-container-cella", "visible": false  },
     { "n": "", "className": "space" },
     { "n": "6", "className": "black cella chip-container-cella", "visible": false },
     { "n": "", "className": "space" },

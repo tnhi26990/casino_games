@@ -1,11 +1,10 @@
 import React from 'react';
 import RouletteTable from '../Components/table/BettingTable';
-import Chip from '../Components/chips/Chips'
 import './Roulette.css';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
-
-
+import '../Components/chips/Chips.css';
+import Chip from '../Components/chips/Chips';
 import firstRow from '../Components/table/rows/FirstRow.json';
 import firstBorder from '../Components/table/rows/FirstBorder.json';
 import secondRow from '../Components/table/rows/SecondRow.json';
@@ -20,6 +19,7 @@ import columnRight from '../Components/table/rows/ColumnRight.json';
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
 
+import { useEffect, useState } from 'react';
 
 const prizes = [
     {
@@ -166,7 +166,9 @@ const prizes = [
   socket.onopen = () => {
     socket.send("hello from roulette");
 
-  };   
+  }; 
+
+
 
 class Roulette extends React.Component {
     constructor(props) {
@@ -178,7 +180,13 @@ class Roulette extends React.Component {
             value: true,
           },
           arr: [],
+          chip: 10,
         };
+        this.resetGame = this.resetGame.bind(this);
+      }
+
+      resetChip() {
+        this.setState({ chip: null });
       }
 
       handleStart = () => {
@@ -202,6 +210,10 @@ class Roulette extends React.Component {
       updateRow = (row, val) => {
         this.setState({ [row]: val })
       }
+
+      onClickAmount = (value) => {
+        this.setState({ chip: value });
+      };
 
       resetGame = () => {
         this.setState({
@@ -238,7 +250,7 @@ class Roulette extends React.Component {
       }
  
     render() {
-        const { start, stopInCenter } = this.state;
+        const { start } = this.state;
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
@@ -264,6 +276,7 @@ class Roulette extends React.Component {
                                     arr={this.state.arr}
                                     updateRow={this.updateRow}
                                     updateArr={this.updateArr}
+                                    chip={this.state.chip}
                                 />
                             </Col>
                             <Col>
@@ -275,7 +288,11 @@ class Roulette extends React.Component {
 
                         </Row>
                         <Row className="chip-row">
-                          <Chip />
+                          <div className="chip d-inline-block red" id={this.props.id} onClick={() => this.onClickAmount(10)}>10</div>
+                          <div className="chip d-inline-block blue" id={this.props.id} onClick={() => this.onClickAmount(25)}>25</div>
+                          <div className="chip d-inline-block green" id={this.props.id} onClick={() => this.onClickAmount(50)}>50</div>
+                          <div className="chip d-inline-block purple" id={this.props.id} onClick={() => this.onClickAmount(100)}>100</div>
+                          <div className="chip d-inline-block yellow" id={this.props.id} onClick={() => this.onClickAmount(500)}>500</div>
                         </Row>
                         <Row className="horizontal-slider">
                         <RoulettePro
@@ -292,11 +309,16 @@ class Roulette extends React.Component {
                         onClick={(event) => {
                             this.resetGame();
                             this.handleStart(event);
+                            this.resetChip();
                         }} 
                         className="spin-button" 
                         type="button">
                             Spin
                         </button>
+                        <Chip
+                          chip={this.state.chip}
+                          reset={this.state.chip === null ? false : true}
+                          />
                         </div>
                         </div>
                       </Row>

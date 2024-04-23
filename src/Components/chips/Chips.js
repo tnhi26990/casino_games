@@ -1,23 +1,43 @@
 import React from 'react';
 import './Chips.css';
+import { useEffect, useState } from 'react';
 
-class Chip extends React.Component {
+function Chip(props) {
+  const [chip, setChip] = useState(null);
 
-    render() {
-      if (this.props.active) {
-        return (
-        <>
-          <div className="chip d-inline-block red" id={this.props.id} >10</div>
-          {/* <div className="chip d-inline-block blue" id={this.props.id} >25</div>
-          <div className="chip d-inline-block green" id={this.props.id} >50</div>
-          <div className="chip d-inline-block purple" id={this.props.id} >100</div>
-        <div className="chip d-inline-block yellow" id={this.props.id} >500</div> */}
-        </>
-        )
-      } else {
-        return <div>{this.props.id}</div>
+  useEffect(() => {
+    if (props.active && props.id && (!chip || !props.chip)) {
+      switch (props.chip) {
+        case 10:
+          setChip(<div className="chip d-inline-block red">{props.chip}</div>);
+          break;
+        case 25:
+          setChip(<div className="chip d-inline-block blue">{props.chip}</div>);
+          break;
+        case 50:
+          setChip(<div className="chip d-inline-block green">{props.chip}</div>);
+          break;
+        case 100:
+          setChip(<div className="chip d-inline-block purple">{props.chip}</div>);
+          break;
+        case 500:
+          setChip(<div className="chip d-inline-block yellow">{props.chip}</div>);
+          break;
+        default:
+          setChip(props.id);
+          break;
       }
     }
-  }
+  }, [props.active, props.chip, props.id, chip]);
+
+  useEffect(() => {
+    if (props.reset) {
+      setChip(null);
+    }
+  }, [props.reset]);
+
+  return chip || props.id;
   
-  export default Chip;
+}
+
+export default Chip;
