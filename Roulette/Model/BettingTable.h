@@ -30,8 +30,7 @@ private:
 
 public:
     BettingTable(RouletteWheel wheel)
-            : wheel(wheel) {assignMapValues();}
-
+            : wheel(wheel) {reactAssignMapValues();}
 
     // methods for the termial version of the game
     void addPlayerBet(int rowNum, int colNum, int betAmount);
@@ -55,8 +54,7 @@ public:
     void reactAssignMapValues();
     std::list<std::string > getFrontendValues(int key);
     int frontendPayout(std::string betSpot, int betAmount);
-
-
+    void printFrontendLookupTable();
 };
 
 #endif
