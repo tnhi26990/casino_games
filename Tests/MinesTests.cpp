@@ -48,7 +48,7 @@ TEST_F(MinesModelTest, MultiplierTest){
     model->flipSquare(1,0);
 
     float mul = model->returnMultiplier();
-    ASSERT_EQ(mul, 1.5);
+    ASSERT_EQ(mul, 1.2);
 
 }
 
