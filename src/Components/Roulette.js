@@ -161,7 +161,12 @@ const prizes = [
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
   }));
   
-  
+  let socket = new WebSocket('ws://localhost:9001');
+
+  socket.onopen = () => {
+    socket.send("hello from roulette");
+
+  };   
 
 class Roulette extends React.Component {
     constructor(props) {
@@ -177,6 +182,7 @@ class Roulette extends React.Component {
       }
       handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
+        socket.send(this.state.arr);
       };
     
       handlePrizeDefined = () => {

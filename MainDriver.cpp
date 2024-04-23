@@ -3,15 +3,25 @@
 #include "Casino.h"
 #include <string>
 #include "App.h"
+#include "Roulette/Model/BettingTable.h"
+#include "Roulette/Model/RouletteWheel.h"
+#include <typeinfo>
 
 using namespace std;
+
+bool startsWith(const std::string_view str, const std::string_view prefix) {
+    return str.size() >= prefix.size() && str.substr(0, prefix.size()) == prefix;
+}
 
 int main() {
     Player* player = new Player();
     string playerBalance = "coinFlip";
-    string game = "coin";
-    float amount = 0.0f; // Declare amount as float
+    string game = "roulette";
+    int currentPayout = 0;
+    int amount = 0;
     string amountToFront = "";
+    RouletteWheel* rouletteWheel = new RouletteWheel();
+    BettingTable* rouletteGame = new BettingTable(*rouletteWheel);
 
     struct PerSocketData {
         /* Fill with user data */
@@ -21,26 +31,40 @@ int main() {
             .open = [](auto *ws) {
                 std::cout << "Client connected" << std::endl;
             },
-            .message = [&playerBalance, &game, &amount, &player, &amountToFront](auto *ws, std::string_view message, uWS::OpCode opCode) {
-                std::cout << "Received message from client: " << message << std::endl;
+            .message = [&rouletteGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
+    std::cout << "Received message from client: " << message << std::endl;
 
-              {
-                    try {
-                        amount = std::stof(std::string(message)); // Convert string to float
-                        player->updateCredits(amount);
-                    } catch (const std::invalid_argument &e) {
-                        std::cerr << "Invalid argument: " << e.what() << std::endl;
-                        // Handle invalid argument error
-                    } catch (const std::out_of_range &e) {
-                        std::cerr << "Out of range: " << e.what() << std::endl;
-                        // Handle out of range error
-                    }
-                }
-                amount = player->getCredits();
-                amountToFront = to_string(amount);
-                ws->send(amountToFront, uWS::OpCode::TEXT);
-                cout << player->getCredits() << endl; // Corrected syntax
-            },
+    try {
+        // Check if message is a special command or a game command
+        if (message == "starting creds") {
+            // Just a user asking for credits at start
+            ws->send(amountToFront + " starting", uWS::OpCode::TEXT);
+        } else if(startsWith(message, "Change ")){
+            game = std::string(message.substr(7));
+        }else {
+            // Parse the message to get the type of game action and the bet amount
+            size_t pos = message.find(' ');
+            if (pos == std::string::npos) {
+                throw std::runtime_error("Invalid message format");
+            }
+            if (game == "roulette") {
+                ws->send("Hello frontend this is backend", uWS::OpCode::TEXT);
+            } else {
+                
+            }
+        }
+
+        // Update the front end with the new credits amount
+        amountToFront = std::to_string(player->getCredits());
+        ws->send(amountToFront, uWS::OpCode::TEXT);
+    }
+    catch (const std::exception& e) {
+        // Log exception and send error message back to the client
+        std::cerr << "Error processing message: " << e.what() << std::endl;
+        ws->send("Error processing your request", uWS::OpCode::TEXT);
+    }
+    },
+
 
             .close = [](auto *ws, int code, std::string_view message) {
                 std::cout << "Client disconnected" << std::endl;
@@ -52,7 +76,8 @@ int main() {
     }).run();
 
     delete player;
+    delete rouletteGame;
+    delete rouletteGame;
 
     return 0;
 }
-
