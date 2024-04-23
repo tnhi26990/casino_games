@@ -53,7 +53,7 @@ void MinesModel::reset() {
             bombGrid[i][k] = 0;
         }
     }
-    multiplier = 1;
+    multiplier = 1.0;
     payOut = 0;
     generateMineLocations();
 }
