@@ -48,7 +48,7 @@ int main() {
                 throw std::runtime_error("Invalid message format");
             }
             if (game == "roulette") {
-                // add all of the front end code here
+                ws->send("Hello frontend this is backend", uWS::OpCode::TEXT);
             } else {
                 
             }

@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include <regex>
+#include <vector>
 #include "../Model/RouletteWheel.h"
 
 class BettingTable {
@@ -26,6 +28,8 @@ public:
     BettingTable(RouletteWheel wheel)
             : wheel(wheel) {assignMapValues();}
 
+
+    // methods for the termial version of the game
     void addPlayerBet(int rowNum, int colNum, int betAmount);
     int handleInput(const std::string& input);
     std::string toLowerCase(const std::string &str);
@@ -40,6 +44,11 @@ public:
     std::list<std::pair<int, int> > getValues(int key);
     void assignMapValues();
     std::vector<std::pair<std::pair<int, int>, int> > playerBets;
+
+    // methods for the front end connectivity
+    int executeRound(std::string betString, int spinRes);
+    std::vector<std::string> split(const std::string& s, const std::string& delimiter);
+
 };
 
 #endif

@@ -146,3 +146,25 @@ std::list<std::pair<int, int>> BettingTable::getValues(int key) {
     }
     return values;
 }
+
+std::vector<std::string> split(const std::string& s, const std::string& delimiter) {
+    std::regex regex(delimiter);
+    std::vector<std::string> parts(
+        std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
+        std::sregex_token_iterator()
+    );
+    return parts;
+}
+
+int BettingTable::executeRound(std::string betString, int spinRes) {
+    int payoutValue = 0;
+    std::vector<std::string> bettingParts = split(betString, ",");
+
+    for(int i = 0; i <= bettingParts.size(); i += 2) {
+        // for each attirubte of the spin Res
+            // if the attriubte == vector[i]
+                // payoutValue += payout(vector[i], vector[i+1])
+    }
+
+    return payoutValue;
+}
