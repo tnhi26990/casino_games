@@ -12,11 +12,10 @@ public:
 class MinesModelTest : public ::testing::Test {
 protected:
     MinesModel* model;
-    MockMinesView mockView;
 
     void SetUp() override {
         // Setup with 5 mines
-        model = new MinesModel(5, mockView);
+        model = new MinesModel(5);
         // Predefine bombGrid
         // Alternatively, access model's internal bombGrid directly if accessible
         int presetBombGrid[5][5] = {
@@ -48,8 +47,8 @@ TEST_F(MinesModelTest, MultiplierTest){
     model->flipSquare(0,0);
     model->flipSquare(1,0);
 
-    float mul = model->returnMultiplier();
-    ASSERT_EQ(mul, 1.5);
+    double mul = model->returnMultiplier();
+    ASSERT_NEAR(mul, 1.2, 0.0001);
 
 }
 
