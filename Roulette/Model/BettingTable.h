@@ -17,6 +17,8 @@
 class BettingTable {
 private:
     std::unordered_map<int, std::list<std::pair<int, int> > > lookupTable;
+    std::unordered_map<int, std::list<std::string > > frontendLookupTable;
+
     RouletteWheel wheel;
     int payoutGrid[3][17] = {
             {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35, 2 ,2, 1, 1, 35},
@@ -48,6 +50,10 @@ public:
     // methods for the front end connectivity
     int executeRound(std::string betString, int spinRes);
     std::vector<std::string> split(const std::string& s, const std::string& delimiter);
+    void reactAssignMapValues();
+    std::list<std::string > getFrontendValues(int key);
+    int frontendPayout(std::string betSpot, int betAmount);
+
 
 };
 

@@ -156,15 +156,92 @@ std::vector<std::string> split(const std::string& s, const std::string& delimite
     return parts;
 }
 
+
+// Start of the frontend only methods
+
 int BettingTable::executeRound(std::string betString, int spinRes) {
     int payoutValue = 0;
     std::vector<std::string> bettingParts = split(betString, ",");
+    std::list<std::string > spinAttributes = getFrontendValues(spinRes);
 
     for(int i = 0; i <= bettingParts.size(); i += 2) {
-        // for each attirubte of the spin Res
-            // if the attriubte == vector[i]
-                // payoutValue += payout(vector[i], vector[i+1])
+        for (const auto &attribute : spinAttributes) {
+            if (bettingParts[i] == attribute) {
+                payoutValue += frontendPayout(bettingParts[i], std::stoi(bettingParts[i + 1]));
+            }
+        }
     }
 
     return payoutValue;
+}
+
+int BettingTable::frontendPayout(std::string betSpot, int betAmount) {
+    int row = 0;
+    int col = 0;
+    return betAmount * payoutGrid[row][col];
+}
+
+std::list<std::string> BettingTable::getFrontendValues(int key) {
+    std::list<std::string> values;
+    auto it = frontendLookupTable.find(key);
+    if (it != frontendLookupTable.end()) {
+        values = it->second;
+    }
+
+    return values;
+}
+
+void BettingTable::reactAssignMapValues() {
+    for (int i = 1; i <= 38; i++) {
+        if (i == 37) {
+            frontendLookupTable[i].push_back("0");
+        }
+
+        if (i == 38) {
+            frontendLookupTable[i].push_back("00");
+        }
+
+        if(isEven(i) == 0) {
+            frontendLookupTable[i].push_back("Even");
+        }
+        else{
+             frontendLookupTable[i].push_back("Odd");
+        }
+
+        if(firstHalf(i) == 0) {
+            frontendLookupTable[i].push_back("1 to 18");
+        }
+        else{
+            frontendLookupTable[i].push_back("19 to 36");
+        }
+
+        if(checkBlock(i) == 1) {
+            frontendLookupTable[i].push_back("1st 12");
+        }
+        else if(checkBlock(i) == 2){
+            frontendLookupTable[i].push_back("2nd 12");
+        }
+        else{
+            frontendLookupTable[i].push_back("3rd 12");
+        }
+
+        int rowNum = checkRow(i);
+        if(rowNum == 0) {
+            frontendLookupTable[i].push_back("2:1:1");
+        }
+        else if(rowNum == 1){
+            frontendLookupTable[i].push_back("2:1:2");
+        }
+        else{
+            frontendLookupTable[i].push_back("2:1:3");
+        }
+
+        if (isBlack(i)) {
+            frontendLookupTable[i].push_back("Black");
+        } else {
+            frontendLookupTable[i].push_back("Red");
+        }
+
+        frontendLookupTable[i].push_back(std::to_string(i));
+    }
 }
