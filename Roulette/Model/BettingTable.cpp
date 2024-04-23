@@ -176,9 +176,21 @@ int BettingTable::executeRound(std::string betString, int spinRes) {
 }
 
 int BettingTable::frontendPayout(std::string betSpot, int betAmount) {
-    int row = 0;
-    int col = 0;
-    return betAmount * payoutGrid[row][col];
+    int payoutSlot = NULL;
+
+    if(betSpot.size() <= 2){
+        payoutSlot = 0;
+    }
+    else if(betSpot.size() <= 5 || betSpot == "19 to 36" || betSpot == "1 to 18") {
+        payoutSlot = 2;
+    }
+    else{
+        payoutSlot = 1;
+    }
+
+    int multiplier = *std::next(frontendPayoutGrid.begin(), payoutSlot);
+
+    return betAmount * multiplier;
 }
 
 std::list<std::string> BettingTable::getFrontendValues(int key) {
