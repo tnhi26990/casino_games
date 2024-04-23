@@ -147,16 +147,6 @@ std::list<std::pair<int, int>> BettingTable::getValues(int key) {
     return values;
 }
 
-std::vector<std::string> split(const std::string& s, const std::string& delimiter) {
-    std::regex regex(delimiter);
-    std::vector<std::string> parts(
-        std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
-        std::sregex_token_iterator()
-    );
-    return parts;
-}
-
-
 // Start of the frontend only methods
 
 int BettingTable::executeRound(std::string betString, int spinRes) {
@@ -176,9 +166,21 @@ int BettingTable::executeRound(std::string betString, int spinRes) {
 }
 
 int BettingTable::frontendPayout(std::string betSpot, int betAmount) {
-    int row = 0;
-    int col = 0;
-    return betAmount * payoutGrid[row][col];
+    int payoutSlot = NULL;
+
+    if(betSpot.size() <= 2){
+        payoutSlot = 0;
+    }
+    else if ((betSpot.size() <= 5 && betSpot != "2:1:1" && betSpot != "2:1:2" && betSpot != "2:1:3") || betSpot == "19 to 36" || betSpot == "1 to 18") {
+        payoutSlot = 2;
+    }
+    else{
+        payoutSlot = 1;
+    }
+
+    int multiplier = *std::next(frontendPayoutGrid.begin(), payoutSlot);
+
+    return betAmount * multiplier;
 }
 
 std::list<std::string> BettingTable::getFrontendValues(int key) {
@@ -195,10 +197,12 @@ void BettingTable::reactAssignMapValues() {
     for (int i = 1; i <= 38; i++) {
         if (i == 37) {
             frontendLookupTable[i].push_back("0");
+            break;
         }
 
         if (i == 38) {
             frontendLookupTable[i].push_back("00");
+            break;
         }
 
         if(isEven(i) == 0) {
@@ -244,4 +248,24 @@ void BettingTable::reactAssignMapValues() {
 
         frontendLookupTable[i].push_back(std::to_string(i));
     }
+}
+
+void BettingTable::printFrontendLookupTable() {
+    for (const auto& pair : frontendLookupTable) {
+        std::cout << "Key: " << pair.first << std::endl; 
+        std::cout << "Values:" << std::endl;
+        for (const auto& value : pair.second) {
+            std::cout << value << std::endl;
+        }
+        std::cout << std::endl;
+    }
+}
+
+std::vector<std::string> BettingTable::split(const std::string& s, const std::string& delimiter) {
+    std::regex regex(delimiter);
+    std::vector<std::string> parts(
+        std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
+        std::sregex_token_iterator()
+    );
+    return parts;
 }
