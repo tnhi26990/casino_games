@@ -138,8 +138,6 @@ const prizes = [
     },
   ];
   
-  const winPrizeIndex = 37;
-  
   const reproductionArray = (array = [], length = 0) => [
     ...Array(length)
       .fill('_')
@@ -181,6 +179,7 @@ class Roulette extends React.Component {
           },
           arr: [],
           chip: 10,
+          winPrizeIndex : 1,
         };
       }
 
@@ -210,6 +209,10 @@ class Roulette extends React.Component {
       onClickAmount = (value) => {
         this.setState({ chip: value });
       };
+
+      setWinIndex = (spinVal) => {
+        this.setState({ winPrizeIndex : spinVal });
+      }
 
       resetGame = () => {
         this.setState({
@@ -246,7 +249,7 @@ class Roulette extends React.Component {
       }
  
     render() {
-        const { start } = this.state;
+        const { start, winPrizeIndex } = this.state;
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
@@ -304,6 +307,7 @@ class Roulette extends React.Component {
                         <button 
                         onClick={(event) => {
                             this.resetGame();
+                            this.setWinIndex(6);
                             this.handleStart(event);
                             setTimeout(() => {window.location.reload(true)}, 8000);
                         }} 
