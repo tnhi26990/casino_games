@@ -269,3 +269,7 @@ std::vector<std::string> BettingTable::split(const std::string& s, const std::st
     );
     return parts;
 }
+
+int BettingTable::getSpinNumber() {
+    return wheel.generateNumber();
+}

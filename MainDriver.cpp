@@ -49,8 +49,11 @@ int main() {
             }
             if (game == "roulette") {
                 ws->send("Hello frontend this is backend", uWS::OpCode::TEXT);
-            } else {
-                
+
+                int spinRes = rouletteGame->getSpinNumber();
+                ws -> send(std::to_string(spinRes), uWS::OpCode::TEXT); // send the spin val to the front end and change the stop value on front end
+
+                int roundPayout = rouletteGame->executeRound(std::string(message), spinRes);
             }
         }
 

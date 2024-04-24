@@ -38,8 +38,8 @@ class RouletteTable extends React.Component {
                 return chip;
               });
               this.setState({ [whichRow]: updatedRow });
-            socket.send("Button was clicked " + num);
-            socket.send("Grid spot is " + index + ", " + whichRow);
+            // socket.send("Button was clicked " + num);
+            // socket.send("Grid spot is " + index + ", " + whichRow);
         }
         this.props.updateArr(nums)
       };

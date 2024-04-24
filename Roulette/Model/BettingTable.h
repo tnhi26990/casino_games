@@ -55,6 +55,7 @@ public:
     std::list<std::string > getFrontendValues(int key);
     int frontendPayout(std::string betSpot, int betAmount);
     void printFrontendLookupTable();
+    int getSpinNumber();
 };
 
 #endif
