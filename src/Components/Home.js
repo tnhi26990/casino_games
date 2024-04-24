@@ -1,6 +1,17 @@
+import React from "react";
+import {useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
+    function homeRoomClick() {
+        navigate("/gameroom");
+    }
     return (
       <>
+      <div className="Home-ctnr">
+        <div className="Button-ctnr">
+          <button onClick={homeRoomClick} className = "gameroom-btn">Enter Game Room</button>
+        </div>
         <div id="content"> 
           <div className="licens">
             <div className="container">
@@ -115,7 +126,7 @@ function Home() {
       </div>
     </div>
   </div>
-  
+</div> 
 </div>
       </>
     );
