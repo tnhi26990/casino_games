@@ -30,12 +30,6 @@ function Chip(props) {
       }
     }
   }, [props.active, props.chip, props.id, chipElement]);
-
-  useEffect(() => {
-    if (props.reset) {
-      setChipElement(null);
-    }
-  }, [props.reset]);
   
   return chipElement || props.id;
 

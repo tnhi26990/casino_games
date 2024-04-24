@@ -181,7 +181,6 @@ class Roulette extends React.Component {
           },
           arr: [],
           chip: 10,
-          reset: false,
         };
       }
 
@@ -243,12 +242,11 @@ class Roulette extends React.Component {
             num.visible = false;
             return num;
           }),
-          reset: true,
         });
       }
  
     render() {
-        const { start, reset } = this.state;
+        const { start } = this.state;
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
@@ -316,7 +314,6 @@ class Roulette extends React.Component {
                         </div>
                         </div>
                       </Row>
-                      <Chip reset={reset} />
                     </Container>
                 </Row>
 
