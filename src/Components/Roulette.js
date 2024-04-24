@@ -181,13 +181,10 @@ class Roulette extends React.Component {
           },
           arr: [],
           chip: 10,
+          reset: false,
         };
-        this.resetGame = this.resetGame.bind(this);
       }
 
-      resetChip() {
-        this.setState({ chip: null });
-      }
 
       handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
@@ -245,12 +242,13 @@ class Roulette extends React.Component {
           columnRight: columnRight.map(num => {
             num.visible = false;
             return num;
-          })
+          }),
+          reset: true,
         });
       }
  
     render() {
-        const { start } = this.state;
+        const { start, reset } = this.state;
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
@@ -309,19 +307,16 @@ class Roulette extends React.Component {
                         onClick={(event) => {
                             this.resetGame();
                             this.handleStart(event);
-                            this.resetChip();
+                            setTimeout(() => {window.location.reload(true)}, 8000);
                         }} 
                         className="spin-button" 
                         type="button">
-                            Spin
+                            Spin         
                         </button>
-                        <Chip
-                          chip={this.state.chip}
-                          reset={this.state.chip === null ? false : true}
-                          />
                         </div>
                         </div>
                       </Row>
+                      <Chip reset={reset} />
                     </Container>
                 </Row>
 
