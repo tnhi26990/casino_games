@@ -180,7 +180,7 @@ int BettingTable::frontendPayout(std::string betSpot, int betAmount) {
 
     int multiplier = *std::next(frontendPayoutGrid.begin(), payoutSlot);
 
-    return betAmount * multiplier;
+    return ((betAmount * multiplier) + betAmount);
 }
 
 std::list<std::string> BettingTable::getFrontendValues(int key) {
