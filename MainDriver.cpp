@@ -22,6 +22,8 @@ int main() {
     string amountToFront = "";
     RouletteWheel* rouletteWheel = new RouletteWheel();
     BettingTable* rouletteGame = new BettingTable(*rouletteWheel);
+    cout<< "starting credits : " << player->getCredits() <<endl;
+
 
     struct PerSocketData {
         /* Fill with user data */
@@ -31,41 +33,37 @@ int main() {
             .open = [](auto *ws) {
                 std::cout << "Client connected" << std::endl;
             },
-            .message = [&rouletteGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
-    std::cout << "Received message from client: " << message << std::endl;
+            .message = [&rouletteWheel, &rouletteGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
+                    std::cout << "Received message from client: " << message << std::endl;
 
-    try {
-        // Check if message is a special command or a game command
-        if (message == "starting creds") {
-            // Just a user asking for credits at start
-            ws->send(amountToFront + " starting", uWS::OpCode::TEXT);
-        } else if(startsWith(message, "Change ")){
-            game = std::string(message.substr(7));
-        }else {
-            // Parse the message to get the type of game action and the bet amount
-            size_t pos = message.find(' ');
-            if (pos == std::string::npos) {
-                throw std::runtime_error("Invalid message format");
-            }
-            if (game == "roulette") {
-                ws->send("Hello frontend this is backend", uWS::OpCode::TEXT);
+                if (message.substr(0,18) == "Button was clicked"){
+                    cout<<"button clicked"<<endl;
+                    std::string chipVal((message.substr(19)));
+                    cout<<chipVal<<endl;
+                    int chipValInt = stoi(chipVal); //converting str to int
+                    player->updateCredits(-chipValInt);
+                    amountToFront = std::to_string(player->getCredits());
+                    ws->send(amountToFront , uWS::OpCode::TEXT);
+                }
+                else if (message == "hi"){
 
-                int spinRes = rouletteGame->getSpinNumber();
-                ws -> send(std::to_string(spinRes), uWS::OpCode::TEXT); // send the spin val to the front end and change the stop value on front end
-
-                int roundPayout = rouletteGame->executeRound(std::string(message), spinRes);
-            }
-        }
-
+                }
+                else{
+                        std::string messageStr(message);
+                        int spinRes = rouletteWheel ->generateNumber();
+                        cout<<"Spin result is : " << spinRes <<endl;
+                        int payout = rouletteGame ->executeRound(messageStr, spinRes);
+                        cout<< "player payout is:" << payout << endl;
+                        player->updateCredits(payout);
+                        spinRes -=1;
+                        ws->send(to_string(spinRes )+ " " + "slot", uWS::OpCode::TEXT);
+                    }
         // Update the front end with the new credits amount
-        amountToFront = std::to_string(player->getCredits());
-        ws->send(amountToFront, uWS::OpCode::TEXT);
-    }
-    catch (const std::exception& e) {
-        // Log exception and send error message back to the client
-        std::cerr << "Error processing message: " << e.what() << std::endl;
-        ws->send("Error processing your request", uWS::OpCode::TEXT);
-    }
+                cout<< "current credits : " << player->getCredits() <<endl;
+                amountToFront = std::to_string(player->getCredits());
+                ws->send(amountToFront, uWS::OpCode::TEXT);
+
+
     },
 
 

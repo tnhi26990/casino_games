@@ -158,17 +158,11 @@ const prizes = [
     ...prize,
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
   }));
-  
-  let socket = new WebSocket('ws://localhost:9001');
-
-  socket.onopen = () => {
-    socket.send("hello from roulette");
-
-  }; 
 
 
 
 class Roulette extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -180,15 +174,49 @@ class Roulette extends React.Component {
           arr: [],
           chip: 10,
           winPrizeIndex : 1,
+            credits: 5000,
         };
-      }
+
+        this.socket = new WebSocket('ws://localhost:9001');
+        this.socket.onopen = () => {
+            this.socket.send("hi");
+        }
+
+        this.socket.onmessage = (event) => {
+            let message = event.data;
+            console.log("Received message from server:", message);
+
+            // Check if the message ends with " slot"
+            if (message.trim().endsWith(" slot")) {
+                // Extract the win prize index from the message using regular expressions
+                let winPrizeIndex = parseInt(message.trim().match(/^\d+/)[0]);
+                this.setState({ winPrizeIndex });
+            } else {
+                this.setState({ credits: parseFloat(message) });
+            }
+        };
 
 
-      handleStart = () => {
+    }
+    componentWillUnmount() {
+        // Close the WebSocket connection when the component is unmounted
+        this.socket.close();
+    }
+
+    // Define a function to convert the array to a strin
+
+
+
+
+
+    handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
         console.log("Spin was hit");
-        socket.send(this.state.arr);
+       // socket.send(this.state.arr);
       };
+    arrayToString(arr) {
+        return arr.join(", ");
+    }
     
       handlePrizeDefined = () => {
         console.log('Prize defined!');
@@ -281,7 +309,7 @@ class Roulette extends React.Component {
                             <Col>
                              <div>
                               <label className="credit">Credit: </label>
-                              <input type="text" className="credit-amount" value="5000.00" />
+                                 <input type="text" className="credit-amount" value={this.state.credits.toFixed(2)} readOnly />
                              </div>
                             </Col>
 
@@ -306,6 +334,8 @@ class Roulette extends React.Component {
                         <div className="button-wrapper">
                         <button 
                         onClick={(event) => {
+                            let bet = this.arrayToString(this.state.arr);
+                            this.socket.send(bet);
                             this.resetGame();
                             this.setWinIndex(6);
                             this.handleStart(event);
