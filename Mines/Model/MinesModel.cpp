@@ -1,5 +1,6 @@
 #include "../Model/MinesModel.h"
 #include <iostream>
+#include <string>
 #include <cstdlib> // for rand()
 
 MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
@@ -15,6 +16,24 @@ MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
 
     generateMineLocations();
 
+}
+
+bool MinesModel::gridClicked(int row,int col){
+    if (grid[row][col] == 1 ) {
+        return true;
+    }
+    return false;
+}
+
+std::string MinesModel::returnGridString() {
+    std::string gridStr = "";
+    for (int i = 0; i< 5; i++){
+        for (int j=0; j<5; j++) {
+            gridStr += std::to_string(grid[i][j]);
+        }
+    }
+
+    return gridStr;
 }
 
 int (*MinesModel::returnGrid())[5] {

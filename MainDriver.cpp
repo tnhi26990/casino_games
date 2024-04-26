@@ -68,26 +68,44 @@ int main() {
                 }
             } else if (game == "mines"){
                 std::string messageStr = std::string(message);
+                if (message == "request grid") {
+                    string gridString = minesGame->returnGridString();
+                    string identifier = "Grid ";
+                    string mes = identifier + gridString;
+                    ws->send(mes, uWS::OpCode::TEXT);
+                } 
+
+                if (message == "user QUIT") {
+                    player->setBet(0);
+                    player->setPlaying(false);
+                    minesGame->executeLoss();
+                }
 
                 if (player->isPlaying() && startsWith(message, "Clicked ")){ // cell was clicked
 
                     int row = std::stoi(std::string(message.substr(8))); 
                     int col = std::stoi(std::string(message.substr(10))); 
 
-                    if (minesGame->checkForBomb(row,col)) {
-                        std::string message = "Player Lost";
-                        cout<<"bomb hit"<<std::endl;
-                        currentPayout = 0;
-                        ws->send(message, uWS::OpCode::TEXT);
-                        player->setBet(0);
-                        player->setPlaying(false);
-                        minesGame->executeLoss();
-                    }else{ // did not hit a bomb
-                        minesGame->executeWin(row, col);
-                        currentPayout = currentPayout * minesGame->returnMultiplier();
-                        cout<<"no bomb hit"<<std::endl;
-                        std::string message = "Player Wins " + std::to_string(currentPayout);  // Correct concatenation
-                        ws->send(message.c_str(), uWS::OpCode::TEXT);
+                    if ( !(minesGame->gridClicked(row,col)) ) { // ensuring the same cell isnt clicked
+                        
+                    
+                        if (minesGame->checkForBomb(row,col)) {
+                            std::string message = "Player Lost " + std::to_string(row) + "," + std::to_string(col);
+                            cout<<"bomb hit"<<std::endl;
+                            currentPayout = 0;
+                            cout<<"Sending thissss message"<<message<<std::endl;
+                            ws->send(message, uWS::OpCode::TEXT);
+                            player->setBet(0);
+                            player->setPlaying(false);
+                            minesGame->executeLoss();
+                        }else{ // did not hit a bomb
+                            string rowColStr = std::to_string(row) + "," + std::to_string(col);
+                            minesGame->executeWin(row, col);
+                            currentPayout = currentPayout * minesGame->returnMultiplier();
+                            cout<<"no bomb hit"<<std::endl;
+                            std::string message = "Player Wins " + std::to_string(currentPayout) + " " + rowColStr;  // Correct concatenation
+                            ws->send(message.c_str(), uWS::OpCode::TEXT);
+                        }
                     }
                 } else if( player->isPlaying() && startsWith(message, "cashed") ) {
                     player->updateCredits( currentPayout );
