@@ -137,23 +137,23 @@ const prizes = [
       image: 'images/number-00.png',
     },
   ];
-  
+
   const reproductionArray = (array = [], length = 0) => [
     ...Array(length)
       .fill('_')
       .map(() => array[Math.floor(Math.random() * array.length)]),
   ];
-  
+
   const reproducedPrizeList = [
     ...prizes,
     ...reproductionArray(prizes, prizes.length * 3),
     ...prizes,
     ...reproductionArray(prizes, prizes.length),
   ];
-  
+
   const generateId = () =>
     `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
-  
+
   const prizeList = reproducedPrizeList.map((prize) => ({
     ...prize,
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
@@ -175,6 +175,7 @@ class Roulette extends React.Component {
           chip: 10,
           winPrizeIndex : 1,
             credits: 5000,
+            tempCredits : 5000
         };
 
         this.socket = new WebSocket('ws://localhost:9001');
@@ -192,7 +193,11 @@ class Roulette extends React.Component {
                 let winPrizeIndex = parseInt(message.trim().match(/^\d+/)[0]);
                 this.setState({ winPrizeIndex });
             } else {
-                this.setState({ credits: parseFloat(message) });
+                this.setState({ credits: parseFloat(message) })
+                this.setState({ tempCredits: this.state.credits })
+
+
+
             }
         };
 
@@ -203,12 +208,6 @@ class Roulette extends React.Component {
         this.socket.close();
     }
 
-    // Define a function to convert the array to a strin
-
-
-
-
-
     handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
         console.log("Spin was hit");
@@ -217,13 +216,13 @@ class Roulette extends React.Component {
     arrayToString(arr) {
         return arr.join(", ");
     }
-    
+
       handlePrizeDefined = () => {
         console.log('Prize defined!');
         setTimeout(() => {
           this.setState({start: false});
         }, 2000);
-        
+
       };
 
       updateArr = (arr) => {
@@ -275,9 +274,11 @@ class Roulette extends React.Component {
           }),
         });
       }
- 
+
     render() {
         const { start, winPrizeIndex } = this.state;
+        const { spinning, credits } = this.state; // Destructure spinning and credits from state
+        const displayCredits = spinning ? this.state.tempCredits.toFixed(2) : credits.toFixed(2); // Determine which credits to display
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
@@ -304,12 +305,15 @@ class Roulette extends React.Component {
                                     updateRow={this.updateRow}
                                     updateArr={this.updateArr}
                                     chip={this.state.chip}
+                                    socket={this.socket} // Pass the socket instance
+                                    credits={ this.state.credits}
                                 />
+
                             </Col>
                             <Col>
                              <div>
-                              <label className="credit">Credit: </label>
-                                 <input type="text" className="credit-amount" value={this.state.credits.toFixed(2)} readOnly />
+                                 <label className="credit">Credit: </label>
+                                 <input type="text" className="credit-amount" value={displayCredits} readOnly />
                              </div>
                             </Col>
 
@@ -332,19 +336,26 @@ class Roulette extends React.Component {
                         />
                         <div className="gray-block">
                         <div className="button-wrapper">
-                        <button 
-                        onClick={(event) => {
-                            let bet = this.arrayToString(this.state.arr);
-                            this.socket.send(bet);
-                            this.resetGame();
-                            this.setWinIndex(6);
-                            this.handleStart(event);
-                            setTimeout(() => {window.location.reload(true)}, 8000);
-                        }} 
-                        className="spin-button" 
-                        type="button">
-                            Spin         
-                        </button>
+                            <button
+                                disabled={spinning} // Disable the button when spinning is true
+                                onClick={(event) => {
+                                    this.setState({ spinning: true }, () => {
+                                        let bet = this.arrayToString(this.state.arr);
+                                        this.socket.send(bet);
+                                        this.resetGame();
+                                        this.handleStart(event);
+                                        setTimeout(() => {
+                                            this.setState({ spinning: false });
+                                            window.location.reload(true);
+                                        }, 8000);
+                                    });
+                                }}
+                                className="spin-button"
+                                type="button"
+                                style={{ opacity: spinning ? 0.5 : 1 }} // Apply inline styles based on spinning state
+                            >
+                                Spin
+                            </button>
                         </div>
                         </div>
                       </Row>
