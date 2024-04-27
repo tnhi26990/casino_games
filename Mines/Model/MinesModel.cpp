@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib> // for rand()
 
-MinesModel::MinesModel(int mines, MinesView obs) : totalMines(mines), observer(obs) {
+MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
     multiplier = 1.0;
     totalSquares = 25 - totalMines;
 
@@ -41,7 +41,8 @@ bool MinesModel::checkForBomb(int x, int y) {
 }
 
 void MinesModel::flipSquare(int x, int y) {
-    multiplier += .25;
+    multiplier += .1;
+    payOut *= multiplier;
     grid[x][y] = 1;
 }
 
@@ -52,27 +53,29 @@ void MinesModel::reset() {
             bombGrid[i][k] = 0;
         }
     }
-    multiplier = 1;
+    multiplier = 1.0;
+    payOut = 0;
     generateMineLocations();
+}
+
+void MinesModel::initPayout(int money) {
+    payOut = money;
 }
 
 double MinesModel::returnMultiplier() {
     return multiplier;
 }
 
-//void MinesModel::executeRound(std::pair<int, int> guess) {
-//    int x = guess.first;
-//    int y = guess.second;
-//
-//    if (checkForBomb(x, y)){
-//        std::cout<< "Bomb hit.";
-//        reset();
-//    }
-//    else{
-//        flipSquare(x, y);
-//        multiplier += .25;
-//        observer.showGrid(grid);
-//    }
-//}
+void MinesModel::executeLoss() {
+    reset();
+}
+
+void MinesModel::executeWin(int first, int second) {
+    flipSquare(first, second);
+}
+
+int MinesModel::getPayOut(){
+    return payOut;
+}
 
 MinesModel::~MinesModel() {}

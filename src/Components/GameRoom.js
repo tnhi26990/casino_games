@@ -1,43 +1,58 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function GameRoom() {
     const navigate = useNavigate();
+    const [credits, setCredits] = useState(5000);
+    const ws = useRef(null);
+
+    useEffect(() => {
+        // Initialize WebSocket connection
+        ws.current = new WebSocket('ws://localhost:9001');
+        ws.current.onopen = () => {
+            console.log("connected to ws server");
+            // Optionally request initial credit balance from server
+            ws.current.send("starting creds");
+        };
+        ws.current.onmessage = (e) => {
+            const message = e.data;
+            console.log("Message from server ", message);
+            if (message.includes("starting")) {
+                setCredits(parseInt(message.split(" ")[0]));
+            } else if (!isNaN(message)) {
+                setCredits(parseInt(message));
+            }
+        };
+        ws.current.onerror = (error) => {
+            console.log("WebSocket error: ", error);
+        };
+        ws.current.onclose = () => {
+            console.log("WebSocket is closed now.");
+        };
+
+        return () => {
+            ws.current.close();
+        };
+    }, []);
+
     function coinFlipClick() {
+        ws.current.send("Change coin");
         navigate("/coinflip");
     }
     function minesClick() {
+        ws.current.send("Change mines");
         navigate("/mines");
     }
 
     function rouletteClick () {
+        ws.current.send("Change roulette");
         navigate("/roulette");
-        // Connect to the WebSocket backend
-        const socket = new WebSocket('ws://localhost:9001');
-
-        socket.onopen = () => {
-            console.log('Connected to the WebSocket backend');
-            // Send a message to the backend when the button is clicked
-            socket.send('Hello from client!');
-        };
-
-        socket.onmessage = (event) => {
-            console.log('Received message from server:', event.data);
-            // Handle the received message from the server
-            // For example, update the UI with the received message
-            alert(event.data); // Display the received message in an alert
-        };
-
-        socket.onclose = () => {
-            console.log('Disconnected from the WebSocket backend');
-            // Handle the WebSocket connection being closed.
-        };
     }
 
     return (
         <>
             <div className="page-room">
-                <h1 className="user-credits">Credits: </h1>
+                <h1 className="user-credits">Credits: {credits} </h1>
                 <div className = "game-btn-container">
                     <button onClick={minesClick} id = "mines-btn" className="game-btn" >Mines</button>
                     <button onClick={coinFlipClick} id = "coin-btn" className="game-btn" >Coin Flip</button>

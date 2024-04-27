@@ -1,0 +1,42 @@
+name: CMake.yaml for Gameroom project
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # runs-on: self-hosted
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Startup Process
+        run: git submodule update --init --recursive
+
+      - name: Create build directory
+        run: mkdir -p ${{github.workspace}}/build
+
+      - name: Configure CMake
+        run: cd ${{github.workspace}} && cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} .
+
+      - name: Move into build directory
+        run: cd ${{github.workspace}}/build
+
+      - name: Build CMake product
+        run: make
+
+      - name: Run Mines Tests
+        run: ./mines_testing
+
+      - name: Run Roulette Tests
+        run: ./roulette_testing

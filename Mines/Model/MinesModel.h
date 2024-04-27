@@ -8,13 +8,16 @@ class MinesModel{
 private:
     int totalMines;
     int totalSquares;
+    int payOut;
     double multiplier;
-    MinesView observer;
 
 public:
-    MinesModel(int mines, MinesView obs);
+    MinesModel(int mines);
     ~MinesModel();
-
+    int getPayOut();
+    void initPayout(int);
+    void executeWin(int, int);
+    void executeLoss();
     void generateMineLocations();
     bool checkForBomb(int x, int y);
     void flipSquare(int x, int y);

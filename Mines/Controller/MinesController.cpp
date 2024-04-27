@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-MinesController::MinesController(Player* player) : view(), mines(5, view), player(player) {}
+MinesController::MinesController(Player* player) : view(), mines(5), player(player) {}
 
 bool MinesController::play() {
     bool activeRound = true;
@@ -25,7 +25,7 @@ bool MinesController::play() {
     }
 
     while(activeRound) {
-        view.showGrid(mines.grid);
+        //view.showGrid(mines.grid);
         std::cout << "Please select the row then column you want to select." << std::endl;
 
         while (!validRow) {
@@ -90,7 +90,7 @@ bool MinesController::playAnotherRound(std::string input) {
 }
 
 void MinesController::showBombsLocation() {
-    view.showGrid(mines.bombGrid);
+    //view.showGrid(mines.bombGrid);
 }
 
 void MinesController::testPlayerCon() {

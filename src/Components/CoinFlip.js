@@ -25,21 +25,37 @@ class CoinFlip extends Component {
             choice: "",
             amount: "",
             animation: false,
-            credits: ""
+            credits: "",
+            tempCreds: "",
+            result: 1
         };
         this.socket = new WebSocket('ws://localhost:9001');
 
         this.socket.onopen = () => {
             console.log('Connected to the WebSocket backend: Coin Flip Game.');
             // Send a message to the backend when the component is mounted
-            this.socket.send('credits');
+            this.socket.send("starting creds");
         };
 
         this.socket.onmessage = (event) => {
             console.log('Received message from server:', event.data);
             // Update credits state with the received data from the server
 
-            this.setState({ credits: event.data });
+            if (event.data === "1" || event.data === "0"){
+                this.setState({ result: parseInt(event.data) });
+            }
+            if (event.data.endsWith("starting")) {
+                const regex = /^\d+/; // Match the first sequence of digits
+                const match = event.data.match(regex);
+                if (match) {
+                    const credits = parseInt(match[0]); // Extract the matched digits and parse as integer
+                    this.setState({ credits });
+                }
+            }
+            else{
+                this.setState({ tempCreds: event.data });
+            }
+
         };
     }
 
@@ -65,26 +81,19 @@ class CoinFlip extends Component {
         }
 
 
+      //  const tossResult = Math.floor(Math.random() * 2);
+        this.socket.send(choice + " " + amount);
 
-        const tossResult = Math.floor(Math.random() * 2);
         this.setState({ animation: true });
         setTimeout(() => {
-            if (tossResult === 0 ) {
-                //this.socket.send(amount);
-                //console.log(choice + " and the result is " + tossResult);
+            if (this.state.result === 0 ) {
                 this.setState({ flip: 'heads' });
             } else {
-                //this.socket.send("-" + amount);
                 this.setState({ flip: 'tails' });
             }
 
-            if (tossResult === 0 && choice === 'H' || tossResult === 1 && choice === 'T'){
-                this.socket.send(amount);
-            }
-            else{
-                this.socket.send("-" + amount);
-            }
             this.setState({ animation: false });
+            this.setState({credits: this.state.tempCreds})
 
         }, 2000);
     }
