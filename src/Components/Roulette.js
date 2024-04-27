@@ -4,7 +4,6 @@ import './Roulette.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import '../Components/chips/Chips.css';
-import Chip from '../Components/chips/Chips';
 import firstRow from '../Components/table/rows/FirstRow.json';
 import firstBorder from '../Components/table/rows/FirstBorder.json';
 import secondRow from '../Components/table/rows/SecondRow.json';
@@ -19,7 +18,8 @@ import columnRight from '../Components/table/rows/ColumnRight.json';
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
 
-import { useEffect, useState } from 'react';
+import ReturnButton from './ReturnButton';
+
 
 const prizes = [
     {
@@ -173,6 +173,7 @@ class Roulette extends React.Component {
           },
           arr: [],
           chip: 10,
+          dest: "gameroom",
           winPrizeIndex : 1,
             credits: 5000,
             tempCredits : 5000
@@ -241,6 +242,8 @@ class Roulette extends React.Component {
         this.setState({ winPrizeIndex : spinVal });
       }
 
+      
+
       resetGame = () => {
         this.setState({
           arr: [],
@@ -282,6 +285,9 @@ class Roulette extends React.Component {
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
+              <Row>
+                <ReturnButton dest={this.state.dest} />
+              </Row>
                 <Row className="justify-items-center pt-2">
                     <Container fluid className="table">
                         <Row>
