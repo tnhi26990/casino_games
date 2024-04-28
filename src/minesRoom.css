@@ -91,10 +91,12 @@
     color:aliceblue;
     margin-bottom: 2%;
 }
+
 .mines-credits{
+    display: flex;
     padding-top: 5%;
     margin-bottom: 10%;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 .cash-bet {

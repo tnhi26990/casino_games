@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReturnButton from './ReturnButton';
 
 function GameRoom() {
     const navigate = useNavigate();
     const [credits, setCredits] = useState(5000);
+    let dest = "home";
     const ws = useRef(null);
 
     useEffect(() => {
@@ -36,15 +38,20 @@ function GameRoom() {
     }, []);
 
     function coinFlipClick() {
+
         ws.current.send("Change coin");
+
         navigate("/coinflip");
     }
     function minesClick() {
+
         ws.current.send("Change mines");
+
         navigate("/mines");
     }
 
     function rouletteClick () {
+
         ws.current.send("Change roulette");
         navigate("/roulette");
     }
@@ -52,6 +59,7 @@ function GameRoom() {
     return (
         <>
             <div className="page-room">
+                <div><ReturnButton dest={dest} /></div>
                 <h1 className="user-credits">Credits: {credits} </h1>
                 <div className = "game-btn-container">
                     <button onClick={minesClick} id = "mines-btn" className="game-btn" >Mines</button>

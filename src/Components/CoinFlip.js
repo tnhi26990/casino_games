@@ -1,5 +1,4 @@
-import "../Coin.css";
-import { Component } from 'react'
+import React, { Component } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -8,6 +7,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+import ReturnButton from './ReturnButton';
+import "../Coin.css";
 
 const theme = createTheme({
     palette: {
@@ -17,7 +18,6 @@ const theme = createTheme({
 });
 
 class CoinFlip extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -27,50 +27,44 @@ class CoinFlip extends Component {
             animation: false,
             credits: "",
             tempCreds: "",
-            result: 1
+            dest: "gameroom",
+            result: 1,
+            buttonDisabled: false, // State to manage button disablement
         };
         this.socket = new WebSocket('ws://localhost:9001');
 
         this.socket.onopen = () => {
             console.log('Connected to the WebSocket backend: Coin Flip Game.');
-            // Send a message to the backend when the component is mounted
             this.socket.send("starting creds");
         };
 
         this.socket.onmessage = (event) => {
             console.log('Received message from server:', event.data);
-            // Update credits state with the received data from the server
 
-            if (event.data === "1" || event.data === "0"){
+            if (event.data === "1" || event.data === "0") {
                 this.setState({ result: parseInt(event.data) });
             }
             if (event.data.endsWith("starting")) {
-                const regex = /^\d+/; // Match the first sequence of digits
+                const regex = /^\d+/;
                 const match = event.data.match(regex);
                 if (match) {
-                    const credits = parseInt(match[0]); // Extract the matched digits and parse as integer
+                    const credits = parseInt(match[0]);
                     this.setState({ credits });
                 }
-            }
-            else{
+            } else {
                 this.setState({ tempCreds: event.data });
             }
-
         };
     }
 
     componentWillUnmount() {
-        // Close the WebSocket connection when the component is unmounted
         this.socket.close();
     }
 
     onClickFlip = () => {
         const { choice, amount, credits } = this.state;
         const audio = new Audio('/coin-drop.mp3');
-        audio.play();
-        if (this.state.animation) return;
 
-        // Check if the bet amount is not a number or if credits are less than the bet amount
         if (isNaN(amount) || parseFloat(amount) <= 0 || parseFloat(amount) > parseFloat(credits)) {
             alert('Invalid bet amount or not enough credits');
             return;
@@ -80,20 +74,20 @@ class CoinFlip extends Component {
             return;
         }
 
+        audio.play();
+        if (this.state.animation) return;
 
-      //  const tossResult = Math.floor(Math.random() * 2);
         this.socket.send(choice + " " + amount);
 
-        this.setState({ animation: true });
+        this.setState({ animation: true, buttonDisabled: true }); // Disable button on flip
         setTimeout(() => {
-            if (this.state.result === 0 ) {
+            if (this.state.result === 0) {
                 this.setState({ flip: 'heads' });
             } else {
                 this.setState({ flip: 'tails' });
             }
 
-            this.setState({ animation: false });
-            this.setState({credits: this.state.tempCreds})
+            this.setState({ animation: false, buttonDisabled: false, credits: this.state.tempCreds });
 
         }, 2000);
     }
@@ -112,7 +106,7 @@ class CoinFlip extends Component {
     };
 
     render() {
-        const { flip, choice, amount, credits } = this.state;
+        const { flip, choice, amount, credits, buttonDisabled } = this.state;
         const headsImage = 'https://assets.ccbp.in/frontend/react-js/heads-img.png';
         const tailsImage = 'https://assets.ccbp.in/frontend/react-js/tails-img.png';
 
@@ -124,6 +118,7 @@ class CoinFlip extends Component {
                     </div>
                     <div className="credit-content">
                         <Stack direction="row" spacing={2} className="play-button">
+                            <div className="return-button"><ReturnButton dest={this.state.dest} /></div>
                             <label className="credit">Credit: </label>
                             <input type="text" className="credit-amount" value={credits} />
                         </Stack>
@@ -170,7 +165,7 @@ class CoinFlip extends Component {
                         <label>Bet Amount:</label>
                         <input type="text" className="amount" value={amount} placeholder="0.00" onChange={this.handleInputChange} />
                         <Button variant="contained" startIcon={<FlipCameraAndroidIcon />} color="success" size="large"
-                                onClick={this.onClickFlip}>
+                                onClick={this.onClickFlip} disabled={buttonDisabled} style={{ opacity: buttonDisabled ? 0.5 : 1 }}>
                             Bet
                         </Button>
                     </Stack>

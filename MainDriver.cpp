@@ -6,6 +6,8 @@
 #include "Mines/Model/MinesModel.h"
 #include <typeinfo>
 #include <sstream>
+#include "Roulette/Model/BettingTable.h"
+#include "Roulette/Model/RouletteWheel.h"
 
 
 using namespace std;
@@ -23,6 +25,8 @@ int main() {
     string amountToFront = "";
     CoinGame* coinGame = new CoinGame();
     MinesModel* minesGame = new MinesModel();
+    RouletteWheel* rouletteWheel = new RouletteWheel();
+    BettingTable* rouletteGame = new BettingTable(*rouletteWheel);
 
 
     struct PerSocketData {
@@ -33,7 +37,7 @@ int main() {
             .open = [](auto *ws) {
                 std::cout << "Client connected" << std::endl;
             },
-            .message = [&minesGame, &coinGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
+            .message = [&rouletteWheel, &rouletteGame,&minesGame, &coinGame, &player,&currentPayout, &amountToFront, &game](auto *ws, std::string_view message, uWS::OpCode opCode) {
     std::cout << "Received message from client: " << message << std::endl;
 
     try {
@@ -41,8 +45,10 @@ int main() {
         if (message == "starting creds") {
             // Just a user asking for credits at start
             ws->send(amountToFront + " starting", uWS::OpCode::TEXT);
-        } else if(startsWith(message, "Change ")){
+        }
+        else if(startsWith(message, "Change ")){
             game = std::string(message.substr(7));
+            cout<<game<<endl;
         }else {
             // Parse the message to get the type of game action and the bet amount
             size_t pos = message.find(' ');
@@ -50,24 +56,50 @@ int main() {
                 throw std::runtime_error("Invalid message format");
             }
             if (game == "coin") {
-                std::string type = std::string(message.substr(0, pos));  // e.g., "T" or "H"
-                int value = std::stoi(std::string(message.substr(pos + 1)));  // bet amount
+                try{
+                    // Find the position of the space
+                    size_t pos = message.find(' ');
+                    if (pos == std::string::npos) {
+                        std::cerr << "Invalid message format" << std::endl;
+                        return;
+                    }
+                    std::string type = std::string(message.substr(0, pos));  //guess
+                    int value = std::stoi(std::string(message.substr(pos + 1)));  //bet amount
+                    cout<<type << " " << value <<endl;
 
-                // Setting user prediction
-                bool prediction = (type == "T");  // true for tails, false for heads
+                    //setting user prediction
+                    bool prediciton;
+                    if (type == "T"){ prediciton = true;}
+                    else{ prediciton = false;}
 
-                // Execute game round and determine outcome
-                bool outcome = coinGame->executeRound(prediction);
-
-                // Send the result back and update credits accordingly
-                if (outcome == prediction) {
-                    ws->send(prediction ? "1" : "0", uWS::OpCode::TEXT); // Correct prediction
-                    player->updateCredits(value);
-                } else {
-                    ws->send(prediction ? "0" : "1", uWS::OpCode::TEXT); // Incorrect prediction
-                    player->updateCredits(-value);
+                    bool outcome = coinGame->executeRound(prediciton); //flip coin and check winner
+                    //send the code that matches with either h or t
+                    if (outcome == true){
+                        if (prediciton == true){
+                            ws->send("1", uWS::OpCode::TEXT); //they chose tails, won so we send back tails
+                        }
+                        else{
+                            ws->send("0", uWS::OpCode::TEXT);
+                        }
+                        player->updateCredits(value);
+                    }
+                    else{
+                        if (prediciton == true){ //they chose heads, lost so we send back tails
+                            ws->send("0", uWS::OpCode::TEXT);
+                        }
+                        else{
+                            ws->send("1", uWS::OpCode::TEXT);
+                        }
+                        player->updateCredits(-value);
+                    }
                 }
-            } else if (game == "mines"){
+                catch(const std::exception& e){
+                    cout<<"Just user asking for credits at start"<<endl;
+                    ws->send(amountToFront + " starting", uWS::OpCode::TEXT);
+                }
+
+            }
+            if (game == "mines"){
                 if (message == "request grid") {
                     string gridString = minesGame->returnGridString();
                     string identifier = "Grid ";
@@ -84,6 +116,7 @@ int main() {
                 if (player->isPlaying() && startsWith(message, "Clicked ")){ // cell was clicked
                     int row = std::stoi(std::string(message.substr(8)));
                     int col = std::stoi(std::string(message.substr(10)));
+                    cout<<row << " " << col << endl;
 
                     if ( !(minesGame->gridClicked(row,col)) ) { // ensuring the same cell isnt clicked
                         if (minesGame->checkForBomb(row,col)) {
@@ -123,8 +156,33 @@ int main() {
                     player->setPlaying(true);
                 }
             }
-            else {
-                
+            //Roulette case!
+            if (game == "roulette") {
+                if (message.substr(0,18) == "Button was clicked"){
+                    cout<<"button clicked"<<endl;
+                    std::string chipVal((message.substr(19)));
+                    cout<<chipVal<<endl;
+                    int chipValInt = stoi(chipVal); //converting str to int
+                    player->updateCredits(-chipValInt);
+                    amountToFront = std::to_string(player->getCredits());
+                    ws->send(amountToFront , uWS::OpCode::TEXT);
+                }
+                else{
+                    std::string messageStr(message);
+                    int spinRes = rouletteWheel ->generateNumber();
+                    cout<<"Spin result is : " << spinRes <<endl;
+                    int payout = rouletteGame ->executeRound(messageStr, spinRes);
+                    cout<< "player payout is:" << payout << endl;
+                    player->updateCredits(payout);
+                    spinRes -=1;
+                    ws->send(to_string(spinRes )+ " " + "slot", uWS::OpCode::TEXT);
+                   // amountToFront = std::to_string(player->getCredits());
+                    //ws->send(amountToFront, uWS::OpCode::TEXT);
+                }
+              //  cout<< "current credits : " << player->getCredits() <<endl;
+                amountToFront = std::to_string(player->getCredits());
+                ws->send(amountToFront, uWS::OpCode::TEXT);
+
             }
         }
 
@@ -154,4 +212,5 @@ int main() {
 
     return 0;
 }
+
 

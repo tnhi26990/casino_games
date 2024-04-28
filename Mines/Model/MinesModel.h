@@ -30,6 +30,7 @@ public:
     int bombGrid[5][5];
     int grid[5][5];
     void setTotalMines(int mines);
+    void printGridWithBombs();
 };
 
 #endif

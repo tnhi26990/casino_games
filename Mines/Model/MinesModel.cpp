@@ -19,8 +19,32 @@ MinesModel::MinesModel() {
 }
 void MinesModel::setTotalMines(int mines) {
     this->totalMines = mines;
+
+    switch (mines) {
+        case 3:
+            multiplier = 1.0;
+            break;
+        case 5:
+            multiplier = 1.3;
+            break;
+        case 10:
+            multiplier = 1.5;
+            break;
+        case 15:
+            multiplier = 1.7;
+            break;
+        case 24:
+            multiplier = 10.0;
+            break;
+        default:
+            multiplier = 1.0;
+            break;
+    }
+
     generateMineLocations();
+    printGridWithBombs();
 }
+
 
 bool MinesModel::gridClicked(int row,int col){
     if (grid[row][col] == 1 ) {
@@ -51,6 +75,7 @@ void MinesModel::generateMineLocations() {
         int y = rand() % 5;
         if (bombGrid[x][y] != 1) {
             bombGrid[x][y] = 1;
+            grid[x][y] = 2;
             bombsPlaced += 1;
         }
     }
@@ -100,6 +125,19 @@ void MinesModel::executeWin(int first, int second) {
 
 int MinesModel::getPayOut(){
     return payOut;
+}
+void MinesModel::printGridWithBombs() {
+    std::cout << "Grid with Bomb Locations:" << std::endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (bombGrid[i][j] == 1) {
+                std::cout << "B ";
+            } else {
+                std::cout << "- ";
+            }
+        }
+        std::cout << std::endl;
+    }
 }
 
 MinesModel::~MinesModel() {}
