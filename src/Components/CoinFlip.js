@@ -8,6 +8,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+import ReturnButton from './ReturnButton';
 
 const theme = createTheme({
     palette: {
@@ -27,6 +28,7 @@ class CoinFlip extends Component {
             animation: false,
             credits: "",
             tempCreds: "",
+            dest: "gameroom",
             result: 1
         };
         this.socket = new WebSocket('ws://localhost:9001');
@@ -118,12 +120,13 @@ class CoinFlip extends Component {
 
         return (
             <div className="bg-container">
-                <div className="app-container">
+                <div className="app-container">    
                     <div className="heading">
                         <h1>COIN FLIP GAME</h1>
                     </div>
                     <div className="credit-content">
                         <Stack direction="row" spacing={2} className="play-button">
+                            <div className="return-button"><ReturnButton dest={this.state.dest}/></div>
                             <label className="credit">Credit: </label>
                             <input type="text" className="credit-amount" value={credits} />
                         </Stack>

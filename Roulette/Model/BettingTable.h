@@ -10,11 +10,15 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include <regex>
+#include <vector>
 #include "../Model/RouletteWheel.h"
 
 class BettingTable {
 private:
     std::unordered_map<int, std::list<std::pair<int, int> > > lookupTable;
+    std::unordered_map<int, std::list<std::string > > frontendLookupTable;
+
     RouletteWheel wheel;
     int payoutGrid[3][17] = {
             {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35, 2 ,2, 1, 1, 35},
@@ -22,10 +26,13 @@ private:
             {35, 35, 35, 35,35, 35, 35, 35,35, 35, 35, 35,2, 2, 1, 1, 0},
     };
 
+    std::list<int> frontendPayoutGrid = {35, 2, 1};
+
 public:
     BettingTable(RouletteWheel wheel)
-            : wheel(wheel) {assignMapValues();}
+            : wheel(wheel) {reactAssignMapValues();}
 
+    // methods for the termial version of the game
     void addPlayerBet(int rowNum, int colNum, int betAmount);
     int handleInput(const std::string& input);
     std::string toLowerCase(const std::string &str);
@@ -40,6 +47,15 @@ public:
     std::list<std::pair<int, int> > getValues(int key);
     void assignMapValues();
     std::vector<std::pair<std::pair<int, int>, int> > playerBets;
+
+    // methods for the front end connectivity
+    int executeRound(std::string betString, int spinRes);
+    std::vector<std::string> split(const std::string& s, const std::string& delimiter);
+    void reactAssignMapValues();
+    std::list<std::string > getFrontendValues(int key);
+    int frontendPayout(std::string betSpot, int betAmount);
+    int getSpinNumber();
+    std::string removeLeadingSpaces(const std::string& str);
 };
 
 #endif

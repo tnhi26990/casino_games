@@ -9,9 +9,11 @@ function Mines() {
     const [credits, setCredits] = useState(5000);
     const [payout, setPayout] = useState(0);
 
+
     const [playing, setPlaying] = useState(false);
 
     let dest = "gameroom";
+
 
     const ws = useRef(null);
     
