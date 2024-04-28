@@ -63,7 +63,7 @@ add_executable(roulette_testing
     Player.cpp
 )
 
-add_executable(roulette__frontend_testing
+add_executable(roulette_frontend_testing
     Tests/FrontendRouletteTests.cpp
     Roulette/Controller/RouletteController.cpp
     Roulette/Model/BettingTable.cpp
