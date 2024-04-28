@@ -40,3 +40,6 @@ jobs:
 
       - name: Run Roulette Tests
         run: ./roulette_testing
+
+      - name: Run Roulette Frontends
+        run: ./roulette_frontend_testing
