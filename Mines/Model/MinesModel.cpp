@@ -3,7 +3,7 @@
 #include <string>
 #include <cstdlib> // for rand()
 
-MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
+MinesModel::MinesModel() {
     multiplier = 1.0;
     totalSquares = 25 - totalMines;
 
@@ -14,8 +14,12 @@ MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
         }
     }
 
-    generateMineLocations();
+    //generateMineLocations();
 
+}
+void MinesModel::setTotalMines(int mines) {
+    this->totalMines = mines;
+    generateMineLocations();
 }
 
 bool MinesModel::gridClicked(int row,int col){
@@ -72,9 +76,10 @@ void MinesModel::reset() {
             bombGrid[i][k] = 0;
         }
     }
+    totalMines = 0;
     multiplier = 1.0;
     payOut = 0;
-    generateMineLocations();
+   // generateMineLocations();
 }
 
 void MinesModel::initPayout(int money) {

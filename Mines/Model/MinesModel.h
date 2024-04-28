@@ -13,7 +13,7 @@ private:
     double multiplier;
 
 public:
-    MinesModel(int mines);
+    MinesModel();
     ~MinesModel();
     int getPayOut();
     void initPayout(int);
@@ -29,6 +29,7 @@ public:
     std::string returnGridString();
     int bombGrid[5][5];
     int grid[5][5];
+    void setTotalMines(int mines);
 };
 
 #endif
