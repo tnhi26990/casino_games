@@ -1,14 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 
 import "../minesRoom.css"
+import ReturnButton from './ReturnButton';
 
 function Mines() {
     const [betAmount, setBetAmount] = useState("");
 
     const [credits, setCredits] = useState(5000);
     const [payout, setPayout] = useState(0);
+    let dest = "gameroom";
     const ws = useRef(null);
-
+    
     useEffect(() => {
         // Initialize WebSocket connection
         ws.current = new WebSocket('ws://localhost:9001');
@@ -116,6 +118,7 @@ function Mines() {
                 <div className="left-side">
                     <div className="left-container">
                         <div className="mines-credits">
+                        <div className="return-button"><ReturnButton dest={dest} /></div>
                           <h1 >Credits: {credits}</h1>
                         </div>
                         <div className="bet-field">
