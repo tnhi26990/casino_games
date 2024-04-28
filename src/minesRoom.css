@@ -51,6 +51,13 @@
     border-radius: 10%;
     cursor: pointer;
   }
+.cell.safe {
+    background-color: green; /* background for safe clicked cells */
+}
+
+.cell.bomb {
+    background-color: red; /* background for bomb cells */
+}
 
 .place-bet-btn{
     height: 20%;

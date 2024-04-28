@@ -5,32 +5,61 @@ import ReturnButton from './ReturnButton';
 
 function Mines() {
     const [betAmount, setBetAmount] = useState("");
-
+    const [grid, setGrid] = useState(Array(5).fill(null).map(() => Array(5).fill({ clicked: false, safe: true })));
     const [credits, setCredits] = useState(5000);
     const [payout, setPayout] = useState(0);
+
+
+    const [playing, setPlaying] = useState(false);
+
     let dest = "gameroom";
+
+
     const ws = useRef(null);
     
     useEffect(() => {
+      const savedPay = localStorage.getItem('currentPay');
+      if (savedPay) {
+        //setPayout(savedPay);
+      }
         // Initialize WebSocket connection
         ws.current = new WebSocket('ws://localhost:9001');
         ws.current.onopen = () => {
             console.log("connected to ws server");
             // Optionally request initial credit balance from server
             ws.current.send("starting creds");
+            ws.current.send("request grid");
+            
+  
         };
         ws.current.onmessage = (e) => {
             const message = e.data;
             console.log("Message from server ", message);
             if (message.includes("starting")) {
               setCredits(parseInt(message.split(" ")[0])); // Assuming message is "5000 starting"
-            } else if (message.includes("Player Lost")){
-              setPayout(0)
-
-            }else if (message.startsWith("Player Wins")) {
-              //message from backend is "Player Wins xxxx"
+            } else if (message.includes("Grid ")) {
+              let gridString = message.split(" ")[1]; // Assuming message is "Grid 101110010..."
+              handleGridChange(gridString);
+            }else if (message.includes("Player Wins")) {
               setPayout(parseInt(message.split(" ")[2]));
-            }else if (!isNaN(message)) {
+              let coordinates = message.split(" ")[3].split(",");
+              setGrid(currentGrid => currentGrid.map((row, i) => row.map((cell, j) => {
+                  if (i === parseInt(coordinates[0]) && j === parseInt(coordinates[1])) {
+                      return { ...cell, clicked: true, safe: true };
+                  }
+                  return cell;
+              })));
+          } else if (message.includes("Player Lost")) {
+              let coordinates = message.split(" ")[2].split(",");
+              setGrid(currentGrid => currentGrid.map((row, i) => row.map((cell, j) => {
+                  if (i === parseInt(coordinates[0]) && j === parseInt(coordinates[1])) {
+                      return { ...cell, clicked: true, safe: false };
+                  }
+                  return cell;
+              })));
+              setPayout(0);
+              setPlaying(false);
+          }else if (!isNaN(message)) {
               setCredits(parseInt(message));  // Update credits directly with message if it's a number
             }
         };
@@ -39,6 +68,7 @@ function Mines() {
         };
         ws.current.onclose = () => {
             console.log("WebSocket is closed now.");
+            
         };
 
         return () => {
@@ -46,14 +76,45 @@ function Mines() {
         };
     }, []);
 
+    const getInitialGrid = () => Array(5).fill(null).map(() => Array(5).fill({ clicked: false, safe: true }));
+
+
+    const handleGridChange = (gridString) => {
+      let index = 0;
+      let tempGrid = [];
+  
+      for (let i = 0; i < 5; i++) {
+          let newRow = [];
+          for (let j = 0; j < 5; j++) {
+              // Assuming backend sends '1' for clicked and safe, '2' for clicked and bomb, '0' for unclicked
+              const cellValue = gridString.charAt(index);
+              newRow.push({
+                  clicked: cellValue !== '0',
+                  safe: cellValue !== '2'
+              });
+              index++;
+          }
+          tempGrid.push(newRow);
+      }
+  
+      setGrid(tempGrid);
+  };
+  
+
 
     const handleBetAmountChange = (event) => {
-      setBetAmount(event.target.value);
+      if(!(playing)){
+        setBetAmount(event.target.value);
+        
+      }
+      
     };
 
     const isValidBet = () => {
       if(isNaN(betAmount)){
         alert("Only numbers");
+        return false;
+      }else if(betAmount <= 0){
         return false;
       }else if(betAmount > credits){
         alert("not enough credits");
@@ -68,48 +129,50 @@ function Mines() {
       console.log("User cashed out");
       ws.current.send("cashed ");
       setPayout(0);
+      setPlaying(false);
+      setGrid(getInitialGrid());
     }
 
     const cellClick = (row, col) => {
-    
-      console.log("Clicked row: " + row + " Col: " + col);
-      ws.current.send("Clicked "+row + ","+ col);
-    
-
-    }
+      console.log("Clicked row: ", row, " Col: ", col);
+      if (!grid[row][col].clicked) {
+          ws.current.send(`Clicked ${row} ${col}`);
+      }
+    };
+  
     
     const placeBet = () => {
-      if(isValidBet()){
+      if(isValidBet() && !(playing)){
         //logic to send bet amount to backend
         console.log("User bet" + betAmount);
         ws.current.send("Bet " + betAmount);
         setPayout(betAmount);
+        localStorage.setItem('currentPay', betAmount);
+        setPlaying(true);
+        setGrid(getInitialGrid());
+        
       }
       setBetAmount("");
     }
 
-    const getBalance = () => {
-      // logic for getting balance from back end
-    
-    }
-
     const renderGrid = () => {
-        const rows = 5;
-        const cols = 5;
-        const grid = [];
-        for (let i = 0; i < rows; i++) {
-          for (let j = 0; j < cols; j++) {
-            grid.push(
-              <div
-                className="cell"
-                key={`${i}-${j}`}
-                onClick={() => cellClick(i, j)}
-              ></div>
-            );
-          }
-        }
-        return grid;
-      };
+      return (
+          <div className="grid">
+              {grid.map((row, i) => (
+                  <div key={i} className="grid-row">
+                      {row.map((cell, j) => (
+                          <div
+                              key={`${i}-${j}`}
+                              className={`cell ${cell.clicked ? (cell.safe ? "safe" : "bomb") : ""}`}
+                              onClick={() => cellClick(i, j)}
+                          />
+                      ))}
+                  </div>
+              ))}
+          </div>
+      );
+  };
+  
       
     
     return (
