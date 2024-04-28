@@ -54,10 +54,7 @@ public:
     void reactAssignMapValues();
     std::list<std::string > getFrontendValues(int key);
     int frontendPayout(std::string betSpot, int betAmount);
-    void printFrontendLookupTable();
     int getSpinNumber();
-    void printVectorItems(const std::vector<std::string>& vec);
-    void printListItems(const std::list<std::string>& lst);
     std::string removeLeadingSpaces(const std::string& str);
 };
 

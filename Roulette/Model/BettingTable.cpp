@@ -252,18 +252,6 @@ void BettingTable::reactAssignMapValues() {
     }
 }
 
-
-void BettingTable::printFrontendLookupTable() {
-    for (const auto& pair : frontendLookupTable) {
-        std::cout << "Key: " << pair.first << std::endl; 
-        std::cout << "Values:" << std::endl;
-        for (const auto& value : pair.second) {
-            std::cout << value << std::endl;
-        }
-        std::cout << std::endl;
-    }
-}
-
 std::vector<std::string> BettingTable::split(const std::string& s, const std::string& delimiter) {
     std::regex regex("\\s*" + delimiter); // Match any number of leading spaces followed by the delimiter
     std::vector<std::string> parts(
@@ -273,21 +261,8 @@ std::vector<std::string> BettingTable::split(const std::string& s, const std::st
     return parts;
 }
 
-
 int BettingTable::getSpinNumber() {
     return wheel.generateNumber();
-}
-
-void BettingTable::printVectorItems(const std::vector<std::string>& vec) {
-    for (const auto& item : vec) {
-        std::cout << item << std::endl;
-    }
-}
-
-void BettingTable::printListItems(const std::list<std::string>& lst) {
-    for (const auto& item : lst) {
-        std::cout << item << std::endl;
-    }
 }
 
 std::string BettingTable::removeLeadingSpaces(const std::string& str) {
