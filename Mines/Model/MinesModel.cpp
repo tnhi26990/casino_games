@@ -75,14 +75,15 @@ void MinesModel::generateMineLocations() {
         int y = rand() % 5;
         if (bombGrid[x][y] != 1) {
             bombGrid[x][y] = 1;
-            grid[x][y] = 2;
             bombsPlaced += 1;
         }
     }
 }
 
 bool MinesModel::checkForBomb(int x, int y) {
-    if (bombGrid[x][y] == 1) {
+    std::cout<< "In check for bomb "<< bombGrid[y][x] << std::endl;
+    if (bombGrid[y][x] == 1) {
+        grid[y][x] =2;
         return true;
     }
     return false;

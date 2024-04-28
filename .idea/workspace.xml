@@ -27,97 +27,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="478e0db3-3974-4d71-afbc-571a56597b3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/FrontendRouletteTests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/number-9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ReturnButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Roulette.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Roulette.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/chips/Chips.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/chips/Chips.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/BettingTable.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/BettingTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/ColumnLeft.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/ColumnRight.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/FifthRow.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/FirstBorder.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/FirstRow.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/FourthRow.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/SecondBorder.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/SecondRow.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/ThirdBorder.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/table/rows/ThirdRow.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Roulette.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainDriver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainDriver.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mines/Model/MinesModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Mines/Model/MinesModel.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mines/Model/MinesModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mines/Model/MinesModel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Roulette/Model/BettingTable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Roulette/Model/BettingTable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Roulette/Model/BettingTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Roulette/Model/BettingTable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Roulette/Model/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/MinesTests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/MinesTests.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-c58e7172df127647c502.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-d7e5abea4ac3e3e13834.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-68c71c488836582402cb.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-04-15T15-14-32-0487.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-untitled-Debug-a4d74a5f31bc18fffa15.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Coin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Coin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CoinFlip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CoinFlip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/GameRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/GameRoom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Mines.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Mines.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minesRoom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/minesRoom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Homepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

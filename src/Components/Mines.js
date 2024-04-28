@@ -29,7 +29,11 @@ function Mines() {
             console.log("connected to ws server");
             // Optionally request initial credit balance from server
             ws.current.send("starting creds");
-            //ws.current.send("request grid");
+            setTimeout(2500);
+            ws.current.send("request grid");
+
+            //Check if user was playing
+          //  ws.current.send("playing?")
         };
         ws.current.onmessage = (e) => {
             const message = e.data;
@@ -81,6 +85,8 @@ function Mines() {
     const handleGridChange = (gridString) => {
         let index = 0;
         let tempGrid = [];
+        console.log(gridString);
+
 
         for (let i = 0; i < 5; i++) {
             let newRow = [];
