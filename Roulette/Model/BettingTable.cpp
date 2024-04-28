@@ -160,10 +160,11 @@ int BettingTable::executeRound(std::string betString, int spinRes) {
             std::string trimmedBet = removeLeadingSpaces(bettingParts[i]);
             if (trimmedBet == attribute) {
                 std::cout << "MATCH" << std::endl;
-                payoutValue += frontendPayout(bettingParts[i], std::stoi(bettingParts[i + 1]));
+                payoutValue += frontendPayout(trimmedBet, std::stoi(bettingParts[i + 1]));
             }
         }
     }
+   
     return payoutValue;
 }
 
