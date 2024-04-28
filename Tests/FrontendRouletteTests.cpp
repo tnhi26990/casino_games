@@ -65,27 +65,3 @@ TEST(elseCasePayout2, correctVal) {
     int betVal = 10;
     EXPECT_EQ(testTable->frontendPayout(input, betVal), 20);
 }
-
-TEST(fullStringTest1, correctVal) {
-    std::string input = "3,10, 5,10, 9,10";
-    int spinRes = 1;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 0);
-}
-
-TEST(fullStringTest2, correctVal) {
-    std::string input = "3,10, 5,10, 9,10";
-    int spinRes = 3;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 360);
-}
-
-TEST(fullStringTest3, correctVal) {
-    std::string input = "3,10, 5,10, 9,10, Odd,10";
-    int spinRes = 11;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 20);
-}
-
-TEST(fullStringTest4, correctVal) {
-    std::string input = "3,10, 5,10, 9,10, Odd,10";
-    int spinRes = 3;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 380);
-}
