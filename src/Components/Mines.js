@@ -1,15 +1,20 @@
 import React, { useRef, useEffect, useState } from "react";
 
 import "../minesRoom.css"
+import ReturnButton from './ReturnButton';
 
 function Mines() {
     const [betAmount, setBetAmount] = useState("");
     const [grid, setGrid] = useState(Array(5).fill(null).map(() => Array(5).fill({ clicked: false, safe: true })));
     const [credits, setCredits] = useState(5000);
     const [payout, setPayout] = useState(0);
-    const [playing, setPlaying] = useState(false);
-    const ws = useRef(null);
 
+    const [playing, setPlaying] = useState(false);
+
+    let dest = "gameroom";
+
+    const ws = useRef(null);
+    
     useEffect(() => {
       const savedPay = localStorage.getItem('currentPay');
       if (savedPay) {
@@ -174,6 +179,7 @@ function Mines() {
                 <div className="left-side">
                     <div className="left-container">
                         <div className="mines-credits">
+                        <div className="return-button"><ReturnButton dest={dest} /></div>
                           <h1 >Credits: {credits}</h1>
                         </div>
                         <div className="bet-field">

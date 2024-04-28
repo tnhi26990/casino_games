@@ -1,0 +1,87 @@
+.roulette-container {
+    background-color: #8B0000;
+    min-height: 100vh;
+    min-width: 100%;
+    display: block;
+}
+
+.table {
+    margin: 20px auto;
+    padding: 90px;
+    border: 2px solid #dcb44a;
+    border-radius: 16px;
+    background: linear-gradient(to bottom, #121212, #0e1111, #121212); 
+    width: 90%;
+    height: 90vh;
+  }
+  .betting-table {
+    padding-left: 80px;
+    margin-top: -40px;
+  }
+  .gray-block {
+    background: linear-gradient(to bottom, #202020 65%, rgba(7,7,7,0) 80%, rgba(0,0,0,0) 85%);
+    max-width: 78px;
+    border-radius: 18px;
+    padding: 18px 13px 15px;
+    margin: 0 auto;
+    min-height: 50px;
+    box-sizing: border-box;
+  }
+  
+  .spin-button {
+    position: relative;
+    z-index: 2;
+    width: 30px;
+    height: 10px;
+    font-size: 15px;
+    border-radius: 12px;
+    padding: 20px 40px 15px 10px;
+    box-shadow: 0px 2px 0 2px rgba(155, 106, 0, 0.70);
+    color: #000;
+    transition: all 0.3s ease-out;
+    background: linear-gradient(to bottom, #ffc12f 0%, #ffe324 50%, #ffc12f 100%);
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 0;
+    margin-left: 0px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    
+  }
+  
+  .spin-button:hover::after {
+    opacity: 1;
+  }
+  
+  .spin-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    border-radius: inherit;
+  }
+  .spin-button::after {
+    background: linear-gradient(to bottom, #ffef85 0%, #f8d40a 50%, #ffef85 100%);
+    z-index: -2;
+  }
+  .horizontal-slider {
+    padding-top: 100px;
+  }
+
+  .chip-row {
+    margin-top: 50px;
+  }
+
+  .credit-amount {
+    margin-left: 10px;
+  }
+
+  .betting-choice {
+    color: #ffc12f;
+  }
+  
