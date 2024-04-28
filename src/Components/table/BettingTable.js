@@ -24,7 +24,7 @@ class RouletteTable extends React.Component {
         let nums = this.props.arr.length === 0 ? [] : [...this.props.arr];
         let row = [...this.state[whichRow]];
         if (nums.indexOf(num) === -1 && chipVal <= this.props.credits) {
-            nums.push([num, chipVal]);
+            nums.push([num,chipVal]);
             let updatedRow = row.map(chip => {
                 if (chip.n === num) {
                   chip.visible = true;

@@ -146,8 +146,9 @@ std::list<std::pair<int, int>> BettingTable::getValues(int key) {
     }
     return values;
 }
-
-// Start of the frontend only methods
+///////////////////////////////////////
+// Start of the frontend only methods//
+///////////////////////////////////////
 
 int BettingTable::executeRound(std::string betString, int spinRes) {
     int payoutValue = 0;
@@ -156,12 +157,13 @@ int BettingTable::executeRound(std::string betString, int spinRes) {
 
     for(int i = 0; i <= bettingParts.size(); i += 2) {
         for (const auto &attribute : spinAttributes) {
-            if (bettingParts[i] == attribute) {
+            std::string trimmedBet = removeLeadingSpaces(bettingParts[i]);
+            if (trimmedBet == attribute) {
+                std::cout << "MATCH" << std::endl;
                 payoutValue += frontendPayout(bettingParts[i], std::stoi(bettingParts[i + 1]));
             }
         }
     }
-
     return payoutValue;
 }
 
@@ -195,60 +197,61 @@ std::list<std::string> BettingTable::getFrontendValues(int key) {
 
 void BettingTable::reactAssignMapValues() {
     for (int i = 1; i <= 38; i++) {
-        if (i == 37) {
-            frontendLookupTable[i].push_back("0");
-            break;
-        }
 
         if (i == 38) {
             frontendLookupTable[i].push_back("00");
-            break;
         }
+        else if (i == 37) {
+            frontendLookupTable[i].push_back("0");
+        }
+        else {
+            if (isEven(i) == 0) {
+                frontendLookupTable[i].push_back("Even");
+            }
+            else {
+                frontendLookupTable[i].push_back("Odd");
+            }
 
-        if(isEven(i) == 0) {
-            frontendLookupTable[i].push_back("Even");
-        }
-        else{
-             frontendLookupTable[i].push_back("Odd");
-        }
+            if (firstHalf(i) == 0) {
+                frontendLookupTable[i].push_back("1 to 18");
+            }
+            else {
+                frontendLookupTable[i].push_back("19 to 36");
+            }
 
-        if(firstHalf(i) == 0) {
-            frontendLookupTable[i].push_back("1 to 18");
-        }
-        else{
-            frontendLookupTable[i].push_back("19 to 36");
-        }
+            if (checkBlock(i) == 1) {
+                frontendLookupTable[i].push_back("1st 12");
+            }
+            else if (checkBlock(i) == 2) {
+                frontendLookupTable[i].push_back("2nd 12");
+            }
+            else {
+                frontendLookupTable[i].push_back("3rd 12");
+            }
 
-        if(checkBlock(i) == 1) {
-            frontendLookupTable[i].push_back("1st 12");
-        }
-        else if(checkBlock(i) == 2){
-            frontendLookupTable[i].push_back("2nd 12");
-        }
-        else{
-            frontendLookupTable[i].push_back("3rd 12");
-        }
+            int rowNum = checkRow(i);
+            if (rowNum == 0) {
+                frontendLookupTable[i].push_back("2:1:1");
+            }
+            else if (rowNum == 1) {
+                frontendLookupTable[i].push_back("2:1:2");
+            }
+            else {
+                frontendLookupTable[i].push_back("2:1:3");
+            }
 
-        int rowNum = checkRow(i);
-        if(rowNum == 0) {
-            frontendLookupTable[i].push_back("2:1:1");
-        }
-        else if(rowNum == 1){
-            frontendLookupTable[i].push_back("2:1:2");
-        }
-        else{
-            frontendLookupTable[i].push_back("2:1:3");
-        }
+            if (isBlack(i)) {
+                frontendLookupTable[i].push_back("Black");
+            }
+            else {
+                frontendLookupTable[i].push_back("Red");
+            }
 
-        if (isBlack(i)) {
-            frontendLookupTable[i].push_back("Black");
-        } else {
-            frontendLookupTable[i].push_back("Red");
+            frontendLookupTable[i].push_back(std::to_string(i));
         }
-
-        frontendLookupTable[i].push_back(std::to_string(i));
     }
 }
+
 
 void BettingTable::printFrontendLookupTable() {
     for (const auto& pair : frontendLookupTable) {
@@ -262,7 +265,7 @@ void BettingTable::printFrontendLookupTable() {
 }
 
 std::vector<std::string> BettingTable::split(const std::string& s, const std::string& delimiter) {
-    std::regex regex(delimiter);
+    std::regex regex("\\s*" + delimiter); // Match any number of leading spaces followed by the delimiter
     std::vector<std::string> parts(
         std::sregex_token_iterator(s.begin(), s.end(), regex, -1),
         std::sregex_token_iterator()
@@ -270,6 +273,23 @@ std::vector<std::string> BettingTable::split(const std::string& s, const std::st
     return parts;
 }
 
+
 int BettingTable::getSpinNumber() {
     return wheel.generateNumber();
+}
+
+void BettingTable::printVectorItems(const std::vector<std::string>& vec) {
+    for (const auto& item : vec) {
+        std::cout << item << std::endl;
+    }
+}
+
+void BettingTable::printListItems(const std::list<std::string>& lst) {
+    for (const auto& item : lst) {
+        std::cout << item << std::endl;
+    }
+}
+
+std::string BettingTable::removeLeadingSpaces(const std::string& str) {
+    return std::regex_replace(str, std::regex("^\\s+"), ""); // Replace leading spaces with empty string
 }
