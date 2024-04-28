@@ -63,7 +63,7 @@ TEST(elseCasePayout, correctVal) {
 TEST(elseCasePayout2, correctVal) {
     std::string input = "1 to 18";
     int betVal = 10;
-    EXPECT_EQ(testTable->frontendPayout(input, betVal), 30);
+    EXPECT_EQ(testTable->frontendPayout(input, betVal), 20);
 }
 
 TEST(fullStringTest1, correctVal) {
