@@ -106,6 +106,17 @@ int main() {
                     string mes = identifier + gridString;
                     ws->send(mes, uWS::OpCode::TEXT);
                 }
+                if (message == "request playing") {
+                    string payOutAmt = std::to_string(currentPayout); //gets currentPayout
+
+                    if (player->isPlaying()) {
+                        ws->send("status: " + payOutAmt + " " + "T", uWS::OpCode::TEXT);
+
+                    } else {
+                        ws->send("status: " + payOutAmt + " " + "F", uWS::OpCode::TEXT);
+                    }
+                    
+                }
 
                 if (message == "user QUIT") {
                     player->setBet(0);

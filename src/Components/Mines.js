@@ -31,6 +31,9 @@ function Mines() {
             ws.current.send("starting creds");
             setTimeout(2500);
             ws.current.send("request grid");
+            setTimeout(2500);
+            ws.current.send("request playing");
+
 
             //Check if user was playing
           //  ws.current.send("playing?")
@@ -43,6 +46,17 @@ function Mines() {
             } else if (message.includes("Grid ")) {
                 let gridString = message.split(" ")[1]; // Assuming message is "Grid 101110010..."
                 handleGridChange(gridString);
+            }else if (message.includes("status: ")){ // assuming message is "status: $$$ T/F"
+                let parsedMessage = message.split(" ");
+                setPayout(parseInt(parsedMessage[1]));
+                let status = parsedMessage[2];
+                
+                if (status === "T"){
+                    setPlaying(true);
+                }else{
+                    setPlaying(false);
+                }
+
             }else if (message.includes("Player Wins")) {
                 setPayout(parseInt(message.split(" ")[2]));
                 let coordinates = message.split(" ")[3].split(",");
