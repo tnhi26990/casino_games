@@ -63,7 +63,14 @@ add_executable(roulette_testing
     Player.cpp
 )
 
-
+add_executable(roulette__frontend_testing
+    Tests/FrontendRouletteTests.cpp
+    Roulette/Controller/RouletteController.cpp
+    Roulette/Model/BettingTable.cpp
+    Roulette/Model/RouletteWheel.cpp
+    Roulette/View/RouletteView.cpp
+    Player.cpp
+)
 # Link Google Test libraries
 target_link_libraries(mines_testing gtest gtest_main)
 target_link_libraries(roulette_testing gtest gtest_main)
