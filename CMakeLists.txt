@@ -74,6 +74,7 @@ add_executable(roulette__frontend_testing
 # Link Google Test libraries
 target_link_libraries(mines_testing gtest gtest_main)
 target_link_libraries(roulette_testing gtest gtest_main)
+target_link_libraries(roulette_frontend_testing gtest gtest_main)
 
 
 # Add your source files
