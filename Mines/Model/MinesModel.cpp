@@ -5,7 +5,6 @@
 
 MinesModel::MinesModel() {
     multiplier = 1.0;
-    totalSquares = 25 - totalMines;
 
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
@@ -19,6 +18,7 @@ MinesModel::MinesModel() {
 }
 void MinesModel::setTotalMines(int mines) {
     this->totalMines = mines;
+    this->totalSquares = 25 - mines;
 
     switch (mines) {
         case 3:
@@ -86,6 +86,7 @@ bool MinesModel::checkForBomb(int x, int y) {
         grid[y][x] =2;
         return true;
     }
+    totalSquares -= 1;
     return false;
 }
 

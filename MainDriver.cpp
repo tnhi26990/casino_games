@@ -140,12 +140,23 @@ int main() {
                             player->setPlaying(false);
                             minesGame->executeLoss();
                         } else { // did not hit a bomb
+                            cout<< "user got all mines out hee" << endl;
+
+
                             string rowColStr = std::to_string(row) + "," + std::to_string(col);
                             minesGame->executeWin(row, col);
                             currentPayout = currentPayout * minesGame->returnMultiplier();
                             cout << "No bomb hit" << endl;
                             std::string winMessage = "Player Wins " + std::to_string(currentPayout) + " " + rowColStr;
                             ws->send(winMessage, uWS::OpCode::TEXT);
+                            if( minesGame->totalSquares == 0){
+                                cout<< "user got all mines out hee" << endl;
+                                player->updateCredits(currentPayout);
+                                std::string cashOutMessage = std::to_string(currentPayout) + " starting";
+                                ws->send(cashOutMessage, uWS::OpCode::TEXT);
+                                minesGame->reset();
+                                player->setPlaying(false);
+                            }
                         }
                     }
                 } else if (player->isPlaying() && startsWith(message, "cashed")) {

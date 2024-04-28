@@ -28,7 +28,10 @@
   <component name="ChangeListManager">
     <list default="true" id="478e0db3-3974-4d71-afbc-571a56597b3d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainDriver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainDriver.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mines/Model/MinesModel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Mines/Model/MinesModel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mines/Model/MinesModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mines/Model/MinesModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Roulette/Model/BettingTable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Roulette/Model/BettingTable.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Mines.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Mines.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -204,12 +204,10 @@ function Mines() {
                 <div className="left-side">
                     <div className="left-container">
                         <div className="mines-credits">
-
-
-                        <div className="return-button"><ReturnButton dest={dest} /></div>
-                          <h1 >Credits: {credits}</h1>
+                            <div className="return-button"><ReturnButton dest={dest} /></div>
+                            <h1>Credits: {credits}</h1>
                         </div>
-                        <div className="bombs-dropdown" style={{ marginLeft: '20px' }}> {/* Added marginLeft */}
+                        <div className="bombs-dropdown" style={{ marginLeft: '20px' }}>
                             <select
                                 style={{
                                     padding: '8px',
@@ -242,8 +240,23 @@ function Mines() {
                             />
                         </div>
                         <div className="cash-bet">
-                            <button className="place-bet-btn" onClick={placeBet}>Place Bet</button>
-                            <button className="cashout-btn" onClick={cashOut}>Cash Out</button>
+                            <button
+                                className={`place-bet-btn ${playing ? 'opaque' : ''}`}
+                                onClick={placeBet}
+                                disabled={playing}
+                                style={{ opacity: playing ? '0.5' : '1' }} /* Inline style for opacity */
+                            >
+                                Place Bet
+                            </button>
+                            {playing && (
+                                <button
+                                    className={`cashout-btn ${!playing ? 'opaque' : ''}`}
+                                    onClick={cashOut}
+                                    style={{ opacity: playing ? '1' : '0.5' }} /* Inline style for opacity */
+                                >
+                                    Cash Out
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -252,8 +265,6 @@ function Mines() {
                 </div>
             </div>
         </>
-
-
     );
 
 }

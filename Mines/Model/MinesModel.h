@@ -7,12 +7,12 @@
 
 class MinesModel{
 private:
-    int totalMines;
-    int totalSquares;
-    int payOut;
     double multiplier;
 
 public:
+    int payOut;
+    int totalMines;
+    int totalSquares;
     MinesModel();
     ~MinesModel();
     int getPayOut();
