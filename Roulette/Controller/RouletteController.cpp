@@ -14,11 +14,17 @@ bool RouletteController::placeBets() {
     int colNum;
 
     while(activeRound) {
+
+        /*
+        Displays all of the betting option the player has
+        Shows the amount of credtis the player has and asks them to make a bet
+        */ 
         tableView.displayBettingTable();
         player -> printCredits();
         std::cout << "Please select the row then column you want to bet on." << std::endl;
         std::cout << "If you are done placing bets type 'spin'" << std::endl;
 
+        // Error checking to make sure the player entered a proper row
         while (!validRow) {
             std::cout << "Enter Row (1-3)" << std::endl;
             std::cin >> row;
@@ -37,6 +43,7 @@ bool RouletteController::placeBets() {
             break;
         }
 
+        // Error checking to make sure the player entered a proper col
         while (!validCol) {
             std::cout << "Enter a column (1-17)" << std::endl;
             std::cin >> col;
@@ -47,6 +54,7 @@ bool RouletteController::placeBets() {
             }
         }
 
+        //Error checking to make sure the player enteted a proper bet amount
         while(!validBet) {
             std::cout << "Enter how much you want to bet: " << std::endl;
             std::cin >> betAmount;
@@ -80,8 +88,4 @@ bool RouletteController::placeBets() {
 
 bool RouletteController::playAnotherRound(std::string input) {
     return ((input)[0] == 'y');
-}
-
-void RouletteController::testPlayerCon() {
-    std::cout << player -> getCredits() << std::endl;
 }
