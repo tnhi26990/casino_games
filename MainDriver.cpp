@@ -140,22 +140,20 @@ int main() {
                             player->setPlaying(false);
                             minesGame->executeLoss();
                         } else { // did not hit a bomb
-                            cout<< "user got all mines out hee" << endl;
-
-
+                         
                             string rowColStr = std::to_string(row) + "," + std::to_string(col);
                             minesGame->executeWin(row, col);
                             currentPayout = currentPayout * minesGame->returnMultiplier();
                             cout << "No bomb hit" << endl;
                             std::string winMessage = "Player Wins " + std::to_string(currentPayout) + " " + rowColStr;
                             ws->send(winMessage, uWS::OpCode::TEXT);
-                            if( minesGame->totalSquares == 0){
+                            
+                            if( minesGame->totalSquares == 0){ //if player got all cells
                                 cout<< "user got all mines out hee" << endl;
                                 player->updateCredits(currentPayout);
-                                std::string cashOutMessage = std::to_string(currentPayout) + " starting";
-                                ws->send(cashOutMessage, uWS::OpCode::TEXT);
                                 minesGame->reset();
                                 player->setPlaying(false);
+                                ws->send("User Finished: " + std::to_string(player->getCredits()), uWS::OpCode::TEXT);
                             }
                         }
                     }
@@ -198,10 +196,9 @@ int main() {
                     player->updateCredits(payout);
                     spinRes -=1;
                     ws->send(to_string(spinRes )+ " " + "slot", uWS::OpCode::TEXT);
-                   // amountToFront = std::to_string(player->getCredits());
-                    //ws->send(amountToFront, uWS::OpCode::TEXT);
+                   
                 }
-              //  cout<< "current credits : " << player->getCredits() <<endl;
+              
                 amountToFront = std::to_string(player->getCredits());
                 ws->send(amountToFront, uWS::OpCode::TEXT);
 

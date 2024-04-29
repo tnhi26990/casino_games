@@ -8,6 +8,7 @@
 class MinesModel{
 private:
     double multiplier;
+    double adder;
 
 public:
     int payOut;

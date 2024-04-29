@@ -19,22 +19,29 @@ MinesModel::MinesModel() {
 void MinesModel::setTotalMines(int mines) {
     this->totalMines = mines;
     this->totalSquares = 25 - mines;
+    this->adder = 0.1;
+    
 
     switch (mines) {
         case 3:
             multiplier = 1.0;
+            adder = .01;
             break;
         case 5:
-            multiplier = 1.3;
+            multiplier = 1.24;
+            adder = .02;
             break;
         case 10:
-            multiplier = 1.5;
+            multiplier = 1.3;
+            adder = .03;
             break;
         case 15:
-            multiplier = 1.7;
+            multiplier = 1.4;
+            adder = .1;
             break;
         case 24:
             multiplier = 10.0;
+            adder = .1;
             break;
         default:
             multiplier = 1.0;
@@ -91,7 +98,7 @@ bool MinesModel::checkForBomb(int x, int y) {
 }
 
 void MinesModel::flipSquare(int x, int y) {
-    multiplier += .1;
+    multiplier += adder;
     payOut *= multiplier;
     grid[x][y] = 1;
 }

@@ -55,6 +55,7 @@ function Mines() {
                     setPlaying(true);
                 }else{
                     setPlaying(false);
+                    setPayout(0);
                 }
 
             }else if (message.includes("Player Wins")) {
@@ -76,6 +77,11 @@ function Mines() {
                 })));
                 setPayout(0);
                 setPlaying(false);
+            } else if (message.includes("User Finished:")){ //message is User Finished: $$$$
+                setPlaying(false);
+                setPayout(0);
+                setCredits(parseInt(message.split(" ")[2]));
+
             }else if (!isNaN(message)) {
                 setCredits(parseInt(message));  // Update credits directly with message if it's a number
             }
