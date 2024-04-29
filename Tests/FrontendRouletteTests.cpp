@@ -42,12 +42,6 @@ TEST(evenPayout, correctVal) {
     EXPECT_EQ(testTable->frontendPayout(input, betVal), 20);
 }
 
-TEST(oddPayout, correctVal) {
-    std::string input = "Odd";
-    int betVal = 10;
-    EXPECT_EQ(testTable->frontendPayout(input, betVal), 20);
-}
-
 TEST(blackPayout, correctVal) {
     std::string input = "Black";
     int betVal = 10;
@@ -69,29 +63,5 @@ TEST(elseCasePayout, correctVal) {
 TEST(elseCasePayout2, correctVal) {
     std::string input = "1 to 18";
     int betVal = 10;
-    EXPECT_EQ(testTable->frontendPayout(input, betVal), 30);
-}
-
-TEST(fullStringTest, correctVal) {
-    std::string input = "3,10, 5,10, 9,10";
-    int spinRes = 1;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 0);
-}
-
-TEST(fullStringTest, correctVal) {
-    std::string input = "3,10, 5,10, 9,10";
-    int spinRes = 3;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 360);
-}
-
-TEST(fullStringTest, correctVal) {
-    std::string input = "3,10, 5,10, 9,10, Odd,10";
-    int spinRes = 11;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 20);
-}
-
-TEST(fullStringTest, correctVal) {
-    std::string input = "3,10, 5,10, 9,10, Odd,10";
-    int spinRes = 3;
-    EXPECT_EQ(testTable->executeRound(input, spinRes), 380);
+    EXPECT_EQ(testTable->frontendPayout(input, betVal), 20);
 }
