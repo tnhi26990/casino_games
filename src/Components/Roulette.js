@@ -23,118 +23,118 @@ import ReturnButton from './ReturnButton';
 
 const prizes = [
     {
-        image: 'images/number-1.png',
+        image: 'images/RedNumbers/1.png',
     },
     {
-        image: 'images/number-2.png',
+        image: 'images/BlackNumbers/2.png',
     },
     {
-        image: 'images/number-3.png',
+        image: 'images/RedNumbers/3.png',
     },
     {
-        image: 'images/number-4.png',
+        image: 'images/BlackNumbers/4.png',
     },
     {
-        image: 'images/number-5.png',
+        image: 'images/RedNumbers/5.png',
     },
     {
-        image: 'images/number-6.png',
+        image: 'images/BlackNumbers/6.png',
     },
     {
-        image: 'images/number-7.png',
+        image: 'images/RedNumbers/7.png',
     },
     {
-        image: 'images/number-8.png',
+        image: 'images/BlackNumbers/8.png',
     },
     {
-        image: 'images/number-9.png',
+        image: 'images/RedNumbers/9.png',
     },
     {
-        image: 'images/number-10.png',
+        image: 'images/BlackNumbers/10.png',
     },
     {
-        image: 'images/number-11.png',
+        image: 'images/BlackNumbers/11.png',
     },
     {
-        image: 'images/number-12.png',
+        image: 'images/RedNumbers/12.png',
     },
     {
-        image: 'images/number-13.png',
+        image: 'images/BlackNumbers/13.png',
     },
     {
-        image: 'images/number-14.png',
+        image: 'images/RedNumbers/14.png',
     },
     {
-        image: 'images/number-15.png',
+        image: 'images/BlackNumbers/15.png',
     },
     {
-        image: 'images/number-16.png',
+        image: 'images/RedNumbers/16.png',
     },
     {
-        image: 'images/number-17.png',
+        image: 'images/BlackNumbers/17.png',
     },
     {
-        image: 'images/number-18.png',
+        image: 'images/RedNumbers/18.png',
     },
     {
-        image: 'images/number-19.png',
+        image: 'images/RedNumbers/19.png',
     },
     {
-        image: 'images/number-20.png',
+        image: 'images/BlackNumbers/20.png',
     },
     {
-        image: 'images/number-21.png',
+        image: 'images/RedNumbers/21.png',
     },
     {
-        image: 'images/number-22.png',
+        image: 'images/BlackNumbers/22.png',
     },
     {
-        image: 'images/number-23.png',
+        image: 'images/RedNumbers/23.png',
     },
     {
-        image: 'images/number-24.png',
+        image: 'images/BlackNumbers/24.png',
     },
     {
-        image: 'images/number-25.png',
+        image: 'images/RedNumbers/25.png',
     },
     {
-        image: 'images/number-26.png',
+        image: 'images/BlackNumbers/26.png',
     },
     {
-        image: 'images/number-27.png',
+        image: 'images/RedNumbers/27.png',
     },
     {
-        image: 'images/number-28.png',
+        image: 'images/BlackNumbers/28.png',
     },
     {
-        image: 'images/number-29.png',
+        image: 'images/BlackNumbers/29.png',
     },
     {
-        image: 'images/number-30.png',
+        image: 'images/RedNumbers/30.png',
     },
     {
-        image: 'images/number-31.png',
+        image: 'images/BlackNumbers/31.png',
     },
     {
-        image: 'images/number-32.png',
+        image: 'images/RedNumbers/32.png',
     },
     {
-        image: 'images/number-33.png',
+        image: 'images/BlackNumbers/33.png',
     },
     {
-        image: 'images/number-34.png',
+        image: 'images/RedNumbers/34.png',
     },
     {
-        image: 'images/number-35.png',
+        image: 'images/BlackNumbers/35.png',
     },
     {
-        image: 'images/number-36.png',
+        image: 'images/RedNumbers/36.png',
     },
     {
-        image: 'images/number-0.png',
+        image: 'images/GreenNumbers/0.png',
     },
     {
-        image: 'images/number-00.png',
+        image: 'images/GreenNumbers/00.png',
     },
 ];
 
