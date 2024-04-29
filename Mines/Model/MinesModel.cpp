@@ -3,9 +3,8 @@
 #include <string>
 #include <cstdlib> // for rand()
 
-MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
+MinesModel::MinesModel() {
     multiplier = 1.0;
-    totalSquares = 25 - totalMines;
 
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
@@ -14,9 +13,45 @@ MinesModel::MinesModel(int mines) : totalMines(mines), payOut(0) {
         }
     }
 
-    generateMineLocations();
+    //generateMineLocations();
 
 }
+void MinesModel::setTotalMines(int mines) {
+    this->totalMines = mines;
+    this->totalSquares = 25 - mines;
+    this->adder = 0.1;
+    
+
+    switch (mines) {
+        case 3:
+            multiplier = 1.0;
+            adder = .01;
+            break;
+        case 5:
+            multiplier = 1.24;
+            adder = .02;
+            break;
+        case 10:
+            multiplier = 1.3;
+            adder = .03;
+            break;
+        case 15:
+            multiplier = 1.4;
+            adder = .1;
+            break;
+        case 24:
+            multiplier = 10.0;
+            adder = .1;
+            break;
+        default:
+            multiplier = 1.0;
+            break;
+    }
+
+    generateMineLocations();
+    printGridWithBombs();
+}
+
 
 bool MinesModel::gridClicked(int row,int col){
     if (grid[row][col] == 1 ) {
@@ -53,14 +88,17 @@ void MinesModel::generateMineLocations() {
 }
 
 bool MinesModel::checkForBomb(int x, int y) {
-    if (bombGrid[x][y] == 1) {
+    std::cout<< "In check for bomb "<< bombGrid[y][x] << std::endl;
+    if (bombGrid[y][x] == 1) {
+        grid[y][x] =2;
         return true;
     }
+    totalSquares -= 1;
     return false;
 }
 
 void MinesModel::flipSquare(int x, int y) {
-    multiplier += .1;
+    multiplier += adder;
     payOut *= multiplier;
     grid[x][y] = 1;
 }
@@ -72,9 +110,10 @@ void MinesModel::reset() {
             bombGrid[i][k] = 0;
         }
     }
+    totalMines = 0;
     multiplier = 1.0;
     payOut = 0;
-    generateMineLocations();
+   // generateMineLocations();
 }
 
 void MinesModel::initPayout(int money) {
@@ -95,6 +134,19 @@ void MinesModel::executeWin(int first, int second) {
 
 int MinesModel::getPayOut(){
     return payOut;
+}
+void MinesModel::printGridWithBombs() {
+    std::cout << "Grid with Bomb Locations:" << std::endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (bombGrid[i][j] == 1) {
+                std::cout << "B ";
+            } else {
+                std::cout << "- ";
+            }
+        }
+        std::cout << std::endl;
+    }
 }
 
 MinesModel::~MinesModel() {}

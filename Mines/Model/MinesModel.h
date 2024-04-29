@@ -7,13 +7,14 @@
 
 class MinesModel{
 private:
-    int totalMines;
-    int totalSquares;
-    int payOut;
     double multiplier;
+    double adder;
 
 public:
-    MinesModel(int mines);
+    int payOut;
+    int totalMines;
+    int totalSquares;
+    MinesModel();
     ~MinesModel();
     int getPayOut();
     void initPayout(int);
@@ -29,6 +30,8 @@ public:
     std::string returnGridString();
     int bombGrid[5][5];
     int grid[5][5];
+    void setTotalMines(int mines);
+    void printGridWithBombs();
 };
 
 #endif

@@ -23,141 +23,141 @@ import ReturnButton from './ReturnButton';
 
 const prizes = [
     {
-      image: 'images/number-1.png',
+        image: 'images/number-1.png',
     },
     {
-      image: 'images/number-2.png',
+        image: 'images/number-2.png',
     },
     {
-      image: 'images/number-3.png',
+        image: 'images/number-3.png',
     },
     {
-      image: 'images/number-4.png',
+        image: 'images/number-4.png',
     },
     {
-      image: 'images/number-5.png',
+        image: 'images/number-5.png',
     },
     {
-      image: 'images/number-6.png',
+        image: 'images/number-6.png',
     },
     {
-      image: 'images/number-7.png',
+        image: 'images/number-7.png',
     },
     {
-      image: 'images/number-8.png',
+        image: 'images/number-8.png',
     },
     {
-      image: 'images/number-9.png',
+        image: 'images/number-9.png',
     },
     {
-      image: 'images/number-10.png',
+        image: 'images/number-10.png',
     },
     {
-      image: 'images/number-11.png',
+        image: 'images/number-11.png',
     },
     {
-      image: 'images/number-12.png',
+        image: 'images/number-12.png',
     },
     {
-      image: 'images/number-13.png',
+        image: 'images/number-13.png',
     },
     {
-      image: 'images/number-14.png',
+        image: 'images/number-14.png',
     },
     {
-      image: 'images/number-15.png',
+        image: 'images/number-15.png',
     },
     {
-      image: 'images/number-16.png',
+        image: 'images/number-16.png',
     },
     {
-      image: 'images/number-17.png',
+        image: 'images/number-17.png',
     },
     {
-      image: 'images/number-18.png',
+        image: 'images/number-18.png',
     },
     {
-      image: 'images/number-19.png',
+        image: 'images/number-19.png',
     },
     {
-      image: 'images/number-20.png',
+        image: 'images/number-20.png',
     },
     {
-      image: 'images/number-21.png',
+        image: 'images/number-21.png',
     },
     {
-      image: 'images/number-22.png',
+        image: 'images/number-22.png',
     },
     {
-      image: 'images/number-23.png',
+        image: 'images/number-23.png',
     },
     {
-      image: 'images/number-24.png',
+        image: 'images/number-24.png',
     },
     {
-      image: 'images/number-25.png',
+        image: 'images/number-25.png',
     },
     {
-      image: 'images/number-26.png',
+        image: 'images/number-26.png',
     },
     {
-      image: 'images/number-27.png',
+        image: 'images/number-27.png',
     },
     {
-      image: 'images/number-28.png',
+        image: 'images/number-28.png',
     },
     {
-      image: 'images/number-29.png',
+        image: 'images/number-29.png',
     },
     {
-      image: 'images/number-30.png',
+        image: 'images/number-30.png',
     },
     {
-      image: 'images/number-31.png',
+        image: 'images/number-31.png',
     },
     {
-      image: 'images/number-32.png',
+        image: 'images/number-32.png',
     },
     {
-      image: 'images/number-33.png',
+        image: 'images/number-33.png',
     },
     {
-      image: 'images/number-34.png',
+        image: 'images/number-34.png',
     },
     {
-      image: 'images/number-35.png',
+        image: 'images/number-35.png',
     },
     {
-      image: 'images/number-36.png',
+        image: 'images/number-36.png',
     },
     {
-      image: 'images/number-0.png',
+        image: 'images/number-0.png',
     },
     {
-      image: 'images/number-00.png',
+        image: 'images/number-00.png',
     },
-  ];
+];
 
-  const reproductionArray = (array = [], length = 0) => [
+const reproductionArray = (array = [], length = 0) => [
     ...Array(length)
-      .fill('_')
-      .map(() => array[Math.floor(Math.random() * array.length)]),
-  ];
+        .fill('_')
+        .map(() => array[Math.floor(Math.random() * array.length)]),
+];
 
-  const reproducedPrizeList = [
+const reproducedPrizeList = [
     ...prizes,
     ...reproductionArray(prizes, prizes.length * 3),
     ...prizes,
     ...reproductionArray(prizes, prizes.length),
-  ];
+];
 
-  const generateId = () =>
+const generateId = () =>
     `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
 
-  const prizeList = reproducedPrizeList.map((prize) => ({
+const prizeList = reproducedPrizeList.map((prize) => ({
     ...prize,
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
-  }));
+}));
 
 
 
@@ -166,22 +166,22 @@ class Roulette extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          start: false,
-          firstRow, firstBorder, secondRow, secondBorder, thirdRow, thirdBorder, fourthRow, fifthRow, columnLeft, columnRight,
-          stopInCenter: {
-            value: true,
-          },
-          arr: [],
-          chip: 10,
-          dest: "gameroom",
-          winPrizeIndex : 1,
+            start: false,
+            firstRow, firstBorder, secondRow, secondBorder, thirdRow, thirdBorder, fourthRow, fifthRow, columnLeft, columnRight,
+            stopInCenter: {
+                value: true,
+            },
+            arr: [],
+            chip: 10,
+            dest: "gameroom",
+            winPrizeIndex : 1,
             credits: 5000,
             tempCredits : 5000
         };
 
         this.socket = new WebSocket('ws://localhost:9001');
         this.socket.onopen = () => {
-            this.socket.send("hi");
+            this.socket.send("starting creds");
         }
 
         this.socket.onmessage = (event) => {
@@ -212,71 +212,71 @@ class Roulette extends React.Component {
     handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
         console.log("Spin was hit");
-       // socket.send(this.state.arr);
-      };
+        // socket.send(this.state.arr);
+    };
     arrayToString(arr) {
         return arr.join(", ");
     }
 
-      handlePrizeDefined = () => {
+    handlePrizeDefined = () => {
         console.log('Prize defined!');
         setTimeout(() => {
-          this.setState({start: false});
+            this.setState({start: false});
         }, 2000);
 
-      };
+    };
 
-      updateArr = (arr) => {
+    updateArr = (arr) => {
         this.setState({ arr })
-      }
+    }
 
-      updateRow = (row, val) => {
+    updateRow = (row, val) => {
         this.setState({ [row]: val })
-      }
+    }
 
-      onClickAmount = (value) => {
+    onClickAmount = (value) => {
         this.setState({ chip: value });
-      };
+    };
 
-      setWinIndex = (spinVal) => {
+    setWinIndex = (spinVal) => {
         this.setState({ winPrizeIndex : spinVal });
-      }
+    }
 
-      
 
-      resetGame = () => {
+
+    resetGame = () => {
         this.setState({
-          arr: [],
-          firstRow: firstRow.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          secondRow: secondRow.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          thirdRow: thirdRow.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          fourthRow: fourthRow.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          fifthRow: fifthRow.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          columnLeft: columnLeft.map(num => {
-            num.visible = false;
-            return num;
-          }),
-          columnRight: columnRight.map(num => {
-            num.visible = false;
-            return num;
-          }),
+            arr: [],
+            firstRow: firstRow.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            secondRow: secondRow.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            thirdRow: thirdRow.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            fourthRow: fourthRow.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            fifthRow: fifthRow.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            columnLeft: columnLeft.map(num => {
+                num.visible = false;
+                return num;
+            }),
+            columnRight: columnRight.map(num => {
+                num.visible = false;
+                return num;
+            }),
         });
-      }
+    }
 
     render() {
         const { start, winPrizeIndex } = this.state;
@@ -285,14 +285,14 @@ class Roulette extends React.Component {
         const prizeIndex = prizes.length * 4 + winPrizeIndex;
         return (
             <Container className="roulette-container">
-              <Row>
-                <ReturnButton dest={this.state.dest} />
-              </Row>
+                <Row>
+                    <ReturnButton dest={this.state.dest} />
+                </Row>
                 <Row className="justify-items-center pt-2">
                     <Container fluid className="table">
                         <Row>
                             <Col className="betting-choice">
-                            Your bets: {this.state.arr.join(", ")}
+                                Your bets: {this.state.arr.join(", ")}
                             </Col>
                             <Col className="betting-table">
                                 <RouletteTable
@@ -317,54 +317,54 @@ class Roulette extends React.Component {
 
                             </Col>
                             <Col>
-                             <div>
-                                 <label className="credit">Credit: </label>
-                                 <input type="text" className="credit-amount" value={displayCredits} readOnly />
-                             </div>
+                                <div>
+                                    <label className="credit">Credit: </label>
+                                    <input type="text" className="credit-amount" value={displayCredits} readOnly />
+                                </div>
                             </Col>
 
                         </Row>
                         <Row className="chip-row">
-                          <div className="chip d-inline-block red" id={this.props.id} onClick={() => this.onClickAmount(10)}>10</div>
-                          <div className="chip d-inline-block blue" id={this.props.id} onClick={() => this.onClickAmount(25)}>25</div>
-                          <div className="chip d-inline-block green" id={this.props.id} onClick={() => this.onClickAmount(50)}>50</div>
-                          <div className="chip d-inline-block purple" id={this.props.id} onClick={() => this.onClickAmount(100)}>100</div>
-                          <div className="chip d-inline-block yellow" id={this.props.id} onClick={() => this.onClickAmount(500)}>500</div>
+                            <div className="chip d-inline-block red" id={this.props.id} onClick={() => this.onClickAmount(10)}>10</div>
+                            <div className="chip d-inline-block blue" id={this.props.id} onClick={() => this.onClickAmount(25)}>25</div>
+                            <div className="chip d-inline-block green" id={this.props.id} onClick={() => this.onClickAmount(50)}>50</div>
+                            <div className="chip d-inline-block purple" id={this.props.id} onClick={() => this.onClickAmount(100)}>100</div>
+                            <div className="chip d-inline-block yellow" id={this.props.id} onClick={() => this.onClickAmount(500)}>500</div>
                         </Row>
                         <Row className="horizontal-slider">
-                        <RoulettePro
-                            prizes={prizeList}
-                            prizeIndex={prizeIndex}
-                            start={start}
-                            onPrizeDefined={this.handlePrizeDefined}
-                            spinningTime={7}
-                            options={{ stopInCenter: true, }}
-                        />
-                        <div className="gray-block">
-                        <div className="button-wrapper">
-                            <button
-                                disabled={spinning} // Disable the button when spinning is true
-                                onClick={(event) => {
-                                    this.setState({ spinning: true }, () => {
-                                        let bet = this.arrayToString(this.state.arr);
-                                        this.socket.send(bet);
-                                        this.resetGame();
-                                        this.handleStart(event);
-                                        setTimeout(() => {
-                                            this.setState({ spinning: false });
-                                            window.location.reload(true);
-                                        }, 8000);
-                                    });
-                                }}
-                                className="spin-button"
-                                type="button"
-                                style={{ opacity: spinning ? 0.5 : 1 }} // Apply inline styles based on spinning state
-                            >
-                                Spin
-                            </button>
-                        </div>
-                        </div>
-                      </Row>
+                            <RoulettePro
+                                prizes={prizeList}
+                                prizeIndex={prizeIndex}
+                                start={start}
+                                onPrizeDefined={this.handlePrizeDefined}
+                                spinningTime={7}
+                                options={{ stopInCenter: true, }}
+                            />
+                            <div className="gray-block">
+                                <div className="button-wrapper">
+                                    <button
+                                        disabled={spinning} // Disable the button when spinning is true
+                                        onClick={(event) => {
+                                            this.setState({ spinning: true }, () => {
+                                                let bet = this.arrayToString(this.state.arr);
+                                                this.socket.send(bet);
+                                                this.resetGame();
+                                                this.handleStart(event);
+                                                setTimeout(() => {
+                                                    this.setState({ spinning: false });
+                                                    window.location.reload(true);
+                                                }, 8000);
+                                            });
+                                        }}
+                                        className="spin-button"
+                                        type="button"
+                                        style={{ opacity: spinning ? 0.5 : 1 }} // Apply inline styles based on spinning state
+                                    >
+                                        Spin
+                                    </button>
+                                </div>
+                            </div>
+                        </Row>
                     </Container>
                 </Row>
 

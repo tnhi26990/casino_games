@@ -8,7 +8,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: untitled
+# Project: backend
 # Configurations: Debug
 # =============================================================================
 
@@ -38,114 +38,237 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target untitled
+# Object build statements for EXECUTABLE target mines_testing
 
 
 #############################################
-# Order-only phony target for untitled
+# Order-only phony target for mines_testing
 
-build cmake_object_order_depends_target_untitled: phony || CMakeFiles/untitled.dir
+build cmake_object_order_depends_target_mines_testing: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
 
-build CMakeFiles/untitled.dir/Casino.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Casino.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Casino.cpp.o.d
+build CMakeFiles/mines_testing.dir/Tests/MinesTests.cpp.o: CXX_COMPILER__mines_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Tests/MinesTests.cpp || cmake_object_order_depends_target_mines_testing
+  DEP_FILE = CMakeFiles/mines_testing.dir/Tests/MinesTests.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/mines_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/mines_testing.dir/Tests
 
-build CMakeFiles/untitled.dir/Player.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Player.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Player.cpp.o.d
+build CMakeFiles/mines_testing.dir/Mines/Model/MinesModel.cpp.o: CXX_COMPILER__mines_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/Model/MinesModel.cpp || cmake_object_order_depends_target_mines_testing
+  DEP_FILE = CMakeFiles/mines_testing.dir/Mines/Model/MinesModel.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/mines_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/mines_testing.dir/Mines/Model
 
-build CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/RouletteWheel.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o.d
+build CMakeFiles/mines_testing.dir/Mines/View/MinesView.cpp.o: CXX_COMPILER__mines_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/View/MinesView.cpp || cmake_object_order_depends_target_mines_testing
+  DEP_FILE = CMakeFiles/mines_testing.dir/Mines/View/MinesView.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Roulette/Model
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/mines_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/mines_testing.dir/Mines/View
 
-build CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/BettingTable.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o.d
+build CMakeFiles/mines_testing.dir/Player.cpp.o: CXX_COMPILER__mines_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Player.cpp || cmake_object_order_depends_target_mines_testing
+  DEP_FILE = CMakeFiles/mines_testing.dir/Player.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Roulette/Model
-
-build CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/View/RouletteView.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Roulette/View
-
-build CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Controller/RouletteController.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Roulette/Controller
-
-build CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/RouletteDriver.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Roulette
-
-build CMakeFiles/untitled.dir/Mines/Model/MinesModel.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/Model/MinesModel.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Mines/Model/MinesModel.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines/Model
-
-build CMakeFiles/untitled.dir/Mines/Controller/MinesController.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/Controller/MinesController.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Mines/Controller/MinesController.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines/Controller
-
-build CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/View/MinesView.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines/View
-
-build CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/MinesDriver.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Mines
-
-build CMakeFiles/untitled.dir/MainDriver.cpp.o: CXX_COMPILER__untitled_Debug /Users/adem/csci_3300/CSCI3300_Group6/MainDriver.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/MainDriver.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
-  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/src -I/Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/src
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/mines_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/mines_testing.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target untitled
+# Link build statements for EXECUTABLE target mines_testing
 
 
 #############################################
-# Link the executable untitled
+# Link the executable mines_testing
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/Casino.cpp.o CMakeFiles/untitled.dir/Player.cpp.o CMakeFiles/untitled.dir/Roulette/Model/RouletteWheel.cpp.o CMakeFiles/untitled.dir/Roulette/Model/BettingTable.cpp.o CMakeFiles/untitled.dir/Roulette/View/RouletteView.cpp.o CMakeFiles/untitled.dir/Roulette/Controller/RouletteController.cpp.o CMakeFiles/untitled.dir/Roulette/RouletteDriver.cpp.o CMakeFiles/untitled.dir/Mines/Model/MinesModel.cpp.o CMakeFiles/untitled.dir/Mines/Controller/MinesController.cpp.o CMakeFiles/untitled.dir/Mines/View/MinesView.cpp.o CMakeFiles/untitled.dir/Mines/MinesDriver.cpp.o CMakeFiles/untitled.dir/MainDriver.cpp.o | /Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/uSockets.a /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libz.tbd
+build mines_testing: CXX_EXECUTABLE_LINKER__mines_testing_Debug CMakeFiles/mines_testing.dir/Tests/MinesTests.cpp.o CMakeFiles/mines_testing.dir/Mines/Model/MinesModel.cpp.o CMakeFiles/mines_testing.dir/Mines/View/MinesView.cpp.o CMakeFiles/mines_testing.dir/Player.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
-  LINK_LIBRARIES = /Users/adem/csci_3300/CSCI3300_Group6/uWebSockets/uSockets/uSockets.a  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libz.tbd
-  OBJECT_DIR = CMakeFiles/untitled.dir
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  lib/libgtest.a
+  OBJECT_DIR = CMakeFiles/mines_testing.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = untitled
-  TARGET_PDB = untitled.dbg
+  TARGET_FILE = mines_testing
+  TARGET_PDB = mines_testing.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target roulette_testing
+
+
+#############################################
+# Order-only phony target for roulette_testing
+
+build cmake_object_order_depends_target_roulette_testing: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build CMakeFiles/roulette_testing.dir/Tests/RouletteTests.cpp.o: CXX_COMPILER__roulette_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Tests/RouletteTests.cpp || cmake_object_order_depends_target_roulette_testing
+  DEP_FILE = CMakeFiles/roulette_testing.dir/Tests/RouletteTests.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/roulette_testing.dir/Tests
+
+build CMakeFiles/roulette_testing.dir/Roulette/Model/BettingTable.cpp.o: CXX_COMPILER__roulette_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/BettingTable.cpp || cmake_object_order_depends_target_roulette_testing
+  DEP_FILE = CMakeFiles/roulette_testing.dir/Roulette/Model/BettingTable.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/roulette_testing.dir/Roulette/Model
+
+build CMakeFiles/roulette_testing.dir/Roulette/Model/RouletteWheel.cpp.o: CXX_COMPILER__roulette_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/RouletteWheel.cpp || cmake_object_order_depends_target_roulette_testing
+  DEP_FILE = CMakeFiles/roulette_testing.dir/Roulette/Model/RouletteWheel.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/roulette_testing.dir/Roulette/Model
+
+build CMakeFiles/roulette_testing.dir/Roulette/View/RouletteView.cpp.o: CXX_COMPILER__roulette_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/View/RouletteView.cpp || cmake_object_order_depends_target_roulette_testing
+  DEP_FILE = CMakeFiles/roulette_testing.dir/Roulette/View/RouletteView.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/roulette_testing.dir/Roulette/View
+
+build CMakeFiles/roulette_testing.dir/Player.cpp.o: CXX_COMPILER__roulette_testing_Debug /Users/adem/csci_3300/CSCI3300_Group6/Player.cpp || cmake_object_order_depends_target_roulette_testing
+  DEP_FILE = CMakeFiles/roulette_testing.dir/Player.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  OBJECT_FILE_DIR = CMakeFiles/roulette_testing.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target roulette_testing
+
+
+#############################################
+# Link the executable roulette_testing
+
+build roulette_testing: CXX_EXECUTABLE_LINKER__roulette_testing_Debug CMakeFiles/roulette_testing.dir/Tests/RouletteTests.cpp.o CMakeFiles/roulette_testing.dir/Roulette/Model/BettingTable.cpp.o CMakeFiles/roulette_testing.dir/Roulette/Model/RouletteWheel.cpp.o CMakeFiles/roulette_testing.dir/Roulette/View/RouletteView.cpp.o CMakeFiles/roulette_testing.dir/Player.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  lib/libgtest.a
+  OBJECT_DIR = CMakeFiles/roulette_testing.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = roulette_testing
+  TARGET_PDB = roulette_testing.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target backend
+
+
+#############################################
+# Order-only phony target for backend
+
+build cmake_object_order_depends_target_backend: phony || CMakeFiles/backend.dir
+
+build CMakeFiles/backend.dir/Player.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Player.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Player.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir
+
+build CMakeFiles/backend.dir/Roulette/Model/RouletteWheel.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/RouletteWheel.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Roulette/Model/RouletteWheel.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Roulette/Model
+
+build CMakeFiles/backend.dir/Roulette/Model/BettingTable.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/Model/BettingTable.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Roulette/Model/BettingTable.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Roulette/Model
+
+build CMakeFiles/backend.dir/Roulette/View/RouletteView.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/View/RouletteView.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Roulette/View/RouletteView.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Roulette/View
+
+build CMakeFiles/backend.dir/Roulette/RouletteDriver.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Roulette/RouletteDriver.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Roulette/RouletteDriver.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Roulette
+
+build CMakeFiles/backend.dir/Mines/Model/MinesModel.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/Model/MinesModel.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Mines/Model/MinesModel.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Mines/Model
+
+build CMakeFiles/backend.dir/Mines/View/MinesView.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/View/MinesView.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Mines/View/MinesView.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Mines/View
+
+build CMakeFiles/backend.dir/Mines/MinesDriver.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/Mines/MinesDriver.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/Mines/MinesDriver.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir/Mines
+
+build CMakeFiles/backend.dir/MainDriver.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/MainDriver.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/MainDriver.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir
+
+build CMakeFiles/backend.dir/CoinGame.cpp.o: CXX_COMPILER__backend_Debug /Users/adem/csci_3300/CSCI3300_Group6/CoinGame.cpp || cmake_object_order_depends_target_backend
+  DEFINES = -DLIBUS_NO_SSL -DUWS_HTTPRESPONSE_NO_WRITEMARK -DUWS_WITH_PROXY
+  DEP_FILE = CMakeFiles/backend.dir/CoinGame.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/src -isystem /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/_deps/uwsrepo-src/uSockets/src
+  OBJECT_DIR = CMakeFiles/backend.dir
+  OBJECT_FILE_DIR = CMakeFiles/backend.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target backend
+
+
+#############################################
+# Link the executable backend
+
+build backend: CXX_EXECUTABLE_LINKER__backend_Debug CMakeFiles/backend.dir/Player.cpp.o CMakeFiles/backend.dir/Roulette/Model/RouletteWheel.cpp.o CMakeFiles/backend.dir/Roulette/Model/BettingTable.cpp.o CMakeFiles/backend.dir/Roulette/View/RouletteView.cpp.o CMakeFiles/backend.dir/Roulette/RouletteDriver.cpp.o CMakeFiles/backend.dir/Mines/Model/MinesModel.cpp.o CMakeFiles/backend.dir/Mines/View/MinesView.cpp.o CMakeFiles/backend.dir/Mines/MinesDriver.cpp.o CMakeFiles/backend.dir/MainDriver.cpp.o CMakeFiles/backend.dir/CoinGame.cpp.o | _deps/uwsrepo-src/uSockets/uSockets.a /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libz.tbd
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LINK_LIBRARIES = _deps/uwsrepo-src/uSockets/uSockets.a  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libz.tbd  -lz
+  OBJECT_DIR = CMakeFiles/backend.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = backend
+  TARGET_PDB = backend.dbg
+
+
+#############################################
+# Utility command for test
+
+build CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test: phony CMakeFiles/test.util
 
 
 #############################################
@@ -170,8 +293,444 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adem/csci_3300/CSCI3300_Group6/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for test
+
+build external/googletest/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build external/googletest/test: phony external/googletest/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/edit_cache: phony external/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/adem/csci_3300/CSCI3300_Group6 -B/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/rebuild_cache: phony external/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/install: phony external/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/install/local: phony external/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/install/strip: phony external/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_Debug /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1   -std=c++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug external/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_Debug /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1   -std=c++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug external/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for test
+
+build external/googletest/googlemock/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/test: phony external/googletest/googlemock/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/googlemock/edit_cache: phony external/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/adem/csci_3300/CSCI3300_Group6 -B/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/rebuild_cache: phony external/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install: phony external/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install/local: phony external/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/googlemock/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/googlemock/install/strip: phony external/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || external/googletest/googletest/CMakeFiles/gtest.dir
+
+build external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_Debug /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1   -std=c++17
+  INCLUDES = -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -I/Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = external/googletest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug external/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_Debug /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1   -std=c++17
+  INCLUDES = -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/include -isystem /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug external/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = external/googletest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for test
+
+build external/googletest/googletest/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/test: phony external/googletest/googletest/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build external/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external/googletest/googletest/edit_cache: phony external/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/adem/csci_3300/CSCI3300_Group6 -B/Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/rebuild_cache: phony external/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install: phony external/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install/local: phony external/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build external/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND external/googletest/googletest/all
+  COMMAND = cd /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build external/googletest/googletest/install/strip: phony external/googletest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
 
 # =============================================================================
 # Folder targets.
@@ -181,7 +740,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug
 
-build all: phony untitled
+build all: phony mines_testing roulette_testing backend external/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest
+
+build external/googletest/all: phony external/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googlemock
+
+build external/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a external/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adem/csci_3300/CSCI3300_Group6/cmake-build-debug/external/googletest/googletest
+
+build external/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -190,14 +770,14 @@ build all: phony untitled
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/SelectLibraryConfigurations.cmake /Users/adem/csci_3300/CSCI3300_Group6/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FetchContent.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FetchContent/CMakeLists.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindGit.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/SelectLibraryConfigurations.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/WriteBasicConfigVersionFile.cmake /Users/adem/csci_3300/CSCI3300_Group6/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/cmake/gmock.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/cmake/gmock_main.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/Config.cmake.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/gtest.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/gtest_main.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/SelectLibraryConfigurations.cmake /Users/adem/csci_3300/CSCI3300_Group6/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FetchContent.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FetchContent/CMakeLists.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindGit.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindZLIB.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/SelectLibraryConfigurations.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/WriteBasicConfigVersionFile.cmake /Users/adem/csci_3300/CSCI3300_Group6/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/cmake/gmock.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googlemock/cmake/gmock_main.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/CMakeLists.txt /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/Config.cmake.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/gtest.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/gtest_main.pc.in /Users/adem/csci_3300/CSCI3300_Group6/external/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
 
 
 #############################################

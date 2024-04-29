@@ -48,15 +48,13 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 # Define your test executable
 add_executable(mines_testing 
     Tests/MinesTests.cpp
-    Mines/Controller/MinesController.cpp 
-    Mines/Model/MinesModel.cpp 
+    Mines/Model/MinesModel.cpp
     Mines/View/MinesView.cpp 
     Player.cpp # Include Player.cpp as it's referenced in MinesController
 )
 
 add_executable(roulette_testing
     Tests/RouletteTests.cpp
-    Roulette/Controller/RouletteController.cpp
     Roulette/Model/BettingTable.cpp
     Roulette/Model/RouletteWheel.cpp
     Roulette/View/RouletteView.cpp
@@ -71,15 +69,12 @@ target_link_libraries(roulette_testing gtest gtest_main)
 
 # Add your source files
 set(SOURCE_FILES
-        Casino.cpp
         Player.cpp
         Roulette/Model/RouletteWheel.cpp
         Roulette/Model/BettingTable.cpp
         Roulette/View/RouletteView.cpp
-        Roulette/Controller/RouletteController.cpp
         Roulette/RouletteDriver.cpp
         Mines/Model/MinesModel.cpp
-        Mines/Controller/MinesController.cpp
         Mines/View/MinesView.cpp
         Mines/MinesDriver.cpp
         MainDriver.cpp

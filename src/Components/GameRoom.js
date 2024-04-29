@@ -38,22 +38,21 @@ function GameRoom() {
     }, []);
 
     function coinFlipClick() {
-        setTimeout(() => {
+
         ws.current.send("Change coin");
-    }, 5000);
+
         navigate("/coinflip");
     }
     function minesClick() {
-        setTimeout(() => {
+
         ws.current.send("Change mines");
-    }, 5000);
+
         navigate("/mines");
     }
 
     function rouletteClick () {
-        setTimeout(() => {
+
         ws.current.send("Change roulette");
-    }, 5000);
         navigate("/roulette");
     }
 
