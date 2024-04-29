@@ -1,6 +1,5 @@
 #include "RouletteWheel.h"
 
-// Random number from 1-38 (inclusive) is generated
 int RouletteWheel::generateNumber() {
     std::random_device rouletteWheel;
     std::mt19937 gen(rouletteWheel());

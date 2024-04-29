@@ -10,7 +10,6 @@ void RouletteView::printMap(const std::unordered_map<int, std::list<std::pair<in
     }
 }
 
-// Outputs to the termial a roulette board that the player will reference to place bets
 void RouletteView::displayBettingTable() {
     for (int i = 0; i < 3; i++) {
         for (int k = 0; k < 17; k++) {
