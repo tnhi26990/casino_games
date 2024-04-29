@@ -21,20 +21,25 @@ class RouletteTable extends React.Component {
     //we need to check if user can afford bets here.
     numsSelectionHandler = (num, whichRow, index) => {
         let chipVal = this.props.chip;
+        // checking if the arr is empty, if it is, leave empty, if it is not, spread it
         let nums = this.props.arr.length === 0 ? [] : [...this.props.arr];
+        // saving in a variable the row from state with that name
         let row = [...this.state[whichRow]];
+        // if the number is not present in array, select it
         if (nums.indexOf(num) === -1 && chipVal <= this.props.credits) {
-            nums.push([num,chipVal]);
+            nums.push([num,chipVal]); //adding selected number to the array of bets
+            // map each of the rows and check if chip is visible, if it is not, add it
             let updatedRow = row.map(chip => {
                 if (chip.n === num) {
                     chip.visible = true;
                 }
                 return chip;
             });
-            this.setState({ [whichRow]: updatedRow });
+            this.setState({ [whichRow]: updatedRow }); // setting the new state with added chips to the rows
             this.props.socket.send("Button was clicked " + chipVal); //how do I send what chip value was present?
             // socket.send("Grid spot is " + index + ", " + whichRow);
         }
+        // passing back to Roulette.js the updated array
         this.props.updateArr(nums)
     };
 
