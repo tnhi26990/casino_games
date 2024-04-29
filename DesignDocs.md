@@ -4,9 +4,7 @@
 
 ```mermaid
 graph TD;
-graph TD;
-graph TD;
-    A[MainDriver.cpp <br/>Starts up the backend websocket where front end can send messages. MainDriver will parse these messages to deteremine what action needs to be taken.
+    A[MainDriver.cpp <br/>Starts up the backend websocket where front end can send messages. MainDriver will parse these messages to deteremine what action needs to be taken.];
     B[MinesModel.cpp <br/>Grid will keep track of safe squares / mines<br>Will keep track of guesses player has already made<br>Notifies all objects registered to the grid upon a change<br>Uses: C++];
     C[CoinGame.cpp <br/>Will update the mines grid<br>Creates the mines grid GUI<br>Uses: C++];
     D[BettingTable.js <br/>Will display the Roulette Table, player balance, other key vars<br>Will register with the Roulette Table model and update on a change<br>Uses: React.js?];
@@ -15,6 +13,7 @@ graph TD;
     A --> |Creates| B;
     A --> |Creates| C;
     A --> |Creates| D;
+    A --> |Creates| E;
  
 
 ```
