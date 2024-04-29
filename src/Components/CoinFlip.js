@@ -29,7 +29,7 @@ class CoinFlip extends Component {
             tempCreds: "",
             dest: "gameroom",
             result: 1,
-            buttonDisabled: false, // State to manage button disablement
+            buttonDisabled: false,
         };
         this.socket = new WebSocket('ws://localhost:9001');
 
@@ -79,7 +79,7 @@ class CoinFlip extends Component {
 
         this.socket.send(choice + " " + amount);
 
-        this.setState({ animation: true, buttonDisabled: true }); // Disable button on flip
+        this.setState({ animation: true, buttonDisabled: true });
         setTimeout(() => {
             if (this.state.result === 0) {
                 this.setState({ flip: 'heads' });
@@ -165,7 +165,8 @@ class CoinFlip extends Component {
                         <label>Bet Amount:</label>
                         <input type="text" className="amount" value={amount} placeholder="0.00" onChange={this.handleInputChange} />
                         <Button variant="contained" startIcon={<FlipCameraAndroidIcon />} color="success" size="large"
-                                onClick={this.onClickFlip} disabled={buttonDisabled} style={{ opacity: buttonDisabled ? 0.5 : 1 }}>
+                                onClick={this.onClickFlip} disabled={buttonDisabled || !amount || parseFloat(amount) <= 0}
+                                style={{ opacity: buttonDisabled || !amount || parseFloat(amount) <= 0 ? 0.5 : 1 }}>
                             Bet
                         </Button>
                     </Stack>
