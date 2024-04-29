@@ -18,15 +18,32 @@ Node.js and npm installed: Make sure you have both installed on your system (htt
 
 To run the code, please follow the below instructions:
 
-a. run this in the base directory <code>git submodule update --init --recursive </code>
-
-
 1. Open terminal and clone the repository
 
      <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
 
 2. Navigate to the cloned repository
-3. Run the following commands:
+3. a. run this in the base directory <code>git submodule update --init --recursive </code>
+<br>
+b. Also, follow these instructions
+<br>
+Open two terminals
+<br>
+In the first one:
+<br>
+<code>mkdir build</code>
+<br>
+<code>cd build</code>
+<br>
+<code>cmake ..</code>
+<br>
+<code>make</code>
+<br>
+<code>./backend</code>
+<br>
+In the second terminal:
+<br>
+4. Run the following commands:
 
 ### `npm install`
 
