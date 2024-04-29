@@ -352,8 +352,9 @@ class Roulette extends React.Component {
                             <div className="gray-block">
                                 <div className="button-wrapper">
                                     <button
-                                        disabled={spinning} // Disable the button when spinning is true
+                                        disabled={this.state.arr.length === 0 || spinning} // Disable the button when arr is empty or spinning is true
                                         onClick={(event) => {
+                                            if (this.state.arr.length === 0) return; // Prevent spinning if arr is empty
                                             this.setState({ spinning: true }, () => {
                                                 let bet = this.arrayToString(this.state.arr);
                                                 this.socket.send(bet);
@@ -371,6 +372,7 @@ class Roulette extends React.Component {
                                     >
                                         Spin
                                     </button>
+
                                 </div>
                             </div>
                         </Row>
