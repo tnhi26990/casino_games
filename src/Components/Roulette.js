@@ -138,12 +138,14 @@ const prizes = [
     },
 ];
 
+//  returns a new array filled with randomly selected elements from the input array
 const reproductionArray = (array = [], length = 0) => [
     ...Array(length)
         .fill('_')
         .map(() => array[Math.floor(Math.random() * array.length)]),
 ];
 
+// replicates elements from the prizes array multiple times
 const reproducedPrizeList = [
     ...prizes,
     ...reproductionArray(prizes, prizes.length * 3),
@@ -151,9 +153,12 @@ const reproducedPrizeList = [
     ...reproductionArray(prizes, prizes.length),
 ];
 
+// generates a unique ID
 const generateId = () =>
     `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
 
+// mapping over the reproducedPrizeList array. For each prize in the reproducedPrizeList, a new object is created 
+// and gets a new id property
 const prizeList = reproducedPrizeList.map((prize) => ({
     ...prize,
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
@@ -171,10 +176,10 @@ class Roulette extends React.Component {
             stopInCenter: {
                 value: true,
             },
-            arr: [],
-            chip: 10,
-            dest: "gameroom",
-            winPrizeIndex : 1,
+            arr: [], // array of bets
+            chip: 10, // chip value
+            dest: "gameroom", // target page when the player clicks on Return
+            winPrizeIndex : 1,// number index on the spinner
             credits: 5000,
             tempCredits : 5000
         };
@@ -208,16 +213,19 @@ class Roulette extends React.Component {
         // Close the WebSocket connection when the component is unmounted
         this.socket.close();
     }
-
+    
+    // function to change the value of start to true
     handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
         console.log("Spin was hit");
         // socket.send(this.state.arr);
     };
+
     arrayToString(arr) {
         return arr.join(", ");
     }
-
+ 
+    // function to change the value of start to false after the spinner has stopped
     handlePrizeDefined = () => {
         console.log('Prize defined!');
         setTimeout(() => {
@@ -226,14 +234,17 @@ class Roulette extends React.Component {
 
     };
 
+    // function to update the array
     updateArr = (arr) => {
         this.setState({ arr })
     }
-
+    
+    // function to update the row
     updateRow = (row, val) => {
         this.setState({ [row]: val })
     }
 
+    // function to update the chip value
     onClickAmount = (value) => {
         this.setState({ chip: value });
     };
@@ -241,8 +252,6 @@ class Roulette extends React.Component {
     setWinIndex = (spinVal) => {
         this.setState({ winPrizeIndex : spinVal });
     }
-
-
 
     resetGame = () => {
         this.setState({

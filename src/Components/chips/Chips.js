@@ -2,10 +2,12 @@ import React from 'react';
 import './Chips.css';
 import { useEffect, useState } from 'react';
 
-
+// renders different chips based on props
 function Chip(props) {
   const [chipElement, setChipElement] = useState(null);
-
+  
+  // uses the useEffect hook to react to changes in props.active, props.chip, and props.id. 
+  // When these props change, it updates the chip accordingly.
   useEffect(() => {
     if (props.active && props.id && (!chipElement || !props.chip)) {
       switch (props.chip) {
