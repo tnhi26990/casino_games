@@ -73,10 +73,8 @@ set(SOURCE_FILES
         Roulette/Model/RouletteWheel.cpp
         Roulette/Model/BettingTable.cpp
         Roulette/View/RouletteView.cpp
-        Roulette/RouletteDriver.cpp
         Mines/Model/MinesModel.cpp
         Mines/View/MinesView.cpp
-        Mines/MinesDriver.cpp
         MainDriver.cpp
         CoinGame.cpp)
 
