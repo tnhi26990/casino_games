@@ -3,7 +3,6 @@
 
 #include <utility>
 #include <string>
-#include "../View/MinesView.h"
 
 class MinesModel{
 private:
@@ -16,8 +15,6 @@ public:
     int totalSquares;
     MinesModel();
     ~MinesModel();
-    int getPayOut();
-    void initPayout(int);
     void executeWin(int, int);
     void executeLoss();
     void generateMineLocations();

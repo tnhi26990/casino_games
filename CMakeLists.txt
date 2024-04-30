@@ -49,7 +49,6 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 add_executable(mines_testing 
     Tests/MinesTests.cpp
     Mines/Model/MinesModel.cpp
-    Mines/View/MinesView.cpp 
     Player.cpp # Include Player.cpp as it's referenced in MinesController
 )
 
@@ -82,7 +81,6 @@ set(SOURCE_FILES
         Roulette/Model/BettingTable.cpp
         Roulette/View/RouletteView.cpp
         Mines/Model/MinesModel.cpp
-        Mines/View/MinesView.cpp
         MainDriver.cpp
         CoinGame.cpp)
 
