@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Player.h"
+#include "Player/Player.h"
 #include <string>
 #include "App.h"
-#include "CoinGame.h"
+#include "CoinFlip/CoinGame.h"
 #include "Mines/Model/MinesModel.h"
 #include <typeinfo>
 #include <sstream>

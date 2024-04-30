@@ -49,7 +49,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 add_executable(mines_testing 
     Tests/MinesTests.cpp
     Mines/Model/MinesModel.cpp
-    Player.cpp # Include Player.cpp as it's referenced in MinesController
+        Player/Player.cpp # Include Player.cpp as it's referenced in MinesController
 )
 
 add_executable(roulette_testing
@@ -57,7 +57,7 @@ add_executable(roulette_testing
     Roulette/Model/BettingTable.cpp
     Roulette/Model/RouletteWheel.cpp
     Roulette/View/RouletteView.cpp
-    Player.cpp
+        Player/Player.cpp
 )
 
 add_executable(roulette_frontend_testing
@@ -65,7 +65,7 @@ add_executable(roulette_frontend_testing
     Roulette/Model/BettingTable.cpp
     Roulette/Model/RouletteWheel.cpp
     Roulette/View/RouletteView.cpp
-    Player.cpp
+        Player/Player.cpp
 )
 # Link Google Test libraries
 target_link_libraries(mines_testing gtest gtest_main)
@@ -75,13 +75,13 @@ target_link_libraries(roulette_frontend_testing gtest gtest_main)
 
 # Add your source files
 set(SOURCE_FILES
-        Player.cpp
+        Player/Player.cpp
         Roulette/Model/RouletteWheel.cpp
         Roulette/Model/BettingTable.cpp
         Roulette/View/RouletteView.cpp
         Mines/Model/MinesModel.cpp
         MainDriver.cpp
-        CoinGame.cpp)
+        CoinFlip/CoinGame.cpp)
 
 # Add the executable
 add_executable(backend ${SOURCE_FILES} MainDriver.cpp)
