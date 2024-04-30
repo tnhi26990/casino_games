@@ -7,7 +7,7 @@ void BettingTable::addPlayerBet(int rowNum, int colNum, int betAmount) {
     playerBets.push_back(std::make_pair(std::make_pair(rowNum, colNum), betAmount));
 }
 
-// if the player types in spin start the round else, subtract one to account for indexing
+// If the player types in spin start the round else, subtract one to account for indexing
 int BettingTable::handleInput(const std::string& input) {
     if (toLowerCase(input) == "spin") {
         return -1;
@@ -23,10 +23,8 @@ std::string BettingTable::toLowerCase(const std::string &str) {
     return result;
 }
 
-/*
-Iterates through 1-38, on each number assign all of the attributes of that number based off a list of mehtods
-These methods give a grid space that corresponds to the betting table for an easy lookup
-*/
+//Iterates through 1-38, on each number assign all of the attributes of that number based off a list of mehtods
+//These methods give a grid space that corresponds to the betting table for an easy lookup
 void BettingTable::assignMapValues(){
     for (int i = 1; i <= 38; i++) {
         if (i == 37) {
@@ -122,11 +120,9 @@ int BettingTable::checkCol(int num) {
     return (((num - 1) / 3) % 12);
 }
 
-/*
-the wheel generates a number
-using the get values method, all of the attibutes of the spin are gathered
-The users bets are matched with each attribute and if they are the same they win
-*/
+//The wheel generates a number
+//Using the get values method, all of the attibutes of the spin are gathered
+//The users bets are matched with each attribute and if they are the same they win
 int BettingTable::checkResults() {
     int spinResult = wheel.generateNumber();
     std::cout << "Spin was: " << spinResult << std::endl;
@@ -160,14 +156,10 @@ std::list<std::pair<int, int>> BettingTable::getValues(int key) {
 // Start of the frontend only methods//
 ///////////////////////////////////////
 
-/*
-The bet string is recivied it is split up based of the comma
-The spin number is recived and all of the attriubutes of the spin are gathered
-
-Each player bet is check with the spin attribute, if they are the same the player is payed out
-
-The total payout of all of the wins are retured to the backup so the player credits can be updated
-*/
+//The bet string is recivied it is split up based of the comma
+//The spin number is recived and all of the attriubutes of the spin are gathered
+//Each player bet is check with the spin attribute, if they are the same the player is payed out
+//The total payout of all of the wins are retured to the backup so the player credits can be updated
 int BettingTable::executeRound(std::string betString, int spinRes) {
     int payoutValue = 0;
     std::vector<std::string> bettingParts = split(betString, ",");
@@ -186,7 +178,7 @@ int BettingTable::executeRound(std::string betString, int spinRes) {
     return payoutValue;
 }
 
-//matches the bet string with a value that corresponds with a payout multiplier
+//Matches the bet string with a value that corresponds with a payout multiplier
 int BettingTable::frontendPayout(std::string betSpot, int betAmount) {
     int payoutSlot = NULL;
 
@@ -216,11 +208,9 @@ std::list<std::string> BettingTable::getFrontendValues(int key) {
     return values;
 }
 
-/*
-Iterates through 1-38, on each number assign all of the attributes of that number based off a list of mehtods
-These methods give a string that corresponds to an attribute string and adds it to the map
-Map is used for fast look up
-*/
+//Iterates through 1-38, on each number assign all of the attributes of that number based off a list of mehtods
+//These methods give a string that corresponds to an attribute string and adds it to the map
+//Map is used for fast look up
 void BettingTable::reactAssignMapValues() {
     for (int i = 1; i <= 38; i++) {
 

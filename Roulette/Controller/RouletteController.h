@@ -28,7 +28,6 @@ public:
     bool placeBets();
     static bool playAnotherRound(std::string input);
     void testPlayerCon();
-
 };
 
 #endif

@@ -72,7 +72,6 @@ public:
         bettingGrid[2][16] = "X";
     }
 
-
     void printMap(const std::unordered_map<int, std::list<std::pair<int, int> > >& lookupTable);
     void displayBettingTable();
 };

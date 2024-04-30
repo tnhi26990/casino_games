@@ -15,10 +15,8 @@ bool RouletteController::placeBets() {
 
     while(activeRound) {
 
-        /*
-        Displays all of the betting option the player has
-        Shows the amount of credtis the player has and asks them to make a bet
-        */ 
+        // Displays all of the betting option the player has
+        // Shows the amount of credits the player has and asks them to make a bet
         tableView.displayBettingTable();
         player -> printCredits();
         std::cout << "Please select the row then column you want to bet on." << std::endl;
