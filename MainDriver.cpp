@@ -67,16 +67,16 @@ int main() {
                     int value = std::stoi(std::string(message.substr(pos + 1)));  //bet amount
                     cout<<type << " " << value <<endl;
 
-                    //setting user prediction
+                    //Setting user prediction
                     bool prediciton;
                     if (type == "T"){ prediciton = true;}
                     else{ prediciton = false;}
 
-                    bool outcome = coinGame->executeRound(prediciton); //flip coin and check winner
-                    //send the code that matches with either h or t
+                    bool outcome = coinGame->executeRound(prediciton); //Flip coin and check winner
+                    //Send the code that matches with either h or t
                     if (outcome == true){
                         if (prediciton == true){
-                            ws->send("1", uWS::OpCode::TEXT); //they chose tails, won so we send back tails
+                            ws->send("1", uWS::OpCode::TEXT); //They chose tails, won so we send back tails
                         }
                         else{
                             ws->send("0", uWS::OpCode::TEXT);
@@ -84,7 +84,7 @@ int main() {
                         player->updateCredits(value);
                     }
                     else{
-                        if (prediciton == true){ //they chose heads, lost so we send back tails
+                        if (prediciton == true){ //They chose heads, lost so we send back tails
                             ws->send("0", uWS::OpCode::TEXT);
                         }
                         else{
@@ -107,7 +107,7 @@ int main() {
                     ws->send(mes, uWS::OpCode::TEXT);
                 }
                 if (message == "request playing") {
-                    string payOutAmt = std::to_string(currentPayout); //gets currentPayout
+                    string payOutAmt = std::to_string(currentPayout); //Gets currentPayout
 
                     if (player->isPlaying()) {
                         ws->send("status: " + payOutAmt + " " + "T", uWS::OpCode::TEXT);
@@ -124,12 +124,12 @@ int main() {
                     minesGame->executeLoss();
                 }
 
-                if (player->isPlaying() && startsWith(message, "Clicked ")){ // cell was clicked
+                if (player->isPlaying() && startsWith(message, "Clicked ")){ // Cell was clicked
                     int row = std::stoi(std::string(message.substr(8)));
                     int col = std::stoi(std::string(message.substr(10)));
                     cout<<row << " " << col << endl;
 
-                    if ( !(minesGame->gridClicked(row,col)) ) { // ensuring the same cell isnt clicked
+                    if ( !(minesGame->gridClicked(row,col)) ) { // Ensuring the same cell isnt clicked
                         if (minesGame->checkForBomb(row,col)) {
                             std::string lossMessage = "Player Lost " + std::to_string(row) + "," + std::to_string(col);
                             cout << "Bomb hit at: " << row << ", " << col << endl;
@@ -139,7 +139,7 @@ int main() {
                             player->setBet(0);
                             player->setPlaying(false);
                             minesGame->executeLoss();
-                        } else { // did not hit a bomb
+                        } else { // Did not hit a bomb
                             string rowColStr = std::to_string(row) + "," + std::to_string(col);
                             minesGame->executeWin(row, col);
                             currentPayout = currentPayout * minesGame->returnMultiplier();
@@ -147,7 +147,7 @@ int main() {
                             std::string winMessage = "Player Wins " + std::to_string(currentPayout) + " " + rowColStr;
                             ws->send(winMessage, uWS::OpCode::TEXT);
                             
-                            if( minesGame->totalSquares == 0){ //if player got all cells
+                            if( minesGame->totalSquares == 0){ //If player got all cells
                                 player->updateCredits(currentPayout);
                                 minesGame->reset();
                                 player->setPlaying(false);
@@ -180,7 +180,7 @@ int main() {
                     cout<<"button clicked"<<endl;
                     std::string chipVal((message.substr(19)));
                     cout<<chipVal<<endl;
-                    int chipValInt = stoi(chipVal); //converting str to int
+                    int chipValInt = stoi(chipVal); //Converting str to int
                     player->updateCredits(-chipValInt);
                     amountToFront = std::to_string(player->getCredits());
                     ws->send(amountToFront , uWS::OpCode::TEXT);

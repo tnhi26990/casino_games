@@ -41,21 +41,3 @@ void Player::printCredits() {
 Player::~Player() {
     // Perform any cleanup here if needed
 }
-
-
-//void Player::playRound(bool prediction) {
-//    if (currentBet != 0) {
-//        casino->update(currentBet, prediction);
-//        this->currentBet = 0;
-//    }
-//}
-
-
-//void Player::increaseBet(int bet) {
-//    if (bet > credits || bet <= 0) {
-//        std::cout << "You do not have enough for this bet." << std::endl;
-//    } else {
-//        currentBet += bet;
-//        credits -= bet;
-//    }
-//}

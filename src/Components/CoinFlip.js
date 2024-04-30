@@ -92,18 +92,18 @@ class CoinFlip extends Component {
         }, 2000);
     }
     
-    //setting the value of the choice variable when the Head or Tail button is clicked
+    //Setting the value of the choice variable when the Head or Tail button is clicked
     onClickChoice = (value) => {
         console.log(value);
         this.setState({ choice: value });
     };
 
-    //setting the value of the amount variable when the one of the bet amount buttons is clicked
+    //Setting the value of the amount variable when the one of the bet amount buttons is clicked
     onClickAmount = (value) => {
         this.setState({ amount: value });
     };
 
-    //setting the value of the amount variable when the player enter the amount in the field
+    //Setting the value of the amount variable when the player enter the amount in the field
     handleInputChange = (e) => {
         this.setState({ amount: e.target.value });
     };

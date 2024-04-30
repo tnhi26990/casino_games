@@ -138,14 +138,14 @@ const prizes = [
     },
 ];
 
-//  returns a new array filled with randomly selected elements from the input array
+//  Returns a new array filled with randomly selected elements from the input array
 const reproductionArray = (array = [], length = 0) => [
     ...Array(length)
         .fill('_')
         .map(() => array[Math.floor(Math.random() * array.length)]),
 ];
 
-// replicates elements from the prizes array multiple times
+// Replicates elements from the prizes array multiple times
 const reproducedPrizeList = [
     ...prizes,
     ...reproductionArray(prizes, prizes.length * 3),
@@ -153,12 +153,12 @@ const reproducedPrizeList = [
     ...reproductionArray(prizes, prizes.length),
 ];
 
-// generates a unique ID
+// Generates a unique ID
 const generateId = () =>
     `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
 
-// mapping over the reproducedPrizeList array. For each prize in the reproducedPrizeList, a new object is created 
-// and gets a new id property
+// Mapping over the reproducedPrizeList array. For each prize in the reproducedPrizeList, a new object is created 
+// And gets a new id property
 const prizeList = reproducedPrizeList.map((prize) => ({
     ...prize,
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
@@ -176,10 +176,10 @@ class Roulette extends React.Component {
             stopInCenter: {
                 value: true,
             },
-            arr: [], // array of bets
-            chip: 10, // chip value
-            dest: "gameroom", // target page when the player clicks on Return
-            winPrizeIndex : 1,// number index on the spinner
+            arr: [], // Array of bets
+            chip: 10, // Chip value
+            dest: "gameroom", // Target page when the player clicks on Return
+            winPrizeIndex : 1,// Number index on the spinner
             credits: 5000,
             tempCredits : 5000
         };
@@ -214,18 +214,17 @@ class Roulette extends React.Component {
         this.socket.close();
     }
     
-    // function to change the value of start to true
+    // Function to change the value of start to true
     handleStart = () => {
         this.setState((prevState) => ({ start: !prevState.start }));
         console.log("Spin was hit");
-        // socket.send(this.state.arr);
     };
 
     arrayToString(arr) {
         return arr.join(", ");
     }
  
-    // function to change the value of start to false after the spinner has stopped
+    // Function to change the value of start to false after the spinner has stopped
     handlePrizeDefined = () => {
         console.log('Prize defined!');
         setTimeout(() => {
@@ -234,17 +233,17 @@ class Roulette extends React.Component {
 
     };
 
-    // function to update the array
+    // Function to update the array
     updateArr = (arr) => {
         this.setState({ arr })
     }
     
-    // function to update the row
+    // Function to update the row
     updateRow = (row, val) => {
         this.setState({ [row]: val })
     }
 
-    // function to update the chip value
+    // Function to update the chip value
     onClickAmount = (value) => {
         this.setState({ chip: value });
     };

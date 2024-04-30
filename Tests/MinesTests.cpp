@@ -102,7 +102,7 @@ TEST_F(MinesModelTest, resetMultiplier){
     ASSERT_EQ(mul, 1);
 }
 
-// test to ensure correct number of bombs are placed on grid
+// Test to ensure correct number of bombs are placed on grid
 TEST_F(MinesModelTest, numBombsOnGrid){
     int totalBombs = 0;
     for (int i=0; i<5; i++) {

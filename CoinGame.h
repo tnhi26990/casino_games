@@ -1,7 +1,3 @@
-//
-// Created by Adem Durakovic on 4/18/24.
-//
-
 #ifndef UNTITLED_COINGAME_H
 #define UNTITLED_COINGAME_H
 
@@ -17,4 +13,4 @@ public:
 };
 
 
-#endif //UNTITLED_COINGAME_H
+#endif
