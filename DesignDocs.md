@@ -1,111 +1,171 @@
 # High-Level Design Documentation
 
-### Mine UML Diagram
+### Mines Class Diagram
 
 ```mermaid
-graph TD;
-    A[MainDriver.cpp <br/>Starts up the backend websocket where front end can send messages. MainDriver will parse these messages to deteremine what action needs to be taken.];
-    B[MinesModel.cpp <br/>Grid will keep track of safe squares / mines<br>Will keep track of guesses player has already made<br>Notifies all objects registered to the grid upon a change<br>Uses: C++];
-    C[CoinGame.cpp <br/>Will update the mines grid<br>Creates the mines grid GUI<br>Uses: C++];
-    D[BettingTable.js <br/>Will display the Roulette Table, player balance, other key vars<br>Will register with the Roulette Table model and update on a change<br>Uses: React.js?];
-    E[RouletteWheel.js <br/>Traditional Roulette wheel will be modeled<br>Uses: React.js]
+classDiagram
+    Mines <|-- MainDriver
+    Player <|-- MainDriver
+    Mines <|-- Player
+
+    class MainDriver {
+        -MinesModel* minesGame
+        -Player* player
+    }
+
+    class Player {
+        - int betAmount
+        - int credits
+        - bool playing
+        + int getCredits()
+        + int getBet()
+        + int setBet(int bet)
+        + void playRound(bool prediction)
+        + void increaseBet(int bet)
+        + void updateCredits(int money)
+        + void printCredits()
+        + bool isPlaying()
+        + bool setPlaying(bool)
+    }
+
+    class Mines {
+        - double multiplier
+        - double adder
+        - int payOut
+        - int totalMines
+        - int totalSquares
+        - int bombGrid[5][5]
+        - int grid[5][5]
+        + int getPayOut()
+        + void initPayout(int)
+        + void executeWin(int, int)
+        + void executeLoss()
+        + void generateMineLocations()
+        + bool gridClicked(int, int)
+        + bool checkForBomb(int x, int y)
+        + void flipSquare(int x, int y)
+        + double returnMultiplier()
+        + void reset()
+        + int (*returnGrid())[5]
+        + std::string returnGridString()
+        + void setTotalMines(int mines)
+        + void printGridWithBombs()
+    }
+```
     
-    A --> |Creates| B;
-    A --> |Creates| C;
-    A --> |Creates| D;
-    A --> |Creates| E;
  
 
-```
-
-### Roulette UML Diagram
-
+### Roulette Class Diagram
 ```mermaid
-graph TD;
-    A[Driver <br/> Driver will be used to start the game <br> Will create the Player Controller and the Roulette Table <br> Uses: C++ <br>];
-    C[Roulette Table <br/>Creates and has a Roulette Wheel, and betting grid <br> Will update any objects that are registed to it upon a change <br> Uses: C++];
-    G[Roulette Wheel <br/> Will randomly select a number 38 <br> numbers will range from 1-36 and have 0 and 00 <br> Uses: C++]
-    H[Betting Grid <br/> 3x17 matrix that will represent everything that can be bet <br> Players will select grid and wager amount and will be payed out according to the wheel <br> Uses: C++]
-    I[Roulette Wheel GUI <br/> Traditional Roulette wheel will be modeled <br> Uses: React.js]
-    K[Player Model <br/> Will keep track of player balance,update credits, and other necessary functions. <br> Uses: C++]
-
-   ?????? whats this stuff
-```
-### Model Class Diagram
-
-```mermaid
----
-title: Model
----
 classDiagram
-    class rouletteWheel{
-        generateNumber() //generates the number in roulette
-    }
-    class bettingTable{
-        - bettingGrid
-        checkWinner()
-        payout()
+    BettingTable <|-- MainDriver 
+    RouletteWheel <|-- MainDriver
+    Player <|-- MainDriver
+    BettingTable <|-- Player
+    RouletteWheel <|-- Player
+
+    class MainDriver {
+        - RouletteWheel* rouletteWheel
+        - BettingTable* rouletteGame 
+        - Player* player
     }
 
-    class mines{
-        - grid
-        -bombGrid
-        - multiplier
-        checkSpot(int x, int y)
-        payout()
+    class Player {
+        - int betAmount
+        - int credits
+        - bool playing
+        + int getCredits()
+        + int getBet()
+        + int setBet(int bet)
+        + void playRound(bool prediction)
+        + void increaseBet(int bet)
+        + void updateCredits(int money)
+        + void printCredits()
+        + bool isPlaying()
+        + bool setPlaying(bool)
     }
 
-    class player{
-        - int currentBet
-        - int currentBalacnce
-        -isPlaying boolean
-        bet()
-        -updateCredits()
+    class BettingTable {
+        - std::unordered_map<int, std::list<std::pair<int,int>>> lookupTable
+        - std::unordered_map<int, std::list<std::string>> frontendLookupTable
+        - RouletteWheel wheel
+        - int payoutGrid[3][17]
+        - std::list<int> frontendPayoutGrid
+        - std::vector<std::pair<std::pair<int, int>, int>> playerBets
+        + void addPlayerBet(int rowNum, int colNum, int betAmount)
+        + int handleInput(const std::string& input)
+        + std::string toLowerCase(const std::string &str)
+        + int isEven(int num)
+        + int firstHalf(int num)
+        + int checkBlock(int num)
+        + int checkRow(int num)
+        + bool isBlack(int num)
+        + int checkCol(int num)
+        + int checkResults()
+        + int payout(std::pair<int, int> betSpot, int betAmount)
+        + std::list<std::pair<int, int>> getValues(int key)
+        + void assignMapValues()
+        + int executeRound(std::string betString, int spinRes)
+        + std::vector<std::string> split(const std::string& s, const std::string& delimiter)
+        + void reactAssignMapValues()
+        + std::list<std::string > getFrontendValues(int key)
+        + int frontendPayout(std::string betSpot, int betAmount)
+        + int getSpinNumber()
+        + std::string removeLeadingSpaces(const std::string& str)
     }
+
+    class RouletteWheel {
+        + int generateNumber()
+    }
+
 ```
-### View Class Diagram
 
+### CoinFlip Class Diagram
 ```mermaid
----
-title: View
----
 classDiagram
-Each class contains a webSocket to communicate the the backend.
+    CoinFlip <|-- MainDriver 
+    Player <|-- MainDriver
+    CoinFlip <|-- Player
 
-Roulette.js sends a betString to MainDriver.cpp which uses the roulette model
-to parse and execute the correct payout.
-    class Roulette.js{
-        - visual assests
-        +update()
-        +spinButton()
-        -betString
-        socket.onmessage()
-        socket.onopen()
-        socket.onclose()
-    }
-    
-    CoinFlip sends the head/tails plus the bet to backend to process.
-    class CoinFlip.js{
-        - visual assests
-        -totalBet
-        +bet()
-        socket.onmessage()
-        socket.onopen()
-        socket.onclose()
+    class CoinFlip {
+        + bool tossCoin()
+        + bool checkWinner(bool prediction, bool outcome)
+        + bool executeRound(bool prediction)      
     }
 
-Mines.js communicates with MainDriver when user clicks a cell, clicks bet, or
-clicks cashout. MinesModel.cpp keeps track of the grid and send this class
-below a gridString so it can update the current grid.
-    class Mines.Js{
-        - visual assests
-        -gridString
-        +betPlaced()
-        +update()
-        +flipSquare()
-        socket.onmessage()
-        socket.onopen()
-        socket.onclose()
+    class Player {
+        - int betAmount
+        - int credits
+        - bool playing
+        + int getCredits()
+        + int getBet()
+        + int setBet(int bet)
+        + void playRound(bool prediction)
+        + void increaseBet(int bet)
+        + void updateCredits(int money)
+        + void printCredits()
+        + bool isPlaying()
+        + bool setPlaying(bool)
+    }
+
+    class MainDriver {
+        - CoinGame* coinGame
+        - Player* player   
     }
 ```
+
+## Description
+MainDriver facilitates all communication from the frontend and backend. It's where the backend WebSocket lives so it knows what game is being played and tells the CPP models what to do.
+
+We use CMake to run C++. To run the backend, use the following commands:
+<br>
+<code>mkdir build</code>
+<br>
+<code>cd build</code>
+<br>
+<code>cmake ..</code>
+<br>
+<code>make</code>
+<br>
+<code>./backend</code>
 
