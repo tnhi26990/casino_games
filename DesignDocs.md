@@ -36,8 +36,6 @@ classDiagram
         - int totalSquares
         - int bombGrid[5][5]
         - int grid[5][5]
-        + int getPayOut()
-        + void initPayout(int)
         + void executeWin(int, int)
         + void executeLoss()
         + void generateMineLocations()
@@ -86,12 +84,12 @@ classDiagram
     }
 
     class BettingTable {
-        - std::unordered_map<int, std::list<std::pair<int,int>>> lookupTable
-        - std::unordered_map<int, std::list<std::string>> frontendLookupTable
+        - std::unordered_map< int, std::list< std::pair< int,int>>> lookupTable
+        - std::unordered_map< int, std::list< std::string>> frontendLookupTable
         - RouletteWheel wheel
         - int payoutGrid[3][17]
-        - std::list<int> frontendPayoutGrid
-        - std::vector<std::pair<std::pair<int, int>, int>> playerBets
+        - std::list< int> frontendPayoutGrid
+        - std::vector< std::pair< std::pair< int, int>, int>> playerBets
         + void addPlayerBet(int rowNum, int colNum, int betAmount)
         + int handleInput(const std::string& input)
         + std::string toLowerCase(const std::string &str)
@@ -102,13 +100,13 @@ classDiagram
         + bool isBlack(int num)
         + int checkCol(int num)
         + int checkResults()
-        + int payout(std::pair<int, int> betSpot, int betAmount)
-        + std::list<std::pair<int, int>> getValues(int key)
+        + int payout(std::pair< int, int> betSpot, int betAmount)
+        + std::list< std::pair< int, int>> getValues(int key)
         + void assignMapValues()
         + int executeRound(std::string betString, int spinRes)
-        + std::vector<std::string> split(const std::string& s, const std::string& delimiter)
+        + std::vector< std::string> split(const std::string& s, const std::string& delimiter)
         + void reactAssignMapValues()
-        + std::list<std::string > getFrontendValues(int key)
+        + std::list< std::string> getFrontendValues(int key)
         + int frontendPayout(std::string betSpot, int betAmount)
         + int getSpinNumber()
         + std::string removeLeadingSpaces(const std::string& str)
