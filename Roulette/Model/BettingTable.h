@@ -32,23 +32,12 @@ public:
     BettingTable(RouletteWheel wheel)
             : wheel(wheel) {reactAssignMapValues();}
 
-    // methods for the termial version of the game
-    void addPlayerBet(int rowNum, int colNum, int betAmount);
-    int handleInput(const std::string& input);
-    std::string toLowerCase(const std::string &str);
     int isEven(int num);
     int firstHalf(int num);
     int checkBlock(int num);
     int checkRow(int num);
     bool isBlack(int num);
     int checkCol(int num);
-    int checkResults();
-    int payout(std::pair<int, int> betSpot, int betAmount);
-    std::list<std::pair<int, int> > getValues(int key);
-    void assignMapValues();
-    std::vector<std::pair<std::pair<int, int>, int> > playerBets;
-
-    // methods for the front end connectivity
     int executeRound(std::string betString, int spinRes);
     std::vector<std::string> split(const std::string& s, const std::string& delimiter);
     void reactAssignMapValues();

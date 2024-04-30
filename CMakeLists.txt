@@ -62,7 +62,6 @@ add_executable(roulette_testing
 
 add_executable(roulette_frontend_testing
     Tests/FrontendRouletteTests.cpp
-    Roulette/Controller/RouletteController.cpp
     Roulette/Model/BettingTable.cpp
     Roulette/Model/RouletteWheel.cpp
     Roulette/View/RouletteView.cpp
