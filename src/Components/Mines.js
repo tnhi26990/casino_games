@@ -131,9 +131,13 @@ function Mines() {
 
     // Error checks user input for bet amount
     const isValidBet = () => {
+        const number = Number(betAmount);
         if(isNaN(betAmount)){  // If the bet amount is not a number
             alert("Only numbers");
             return false;
+        }else if (!(Number.isInteger(number))){
+            alert("Must be integer numbers");
+            return false
         }else if(betAmount <= 0){ // Disallow zero or negative values
             return false;
         }else if(betAmount > credits){ // Must have enough credits

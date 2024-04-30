@@ -65,7 +65,10 @@ class CoinFlip extends Component {
         const { choice, amount, credits } = this.state;
         const audio = new Audio('/coin-drop.mp3');
 
-        if (isNaN(amount) || parseFloat(amount) <= 0 || parseFloat(amount) > parseFloat(credits)) {
+        const number = Number(amount);
+
+
+        if (isNaN(amount) || !(Number.isInteger(number)) || parseFloat(amount) <= 0 || parseFloat(amount) > parseFloat(credits)) {
             alert('Invalid bet amount or not enough credits');
             return;
         }

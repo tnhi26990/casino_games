@@ -2,7 +2,6 @@ import React from 'react';
 import RouletteTable from '../Components/table/BettingTable';
 import './Roulette.css';
 import { Container, Row, Col } from 'react-bootstrap';
-
 import '../Components/chips/Chips.css';
 import firstRow from '../Components/table/rows/FirstRow.json';
 import firstBorder from '../Components/table/rows/FirstBorder.json';
@@ -14,12 +13,9 @@ import fourthRow from '../Components/table/rows/FourthRow.json';
 import fifthRow from '../Components/table/rows/FifthRow.json';
 import columnLeft from '../Components/table/rows/ColumnLeft.json';
 import columnRight from '../Components/table/rows/ColumnRight.json';
-
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
-
 import ReturnButton from './ReturnButton';
-
 
 const prizes = [
     {
@@ -164,8 +160,6 @@ const prizeList = reproducedPrizeList.map((prize) => ({
     id: typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : generateId(),
 }));
 
-
-
 class Roulette extends React.Component {
 
     constructor(props) {
@@ -202,11 +196,8 @@ class Roulette extends React.Component {
                 this.setState({ credits: parseFloat(message) })
                 this.setState({ tempCredits: this.state.credits })
 
-
-
             }
         };
-
 
     }
     componentWillUnmount() {
@@ -258,11 +249,6 @@ class Roulette extends React.Component {
         this.socket.send("total bet " + totalBet);
         return totalBet;
     }
-
-
-
-
-
 
     arrayToString(arr) {
         return arr.join(", ");
