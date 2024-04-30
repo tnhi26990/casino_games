@@ -140,7 +140,6 @@ int main() {
                             player->setPlaying(false);
                             minesGame->executeLoss();
                         } else { // did not hit a bomb
-                         
                             string rowColStr = std::to_string(row) + "," + std::to_string(col);
                             minesGame->executeWin(row, col);
                             currentPayout = currentPayout * minesGame->returnMultiplier();
@@ -149,7 +148,6 @@ int main() {
                             ws->send(winMessage, uWS::OpCode::TEXT);
                             
                             if( minesGame->totalSquares == 0){ //if player got all cells
-                                cout<< "user got all mines out hee" << endl;
                                 player->updateCredits(currentPayout);
                                 minesGame->reset();
                                 player->setPlaying(false);

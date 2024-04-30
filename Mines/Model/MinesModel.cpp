@@ -6,6 +6,7 @@
 MinesModel::MinesModel() {
     multiplier = 1.0;
 
+    // Initialize all elements of grid and bombGrid to zero
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             grid[i][j] = 0;
@@ -15,11 +16,11 @@ MinesModel::MinesModel() {
 
 }
 void MinesModel::setTotalMines(int mines) {
-    this->totalMines = mines;
-    this->totalSquares = 25 - mines;
-    this->adder = 0.1;
+    this->totalMines = mines; // stores number of mines
+    this->totalSquares = 25 - mines; // stores total number of open cells
+    this->adder = 0.1; // base incrementer for payouts
     
-
+    // adjusts multiplier and incrementer for payouts based on difficulty (number of mines)
     switch (mines) {
         case 3:
             multiplier = 1.0;
@@ -42,15 +43,15 @@ void MinesModel::setTotalMines(int mines) {
             adder = .1;
             break;
         default:
-            multiplier = 1.0;
+            multiplier = 1.0; //default case
             break;
     }
 
-    generateMineLocations();
-    printGridWithBombs();
+    generateMineLocations(); // generates new mine grid
+    printGridWithBombs(); // prints grid with bombs for debugging purposes
 }
 
-
+//returns true if a bomb has been clicked
 bool MinesModel::gridClicked(int row,int col){
     if (grid[row][col] == 1 ) {
         return true;
@@ -58,6 +59,12 @@ bool MinesModel::gridClicked(int row,int col){
     return false;
 }
 
+//returns the current state of the grid as a string for front end processing
+/*
+* ex: [0,1,1,1,0]
+*     [0,0,1,0,1]   returns "0111000101..."
+*       ...
+*/
 std::string MinesModel::returnGridString() {
     std::string gridStr = "";
     for (int i = 0; i< 5; i++){
@@ -69,10 +76,12 @@ std::string MinesModel::returnGridString() {
     return gridStr;
 }
 
+//returns a pointer to grid array
 int (*MinesModel::returnGrid())[5] {
     return grid;
 }
 
+//randomly places 1's on bomb grid, 1's represent bombs
 void MinesModel::generateMineLocations() {
     int bombsPlaced = 0;
     while (bombsPlaced != totalMines) {
@@ -85,23 +94,27 @@ void MinesModel::generateMineLocations() {
     }
 }
 
+// checks if a bomb is at a specific grid position
 bool MinesModel::checkForBomb(int x, int y) {
     std::cout<< "In check for bomb "<< bombGrid[y][x] << std::endl;
     if (bombGrid[y][x] == 1) {
-        grid[y][x] =2;
-        return true;
+        grid[y][x] = 2; // marks a 2 if the user clicked a cell with a bomb in the front end
+        return true; 
     }
-    totalSquares -= 1;
+    totalSquares -= 1; // decrements count of open/safe cells
     return false;
 }
 
+//flips a cell, updates payout, multiplier, and grid status
 void MinesModel::flipSquare(int x, int y) {
     multiplier += adder;
     payOut *= multiplier;
     grid[x][y] = 1;
 }
 
+// resets game state
 void MinesModel::reset() {
+    //clear all grid cells
     for (int i = 0; i < 5; i++) {
         for (int k = 0; k < 5; k++) {
             grid[i][k] = 0;
@@ -114,25 +127,22 @@ void MinesModel::reset() {
    
 }
 
-void MinesModel::initPayout(int money) {
-    payOut = money;
-}
-
 double MinesModel::returnMultiplier() {
     return multiplier;
 }
 
+//executes a losing cell click/flip
 void MinesModel::executeLoss() {
     reset();
 }
 
+// executes a winning cell click/flip
 void MinesModel::executeWin(int first, int second) {
     flipSquare(first, second);
 }
 
-int MinesModel::getPayOut(){
-    return payOut;
-}
+
+// prints the grid and bomb positions in the terminal for debugging purposes
 void MinesModel::printGridWithBombs() {
     std::cout << "Grid with Bomb Locations:" << std::endl;
     for (int i = 0; i < 5; i++) {

@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "../Mines/Model/MinesModel.h"
-#include "../Mines/View/MinesView.h"  // Ensure you include the View if it's used in the Model constructor
 
 // Fixture for MinesModel tests
 class MinesModelTest : public ::testing::Test {
@@ -103,6 +102,7 @@ TEST_F(MinesModelTest, resetMultiplier){
     ASSERT_EQ(mul, 1);
 }
 
+// test to ensure correct number of bombs are placed on grid
 TEST_F(MinesModelTest, numBombsOnGrid){
     int totalBombs = 0;
     for (int i=0; i<5; i++) {

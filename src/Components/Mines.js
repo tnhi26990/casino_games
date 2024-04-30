@@ -1,51 +1,44 @@
 import React, { useRef, useEffect, useState } from "react";
-
 import "../minesRoom.css"
 import ReturnButton from './ReturnButton';
 
 function Mines() {
-    const [betAmount, setBetAmount] = useState("");
+    const [betAmount, setBetAmount] = useState(""); // state to track bet amount
     const [totalBombs, setTotalBombs] = useState(3); // State to track the total number of bombs
     const [grid, setGrid] = useState(Array(5).fill(null).map(() => Array(5).fill({ clicked: false, safe: true })));
-    const [credits, setCredits] = useState(5000);
-    const [payout, setPayout] = useState(0);
-
-
-    const [playing, setPlaying] = useState(false);
+    const [credits, setCredits] = useState(5000); // state to track user credits
+    const [payout, setPayout] = useState(0); // state to track payout
+    const [playing, setPlaying] = useState(false); //state to track playing status
+    const ws = useRef(null); // websocket
 
     let dest = "gameroom";
-
-
-    const ws = useRef(null);
     
     useEffect(() => {
-        const savedPay = localStorage.getItem('currentPay');
-        if (savedPay) {
-            //setPayout(savedPay);
-        }
+        
         // Initialize WebSocket connection
         ws.current = new WebSocket('ws://localhost:9001');
         ws.current.onopen = () => {
             console.log("connected to ws server");
-            // Optionally request initial credit balance from server
+            // request initial credit balance from server
             ws.current.send("starting creds");
             setTimeout(2500);
+            // request grid state
             ws.current.send("request grid");
             setTimeout(2500);
+            // request playing status
             ws.current.send("request playing");
 
-
-            //Check if user was playing
-          //  ws.current.send("playing?")
         };
         ws.current.onmessage = (e) => {
             const message = e.data;
             console.log("Message from server ", message);
-            if (message.includes("starting")) {
+            if (message.includes("starting")) { // intial load up from backend
                 setCredits(parseInt(message.split(" ")[0])); // Assuming message is "5000 starting"
-            } else if (message.includes("Grid ")) {
+
+            } else if (message.includes("Grid ")) { // grid state sent from backend
                 let gridString = message.split(" ")[1]; // Assuming message is "Grid 101110010..."
                 handleGridChange(gridString);
+
             }else if (message.includes("status: ")){ // assuming message is "status: $$$ T/F"
                 let parsedMessage = message.split(" ");
                 setPayout(parseInt(parsedMessage[1]));
@@ -58,26 +51,29 @@ function Mines() {
                     setPayout(0);
                 }
 
-            }else if (message.includes("Player Wins")) {
-                setPayout(parseInt(message.split(" ")[2]));
-                let coordinates = message.split(" ")[3].split(",");
+            }else if (message.includes("Player Wins")) { // player winning flip message from backend
+                setPayout(parseInt(message.split(" ")[2])); // update payout for visual purposes
+                let coordinates = message.split(" ")[3].split(","); 
                 setGrid(currentGrid => currentGrid.map((row, i) => row.map((cell, j) => {
                     if (i === parseInt(coordinates[0]) && j === parseInt(coordinates[1])) {
-                        return { ...cell, clicked: true, safe: true };
+                        return { ...cell, clicked: true, safe: true }; // updates cell as clicked and safe on win
                     }
                     return cell;
                 })));
-            } else if (message.includes("Player Lost")) {
+
+            } else if (message.includes("Player Lost")) { // player losing flip message from backend
                 let coordinates = message.split(" ")[2].split(",");
                 setGrid(currentGrid => currentGrid.map((row, i) => row.map((cell, j) => {
                     if (i === parseInt(coordinates[0]) && j === parseInt(coordinates[1])) {
-                        return { ...cell, clicked: true, safe: false };
+                        return { ...cell, clicked: true, safe: false }; // update cell as clicked and unsafe/bomb on loss
                     }
                     return cell;
                 })));
                 setPayout(0);
                 setPlaying(false);
-            } else if (message.includes("User Finished:")){ //message is User Finished: $$$$
+
+            } else if (message.includes("User Finished:")){ // assuming message is "User Finished: $$$$"
+                //this executes when the player has clicked all open cells
                 setPlaying(false);
                 setPayout(0);
                 setCredits(parseInt(message.split(" ")[2]));
@@ -99,84 +95,89 @@ function Mines() {
         };
     }, []);
 
+    // function to reset grid state to all cells unclicked and safe
     const getInitialGrid = () => Array(5).fill(null).map(() => Array(5).fill({ clicked: false, safe: true }));
 
-
+    // handles changes to grid based on string from backend: ex: "10100110..."
     const handleGridChange = (gridString) => {
         let index = 0;
         let tempGrid = [];
-        console.log(gridString);
+        console.log(gridString); // debugging
 
-
+        //processes each charaveter in gridString to update grid state
         for (let i = 0; i < 5; i++) {
             let newRow = [];
             for (let j = 0; j < 5; j++) {
                 // Assuming backend sends '1' for clicked and safe, '2' for clicked and bomb, '0' for unclicked
                 const cellValue = gridString.charAt(index);
                 newRow.push({
-                    clicked: cellValue !== '0',
-                    safe: cellValue !== '2'
+                    clicked: cellValue !== '0', // mark as clicked
+                    safe: cellValue !== '2' // mark as safe unless character is '2' (indicate user clicked a bomb)
                 });
                 index++;
             }
             tempGrid.push(newRow);
         }
 
-        setGrid(tempGrid);
+        setGrid(tempGrid); // updates state of grid with new values
     };
 
-
-
+    // event handler for changes in bet amount input field
     const handleBetAmountChange = (event) => {
-        if(!(playing)){
+        if(!(playing)){ // only allows bet amount change if the game in not currently active
             setBetAmount(event.target.value);
         }
     };
 
+    // error checks user input for bet amount
     const isValidBet = () => {
-        if(isNaN(betAmount)){
+        if(isNaN(betAmount)){  // if the bet amount is not a number
             alert("Only numbers");
             return false;
-        }else if(betAmount <= 0){
+        }else if(betAmount <= 0){ // disallow zero or negative values
             return false;
-        }else if(betAmount > credits){
+        }else if(betAmount > credits){ // must have enough credits
             alert("not enough credits");
             return false;
-        } else if(!betAmount){
+        } else if(!betAmount){ // make sure it is a non empty bet
             return false;
         }
         return true;
     }
 
-    const cashOut = () => {
+    // function to handle cash out
+    const cashOut = () => { 
         console.log("User cashed out");
         ws.current.send("cashed ");
+
+        // resets game state in front end
         setPayout(0);
         setPlaying(false);
         setGrid(getInitialGrid());
     }
 
-    const cellClick = (row, col) => {
+    // function to handle cell clicks
+    const cellClick = (row, col) => { 
         console.log("Clicked row: ", row, " Col: ", col);
-        if (!grid[row][col].clicked) {
-            ws.current.send(`Clicked ${row} ${col}`);
+        if (!grid[row][col].clicked) { // only executes this event if the cell hasn't been clicked
+            ws.current.send(`Clicked ${row} ${col}`); // sends "clicked {row} {col}" to backend via websocket
         }
     };
 
+    // event handler for changing number of bombs
     const handleTotalBombsChange = (event) => {
-        if (!playing) {
+        if (!playing) { // can only change bomb amount when game is not active
             setTotalBombs(parseInt(event.target.value));
         }
     };
 
-    const placeBet = () => {
-        if(isValidBet() && !(playing)){
-            //logic to send bet amount to backend
+    // function to handle bet place
+    const placeBet = () => { 
+        if(isValidBet() && !(playing)){ // check if the bet is valid and the user is not playing
             console.log("User bet" + betAmount);
             ws.current.send("Bet " + betAmount +" " +totalBombs);
-            ws.current.send("request grid");
-            setPayout(betAmount);
-            localStorage.setItem('currentPay', betAmount);
+            ws.current.send("request grid"); // request grid state 
+            setPayout(betAmount); // sets payout to bet amount
             setPlaying(true);
             setGrid(getInitialGrid());
 
@@ -184,6 +185,7 @@ function Mines() {
         setBetAmount("");
     }
 
+    // function to render game grid
     const renderGrid = () => {
         return (
             <div className="grid">
@@ -203,7 +205,7 @@ function Mines() {
     };
 
 
-
+    // website/page
     return (
         <>
             <div className="mines-container">
