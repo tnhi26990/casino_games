@@ -13,8 +13,6 @@ MinesModel::MinesModel() {
         }
     }
 
-    //generateMineLocations();
-
 }
 void MinesModel::setTotalMines(int mines) {
     this->totalMines = mines;
@@ -113,7 +111,7 @@ void MinesModel::reset() {
     totalMines = 0;
     multiplier = 1.0;
     payOut = 0;
-   // generateMineLocations();
+   
 }
 
 void MinesModel::initPayout(int money) {
