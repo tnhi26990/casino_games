@@ -352,7 +352,6 @@ class Roulette extends React.Component {
                                     socket={this.socket} // Pass the socket instance
                                     credits={ this.state.credits}
                                 />
-
                             </Col>
                             <Col>
                                 <div>
@@ -411,7 +410,6 @@ class Roulette extends React.Component {
             </Container>
         )
     }
-
 }
 
 export default Roulette;

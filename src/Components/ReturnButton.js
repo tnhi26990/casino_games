@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { yellow, green } from '@mui/material/colors';
 
-
 function ReturnButton(props) {
     const theme = createTheme({
         palette: {
@@ -36,8 +35,7 @@ function ReturnButton(props) {
                 </ThemeProvider>
             </div>
     );
-   } 
-    
+   }   
 }
 
 
