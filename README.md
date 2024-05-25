@@ -23,63 +23,59 @@ To run the code, please follow the below instructions:
      <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
 
 2. Navigate to the cloned repository
-3. a. run this in the base directory <code>git submodule update --init --recursive </code>
-<br>
-b. Also, follow these instructions
-<br>
-Open two terminals
-<br>
-In the first one:
-<br>
-<code>mkdir build</code>
-<br>
-<code>cd build</code>
-<br>
-<code>cmake ..</code>
-<br>
-<code>make</code>
-<br>
-<code>./backend</code>
-<br>
-In the second terminal:
-<br>
-4. Run the following commands:
+3. a. Run this in the base directory <code>git submodule update --init --recursive </code>
 
-### `npm install`
+     b. Open two terminals, follow these instructions:
 
-Installs the dependencies of the project. This script needs to be run once before you can run the application.
+     In the first one:
 
-### `npm start`
+     <code>mkdir build</code>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+     <code>cd build</code>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+     <code>cmake ..</code>
 
-### `npm test`
+     <code>make</code>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+     <code>./backend</code>
 
-### `npm run build`
+1. In the second terminal, run the following commands:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+     ### `npm install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+          Installs the dependencies of the project. This script needs to be run once before you can run the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+     ### `npm start`
 
-### `npm run eject`
+     Runs the app in the development mode.\
+     Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+     The page will reload when you make changes.\
+     You may also see any lint errors in the console.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+     ### `npm test`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of 
-the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+     Launches the test runner in the interactive watch mode.\
+     See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand 
-that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+     ### `npm run build`
+
+     Builds the app for production to the `build` folder.\
+     It correctly bundles React in production mode and optimizes the build for the best performance.
+
+     The build is minified and the filenames include the hashes.\
+     Your app is ready to be deployed!
+
+     See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+     ### `npm run eject`
+
+     **Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+     If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+     Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of 
+     the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+     You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand 
+     that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
