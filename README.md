@@ -14,6 +14,10 @@ A web browser and Internet access: A modern web browser such as Google Chrome, M
 
 Node.js and npm installed: Make sure you have both installed on your system (https://nodejs.org/en/download/).
 
+Homebrew installed: Homebrew is needed to install CMake. To	 install	 Homebrew, simply paste the command from https://brew.sh into your terminal and run.
+
+CMake installed: To	install CMake,	simply type “brew install	 cmake” in the	terminal.
+
 ## How to run the application:
 
 To run the code, please follow the below instructions:
@@ -43,7 +47,7 @@ To run the code, please follow the below instructions:
 
      ### `npm install`
 
-          Installs the dependencies of the project. This script needs to be run once before you can run the application.
+     Installs the dependencies of the project. This script needs to be run once before you can run the application.
 
      ### `npm start`
 
