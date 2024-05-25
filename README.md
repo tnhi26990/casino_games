@@ -24,7 +24,7 @@ To run the code, please follow the below instructions:
 
 1. Open terminal and clone the repository
 
-     <code>git clone https://github.com/AmarHadzic/CSCI3300_Group6.git </code>
+     <code>git clone https://github.com/tnhi26990/casino_games.git</code>
 
 2. Navigate to the cloned repository
 3. a. Run this in the base directory <code>git submodule update --init --recursive </code>
@@ -43,7 +43,7 @@ To run the code, please follow the below instructions:
 
      <code>./backend</code>
 
-1. In the second terminal, run the following commands:
+4. In the second terminal, run the following commands:
 
      ### `npm install`
 
