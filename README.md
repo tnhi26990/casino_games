@@ -1,6 +1,10 @@
 # Casino Gambling Application
 
-This application is a work in progress. It uses WebSocket server with a React JS client.
+This application uses WebSocket server with a React JS client.
+
+## Overview
+
+The application consists of three games: Mines, CoinFlip and Roulette. In Mines, there are safe spots and land mines hidden on the field. The Goal is to open as many safe spots as possible and don’t blow up on the mine. With each opened safe spot, winnings increase. The player can cash out after each successful guess and take their winnings. Coin flip is a game where the user places money on whether they believe the coin will land heads side up or tails side up. The point of the game is to simply flip a coin and see which side is facing up. The only rules are that the user cannot touch or alter the coin once flipped. Roulette is a game where there is a horizontal spinner and a betting table. The spinner can land on red, black or green and certain numbers associated with each slot. The player is able to place bets by placing chips on either black, red, or green in trying to choose what color the spinner will land on.
 
 ## Technologies Used:
 
