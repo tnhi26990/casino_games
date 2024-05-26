@@ -1,6 +1,12 @@
 # Casino Gambling Application
 
-This application is a work in progress and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application is a work in progress. It uses WebSocket server with a React JS client.
+
+## Technologies Used:
+
+* React
+* WebSocket
+* Google Test
 
 ## Compatible OSes:
 
